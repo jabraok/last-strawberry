@@ -1,0 +1,8 @@
+{{#each options as |option|}}
+  {{forms/elements/label-checkbox
+    label=option.text
+    selected=option.selected
+    update=(action "toggled" option)
+    class=option.value
+  }}
+{{/each}}

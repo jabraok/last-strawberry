@@ -1,0 +1,28 @@
+{{ui/title-bar
+  title=title
+  hasAction=true
+  actionIcon=(if isHidden "add" "remove")
+  click=(toggle "isHidden" this)
+  class="titleBar"
+}}
+
+<div class="filterContainer col {{if isHidden 'hidden' ''}}">
+  {{filtering/toggle-filter
+    options=toggleOptions
+    toggled=toggled
+  }}
+
+  {{filtering/query-filter
+    title="Filter companies"
+    query=query
+    class="filterQuery"
+  }}
+
+  {{filtering/item-filter
+    title="Filter items"
+    items=items
+    selectedItems=selectedItems
+    class="filterItem"
+    itemSelected=itemSelected
+  }}
+</div>
