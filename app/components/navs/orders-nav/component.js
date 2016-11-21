@@ -17,12 +17,12 @@ export default Ember.Component.extend({
     return [
       {
         text: "Drafts",
-        value: "isDraft",
+        queryParam: "isDraft",
         selected: isDraft
       },
       {
         text: "Approved",
-        value: "isApproved",
+        queryParam: "isApproved",
         selected: isApproved
       }
     ];
@@ -55,7 +55,7 @@ export default Ember.Component.extend({
                notDeleted = !order.get('isDeleted'),
                notVoided = !order.get('isVoided');
 
-        const toggle = toggleOptions.reduce((sum,item) => sum || (item.selected && order.get(item.value)), false);
+        const toggle = toggleOptions.reduce((sum,item) => sum || (item.selected && order.get(item.queryParam)), false);
 
         const includedItem = Ember.isEmpty(selectedItems) ||
           selectedItems.reduce((sum,item) => sum || order.get("orderItems").isAny("item.id", item.get("id")), false);
@@ -74,13 +74,13 @@ export default Ember.Component.extend({
   },
 
   actions: {
-    toggled(option){
-      this.set(option.value, option.selected);
-    },
+    // toggled(option){
+    //   this.set(option.value, option.selected);
+    // },
 
-    itemSelected(items){
-      const selected = items.map((item) => item.id).join(",");
-      this.set("includedItems", selected);
-    }
+    // itemSelected(items){
+    //   const selected = items.map((item) => item.id).join(",");
+    //   this.set("includedItems", selected);
+    // }
   }
 });

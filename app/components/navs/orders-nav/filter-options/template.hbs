@@ -7,16 +7,18 @@
 }}
 
 <div class="filterContainer col {{if isHidden 'hidden' ''}}">
-  {{filtering/toggle-filter
-    options=toggleOptions
-    toggled=toggled
-  }}
+  {{#each toggleOptions as |option|}}
+    {{forms/elements/label-checkbox
+      label=option.text
+      selected=option.selected
+      update=(action toggleQueryParam option)
+      class=option.queryParam}}
+  {{/each}}
 
-  {{filtering/query-filter
-    title="Filter companies"
-    query=query
-    class="filterQuery"
-  }}
+  {{ui/filter-bar
+    placeholder=(concat "Filter companies..." )
+    onChange=(action (mut query))
+    value=query}}
 
   {{filtering/item-filter
     title="Filter items"

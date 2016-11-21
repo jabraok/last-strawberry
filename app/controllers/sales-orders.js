@@ -1,6 +1,7 @@
 import Ember from "ember";
 import computed from "ember-computed-decorators";
 
+const { set } = Ember;
 const { filterBy } = Ember.computed;
 const tomorrow = moment().add(1, "days").format("YYYY-MM-DD");
 
@@ -46,6 +47,10 @@ export default Ember.Controller.extend({
   },
 
   actions: {
+    toggleQueryParam(option, val) {
+      set(this, option.queryParam, val);
+    },
+
     onRequestNewOrder() {
       this.set("showCreateSalesOrderModal", true);
     },
