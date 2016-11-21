@@ -45,21 +45,22 @@ export default Ember.Component.extend({
     return selected;
   },
 
-  @computed("orders.@each.{isDeleted,orderItems}", "toggleOptions.@each.{selected}", "companyQuery", "selectedItems")
+  @computed("orders.@each.{isDeleted,orderItems,isVoided}", "toggleOptions.@each.{selected}", "companyQuery", "selectedItems")
   filterOrders(orders, toggleOptions, query, selectedItems) {
      return orders
        .filter(order => {
 
          const reg = new RegExp(query, "i"),
                nameMatch = reg.test(order.get("location.company.name")),
-               notDeleted = !order.get('isDeleted');
+               notDeleted = !order.get('isDeleted'),
+               notVoided = !order.get('isVoided');
 
         const toggle = toggleOptions.reduce((sum,item) => sum || (item.selected && order.get(item.value)), false);
 
         const includedItem = Ember.isEmpty(selectedItems) ||
           selectedItems.reduce((sum,item) => sum || order.get("orderItems").isAny("item.id", item.get("id")), false);
 
-        return nameMatch && notDeleted && toggle && includedItem;
+        return nameMatch && notDeleted && notVoided && toggle && includedItem;
        });
    },
 
