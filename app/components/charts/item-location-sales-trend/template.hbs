@@ -1,6 +1,9 @@
 {{#ui/loading-panel isLoading=isLoading}}
-  {{ui/title-bar title="Sales trends"}}
-  <div class="chart">
+  {{ui/title-bar
+    title=(concat "Sales trends" (if isHidden " +" " -"))
+    click=(action "toggleOpenClose")
+  }}
+  <div class='{{if isHidden "chart hidden" "chart"}}'>
     {{ember-chart
         type="Line"
         legend=true

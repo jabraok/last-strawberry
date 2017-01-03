@@ -1,5 +1,5 @@
-import Ember from 'ember';
-import computed from 'ember-computed-decorators';
+import Ember from "ember";
+import computed from "ember-computed-decorators";
 
 const {
   and,
@@ -7,11 +7,21 @@ const {
 } = Ember.computed;
 
 export default Ember.Component.extend({
-  classNames: ['col', 'card-1'],
-  classNameBindings: ['shouldDisplay::hidden'],
-  hasData:       notEmpty('salesData'),
-  hasItem:       notEmpty('item'),
+  classNames: ["col", "card-1"],
+  classNameBindings: ["shouldDisplay::hidden"],
+  hasData:       notEmpty("salesData"),
+  hasItem:       notEmpty("item"),
   shouldDisplay: and("hasData", "hasItem"),
+  page:"sales_orders",
+  isHidden:true,
+
+  async willRender(){
+    let isHidden = await localforage.getItem(this.get("LSKey"));
+    if(!Ember.isPresent(isHidden)){
+      isHidden = true;
+    }
+      this.set("isHidden", isHidden);
+  },
 
   init() {
     this.salesDataStream = new Rx.Subject();
@@ -19,21 +29,26 @@ export default Ember.Component.extend({
     this.salesDataStreamSubscription = this.salesDataStream
       .debounce(500)
       .subscribe(salesData => {
-        this.set('debouncedData', salesData);
+        this.set("debouncedData", salesData);
       });
 
       this._super();
   },
 
   didReceiveAttrs() {
-    this.salesDataStream.onNext(this.get('salesData'));
+    this.salesDataStream.onNext(this.get("salesData"));
   },
 
   willDestroy() {
     this.salesDataStreamSubscription.dispose();
   },
 
-  @computed('debouncedData.@each.{previous_ending,ending,returns,sold,starting,ts}')
+  @computed("page")
+  LSKey(page){
+    return page + "_item_location_sales_trend_is_close";
+  },
+
+  @computed("debouncedData.@each.{previous_ending,ending,returns,sold,starting,ts}")
   chartData(salesData = []){
     return {
       labels: salesData.map(sd => moment.unix(sd.ts).format("MM-DD")),
@@ -69,6 +84,13 @@ export default Ember.Component.extend({
           data: salesData.map(sd => sd.returns)
         }
       ]
+    }
+  },
+
+  actions: {
+    toggleOpenClose(){
+      this.set("isHidden", !this.get("isHidden"));
+      localforage.setItem(this.get("LSKey"), this.get("isHidden"));
     }
   }
 });

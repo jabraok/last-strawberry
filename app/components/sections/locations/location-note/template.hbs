@@ -1,6 +1,7 @@
 {{ui/title-bar
   title=(if isHidden "Location note +" "Location note -")
-  click=(toggle "isHidden" this)}}
+  click=(action "toggleOpenClose")
+}}
 <div class={{if isHidden "chart hidden" "chart"}}>
   <textarea
   rows="15"
