@@ -7,6 +7,8 @@ const {
 } = Ember.computed;
 
 export default Ember.Component.extend({
+  localStorage: Ember.inject.service(),
+
   classNames: ["col", "card-1"],
   classNameBindings: ["shouldDisplay::hidden"],
   hasData:       notEmpty("salesData"),
@@ -16,7 +18,7 @@ export default Ember.Component.extend({
   isHidden:true,
 
   async willRender(){
-    let isHidden = await localforage.getItem(this.get("LSKey"));
+    let isHidden = await this.get("localStorage").getItem(this.get("LSKey"));
     if(!Ember.isPresent(isHidden)){
       isHidden = true;
     }
@@ -90,7 +92,7 @@ export default Ember.Component.extend({
   actions: {
     toggleOpenClose(){
       this.set("isHidden", !this.get("isHidden"));
-      localforage.setItem(this.get("LSKey"), this.get("isHidden"));
+      this.get("localStorage").setItem(this.get("LSKey"), this.get("isHidden"));
     }
   }
 });
