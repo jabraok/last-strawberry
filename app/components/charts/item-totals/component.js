@@ -2,24 +2,7 @@ import Ember from "ember";
 import computed from "ember-computed-decorators";
 
 export default Ember.Component.extend({
-  localStorage: Ember.inject.service(),
-
   classNames: ["col", "card-1"],
-  page:"sales_orders",
-  isHidden:true,
-
-  async willRender(){
-    let isHidden = await this.get("localStorage").getItem(this.get("LSKey"));
-    if(!Ember.isPresent(isHidden)){
-      isHidden = true;
-    }
-      this.set("isHidden", isHidden);
-  },
-
-  @computed("page")
-  LSKey(page){
-    return page + "_item_totals_is_close";
-  },
 
   @computed("orders.@each.{totalQuantity}")
   itemTotals(orders = Ember.A()) {
@@ -41,12 +24,5 @@ export default Ember.Component.extend({
   @computed("orders.@each.{totalQuantity}")
   totalUnits(orders = Ember.A()) {
     return orders.reduce((acc, cur) => acc + cur.get("totalQuantity"), 0);
-  },
-
-  actions: {
-    toggleOpenClose(){
-      this.set("isHidden", !this.get("isHidden"));
-      this.get("localStorage").setItem(this.get("LSKey"), this.get("isHidden"));
-    }
   }
 });

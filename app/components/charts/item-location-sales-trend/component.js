@@ -7,23 +7,11 @@ const {
 } = Ember.computed;
 
 export default Ember.Component.extend({
-  localStorage: Ember.inject.service(),
-
   classNames: ["col", "card-1"],
   classNameBindings: ["shouldDisplay::hidden"],
   hasData:       notEmpty("salesData"),
   hasItem:       notEmpty("item"),
   shouldDisplay: and("hasData", "hasItem"),
-  page:"sales_orders",
-  isHidden:true,
-
-  async willRender(){
-    let isHidden = await this.get("localStorage").getItem(this.get("LSKey"));
-    if(!Ember.isPresent(isHidden)){
-      isHidden = true;
-    }
-      this.set("isHidden", isHidden);
-  },
 
   init() {
     this.salesDataStream = new Rx.Subject();
@@ -43,11 +31,6 @@ export default Ember.Component.extend({
 
   willDestroy() {
     this.salesDataStreamSubscription.dispose();
-  },
-
-  @computed("page")
-  LSKey(page){
-    return page + "_item_location_sales_trend_is_close";
   },
 
   @computed("debouncedData.@each.{previous_ending,ending,returns,sold,starting,ts}")
@@ -86,13 +69,6 @@ export default Ember.Component.extend({
           data: salesData.map(sd => sd.returns)
         }
       ]
-    }
-  },
-
-  actions: {
-    toggleOpenClose(){
-      this.set("isHidden", !this.get("isHidden"));
-      this.get("localStorage").setItem(this.get("LSKey"), this.get("isHidden"));
     }
   }
 });

@@ -1,8 +1,12 @@
-{{ui/title-bar
-  title=(if isHidden "Location note +" "Location note -")
-  click=(action "toggleOpenClose")
+{{preferencesService.locationNoteIsClose}}
+
+{{#ui/collapsible-container
+  title="Location note"
+  isClose=preferencesService.locationNoteIsClose
+  toggle=(action preferencesService.togglePreferene "something")
 }}
-<div class={{if isHidden "chart hidden" "chart"}}>
+
+<button type="button" name="button" {{action "testClick"}}>Click</button>
   <textarea
   rows="15"
   cols="100"
@@ -12,4 +16,4 @@
   onchange={{action "noteChanged"}}
   onblur={{action save locationNote}}>
   </textarea>
-</div>
+{{/ui/collapsible-container}}

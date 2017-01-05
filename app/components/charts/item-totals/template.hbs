@@ -1,8 +1,4 @@
-{{ui/title-bar
-  title=(if isHidden "Item totals +" "Item totals -")
-  click=(action "toggleOpenClose")
-}}
-<div class={{if isHidden "chart hidden" "chart"}}>
+{{#ui/collapsible-container title="Item totals" preferencesKey="itemTotalsSalesOrderOpen"}}
   {{#each itemTotals as |itemTotal|}}
     <div class="row stretch left spaceBetween itemRow">
       <span class="name">{{itemTotal.name}}</span>
@@ -16,4 +12,4 @@
     <span class="name">Total Units:</span>
     <span class="quantity">{{totalUnits}}</span>
   </div>
-</div>
+{{/ui/collapsible-container}}
