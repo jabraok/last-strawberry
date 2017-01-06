@@ -10,9 +10,5 @@ export default Ember.Service.extend({
     const prefs = this.get("preferencesData");
     Ember.set(prefs, key, value);
     await localforage.setItem("prefs", prefs);
-  },
-
-  getItem(key){
-      return this.get("preferencesData");
   }
 });
