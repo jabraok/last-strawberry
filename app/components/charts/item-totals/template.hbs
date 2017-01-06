@@ -1,4 +1,4 @@
-{{#ui/collapsible-container title="Item totals" preferencesKey="itemTotalsSalesOrderOpen"}}
+{{#ui/persistent-collapsable-container settingsKey="itemTotalsIsClosed" title="Item totals"}}
   {{#each itemTotals as |itemTotal|}}
     <div class="row stretch left spaceBetween itemRow">
       <span class="name">{{itemTotal.name}}</span>
@@ -12,4 +12,4 @@
     <span class="name">Total Units:</span>
     <span class="quantity">{{totalUnits}}</span>
   </div>
-{{/ui/collapsible-container}}
+{{/ui/persistent-collapsable-container}}

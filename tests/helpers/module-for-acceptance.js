@@ -3,6 +3,7 @@ import Ember from 'ember';
 import startApp from '../helpers/start-app';
 import destroyApp from '../helpers/destroy-app';
 import { mockSetup, mockTeardown } from 'ember-data-factory-guy';
+// import preferencesService from 'last-strawberry/services/preferences-service';
 
 const { RSVP: { Promise } } = Ember;
 
@@ -10,6 +11,9 @@ export default function(name, options = {}) {
   module(name, {
     beforeEach() {
       this.application = startApp();
+
+//       this.application.register('service:preferencesService', preferencesService);
+// console.log(preferencesService.setPreference);
 
       Ember.$.mockjax({ url: "https://andruxnet-random-famous-quotes.p.mashape.com*", responseText: '{"quote":"Houston, we have a problem.","author":"Apollo 13","category":"Movies"}', type: 'POST' });
 

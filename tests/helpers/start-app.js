@@ -3,6 +3,7 @@ import Application from '../../app';
 import config from '../../config/environment';
 import decorateComponentClass from './decorate-component-class';
 import registerPowerSelectHelpers from '../../tests/helpers/ember-power-select';
+// import LocalForageInitializer from 'last-strawberry/initializers/local-forage';
 
 registerPowerSelectHelpers();
 
@@ -17,6 +18,9 @@ export default function startApp(attrs) {
     application = Application.create(attributes);
     application.setupForTesting();
     application.injectTestHelpers();
+
+    // LocalForageInitializer.initialize(application);
+    // console.log(localforage);
   });
 
   return application;

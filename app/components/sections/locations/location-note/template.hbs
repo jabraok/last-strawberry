@@ -1,12 +1,4 @@
-{{preferencesService.locationNoteIsClose}}
-
-{{#ui/collapsible-container
-  title="Location note"
-  isClose=preferencesService.locationNoteIsClose
-  toggle=(action preferencesService.togglePreferene "something")
-}}
-
-<button type="button" name="button" {{action "testClick"}}>Click</button>
+{{#ui/persistent-collapsable-container settingsKey="locationNoteIsClosed" title="Location note"}}
   <textarea
   rows="15"
   cols="100"
@@ -16,4 +8,4 @@
   onchange={{action "noteChanged"}}
   onblur={{action save locationNote}}>
   </textarea>
-{{/ui/collapsible-container}}
+{{/ui/persistent-collapsable-container}}

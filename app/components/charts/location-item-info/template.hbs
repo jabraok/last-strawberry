@@ -1,5 +1,5 @@
 {{#ui/loading-panel isLoading=isLoading}}
-  {{#ui/collapsible-container title=item.name preferencesKey="locationItemInfoSalesOrderOpen"}}
+  {{#ui/persistent-collapsable-container settingsKey="locationItemInfoIsClosed" title=item.name}}
     <div class="col mainContentContainer">
       {{#if hasData}}
         <span>
@@ -31,5 +31,5 @@
         enabled=loading}}
         {{/if}}
     </div>
-  {{/ui/collapsible-container}}
+  {{/ui/persistent-collapsable-container}}
 {{/ui/loading-panel}}

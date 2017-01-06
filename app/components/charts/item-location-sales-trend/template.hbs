@@ -1,5 +1,5 @@
 {{#ui/loading-panel isLoading=isLoading}}
-  {{#ui/collapsible-container title="Sales trends" preferencesKey="salesTrendsSalesOrderOpen"}}
+  {{#ui/persistent-collapsable-container settingsKey="itemLocationSalesTrendIsClosed" title="Sales trends"}}
     {{ember-chart
         type="Line"
         legend=true
@@ -7,5 +7,5 @@
         width=250
         height=200
       }}
-  {{/ui/collapsible-container}}
+  {{/ui/persistent-collapsable-container}}
 {{/ui/loading-panel}}
