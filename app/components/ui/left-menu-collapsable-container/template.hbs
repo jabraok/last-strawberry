@@ -1,9 +1,19 @@
-{{ui/icon-button
-  class="trigger"
-  type=(if isHidden "menu" "clear")
-  backgroundColor=colors.BABY_BLUE
-  click=(action "toogle")
-}}
-<section class="{{cssClass}}">
+<div class="hide show-gt-sm">
+  {{ui/icon-button
+    type=(if isLargeCollapsed "menu" "clear")
+    backgroundColor=colors.BABY_BLUE
+    click=(action "toggleLargeScreen")
+  }}
+</div>
+
+<div class="hide-gt-sm">
+  {{ui/icon-button
+    type=(if isSmallExpanded "clear" "menu")
+    backgroundColor=colors.BABY_BLUE
+    click=(action "toggleSmallScreen")
+  }}
+</div>
+
+<section class="leftMenuContent {{cssClass}}">
   {{yield}}
 </section>
