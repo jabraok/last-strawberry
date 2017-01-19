@@ -1,17 +1,19 @@
-{{navs/orders-nav
-    currentSelectedOrder=currentSelectedOrder
-    deliveryDate=deliveryDate
-    onDateSelected=(route-action "onDateSelected")
-    onRequestNewOrder=(action "onRequestNewOrder")
-    onOrderSelected=(route-action "onOrderSelected")
-    includeUnpublished=includeUnpublished
-    includePublished=includePublished
-    orders=filteredOrders
-    items=allItems
-    companyQuery=companyQuery
-    includedItems=includedItems
-    updateIncludedItems=(action "updateIncludedItems")
-  }}
+{{#ui/left-menu-collapsable-container}}
+  {{navs/orders-nav
+      currentSelectedOrder=currentSelectedOrder
+      deliveryDate=deliveryDate
+      onDateSelected=(route-action "onDateSelected")
+      onRequestNewOrder=(action "onRequestNewOrder")
+      onOrderSelected=(route-action "onOrderSelected")
+      includeUnpublished=includeUnpublished
+      includePublished=includePublished
+      orders=filteredOrders
+      items=allItems
+      companyQuery=companyQuery
+      includedItems=includedItems
+      updateIncludedItems=(action "updateIncludedItems")
+    }}
+{{/ui/left-menu-collapsable-container}}
 
 <div class="col stretch">
   {{#if isOldDate}}
