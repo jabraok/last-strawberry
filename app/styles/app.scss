@@ -1,16 +1,16 @@
-@import 'color';
-@import 'base';
-@import 'typography';
-@import 'layout';
-@import 'utils';
-@import 'material';
-@import 'pod-styles';
+@import "color";
+@import "base";
+@import "typography";
+@import "layout";
+@import "utils";
+@import "material";
+@import "pod-styles";
 
-@import 'responsive-attributes';
-@import 'responsive';
+@import "responsive-attributes";
+@import "responsive";
 
 @import "ember-modal-dialog/ember-modal-structure";
-@import 'modal';
+@import "modal";
 
 @import "components/application";
 @import "components/spinner";

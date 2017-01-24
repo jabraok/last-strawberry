@@ -1,12 +1,15 @@
-& {
-  background-color: $light-blue;
-}
-
 .titleBar {
-  background-color: $dark-grey;
+  border-bottom: 1px solid $botticelli;
+  background-color: $athens-gray;
+  padding: 0.8em 0.4em;
 
-  .title, .material-icons {
-    color: $off-white;
+  .title {
+    color: $nepal;
+    text-transform: uppercase;
+  }
+
+  .material-icons {
+    color: $nepal;
   }
 }
 

@@ -71,10 +71,6 @@ export default Ember.Component.extend({
 
       this.attrs.createOrderItem(newItem);
       this.set("showCreateItemModal", false);
-    },
-
-    noteChanged(e) {
-      this.get("model").set("note", e.target.value);
     }
   }
 });

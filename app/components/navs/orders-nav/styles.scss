@@ -1,9 +1,16 @@
 & {
   max-width: 20em;
-  background: $off-white;
+  border: 1px solid $botticelli;
 }
 
-.filterBar{
+.deliveryDate {
+  &, input {
+    background-color: $bright-gray;
+    color: $white;
+  }
+}
+
+.filterBar {
   background-color: $dark-grey;
   color: $off-white;
 }

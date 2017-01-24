@@ -1,0 +1,13 @@
+<div class="title">Internal notes</div>
+<div class="row">
+  <textarea
+    rows="3"
+    cols="100"
+    name="note"
+    class="note"
+    value="{{model.note}}"
+    oninput={{action "noteChanged"}}
+    onchange={{action "noteChanged"}}
+    onblur={{action saveOrder}}>
+  </textarea>
+</div>

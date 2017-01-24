@@ -1,0 +1,22 @@
+<span class="title">Totals</span>
+{{#if model.isSalesOrder}}
+  <span class="row group shippingContainer">
+    <span>Shipping</span>
+    <span class="dots"></span>
+    {{ui/toggle-edit-input
+        value=model.shipping
+        label=(currency model.shipping)
+        update=updateShipping
+        onblur=saveOrder}}
+  </span>
+{{/if}}
+<span class="row group totalQuantity">
+  <span>Total quantity: </span>
+  <span class="dots"></span>
+  <span class="value">{{model.totalQuantity}}</span>
+</span>
+<span class="row group totalPrice">
+  <span>Total billed: </span>
+  <span class="dots"></span>
+  <span class="value">{{currency model.totalPrice}}</span>
+</span>

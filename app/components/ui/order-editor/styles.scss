@@ -1,16 +1,10 @@
 & {
-  // padding: 1em;
-  background: $medium-grey;
   min-width: 35em;
   max-width: 35em;
 }
 
 a {
   text-decoration: underline;
-}
-
-.toolbar {
-  justify-content: flex-end;
 }
 
 .contentContainer {
@@ -31,43 +25,25 @@ a {
   margin-right: 0.5em;
 }
 
-.company {
-  font-size: 1.7em;
-  font-weight: bold;
-  color: $dark-grey;
-}
-
-.locationInfo {
-  font-size: 1.2em;
-  color: $dark-grey;
-}
-
 .orderInfo {
-  align-items: baseline;
-  margin: 1.5em 0 1em 0;
-}
+  color: $rhino;
 
-.title {
-  font-size: 1.4em;
-  font-weight: bold;
-  color: $dark-grey;
-  padding-right: 1em;
-  &::after {
-    content: ':';
-    font-weight: normal;
+  .title {
+    padding-right: 0.5em;
+  }
+
+  .toolbar {
+    .iconContainer {
+      color: $pigeon-post;
+    }
+
+    .ui_icon-button {
+      padding: 0;
+    }
   }
 }
 
-.orderNumber {
-  font-size: 1.2em;
-  color: $dark-grey;
-}
-
 .addOrderItemContainer {
-  border-top: 1px solid $light-grey;
-  padding-top: 2em;
-  margin-top: 2em;
-
   .search {
     max-width: 15em;
   }
@@ -113,16 +89,51 @@ a {
 }
 
 .deliveryDateContainer{
-  margin-top: 1em;
+
+  .material-icons {
+    color: $nepal;
+    font-size: 1.2em;
+    margin-right: 0.5em;
+  }
 
   .deliveryDate {
     width: inherit;
-    margin-left: 1em;
+    background: none;
+    border: none;
+  }
+}
 
+.companyLogo {
+  img {
+    width: 6em;
+    height: 6em;
+    border: 1px solid $periwinkle-gray;
+    border-radius: 50%;
+  }
+}
+
+.companyAddress {
+  padding-left: 0.8em;
+
+  a {
+    text-decoration: none;
+  }
+  .company {
+    color: $brighter-gray;
     font-size: 1.3em;
-    padding: 0.3em;
-    background: rgba( $off-white, 1 );
-    color: $dark-grey;
-    border: 3px solid rgba( #4C4C4C, 0.6 );
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+}
+
+.orderItems {
+  box-shadow: inset 0 -1px 0 0 $botticelli;
+  border: 1px solid $botticelli;
+  border-radius: 4px;
+  background: $white;
+
+  .rowTable {
+    padding: 0.5em 1em;
+    border-bottom: 1px solid $botticelli;
   }
 }

@@ -1,36 +1,40 @@
-& {
-  padding: 0.5em;
-  align-items: baseline;
-  &:nth-child(even) {
-    background: $off-white;
-  }
-}
-
 &.highlighted {
-  background: #C9C9C9;
+  background: $athens-gray;
 }
 
 .name {
-  margin-left: 1em;
-  min-width: 16em;
+  min-width: 14em;
 }
 
 .unitPriceContainer {
   justify-content: flex-end;
-  width: 5em;
-  margin-right: 3em;
 }
 
 .quantity {
   width: 2em;
-  font-size: 1.3em;
-  padding: 0.3em;
-  background: rgba( $off-white, 1 );
-  color: $dark-grey;
-  border: 3px solid rgba( #4C4C4C, 0.6 );
   text-align: right;
+  border: 1px solid $botticelli;
+  border-radius: 4px;
+  padding: 0.5em;
+  background: $white;
+  color: $nepal;
 }
 
 .delete {
-  margin-left: 2em;
+  .iconContainer {
+    color: $nepal;
+  }
+}
+
+.index {
+  min-width: 1.6em;
+}
+
+.itemImage {
+  line-height: 0;
+  img {
+    width: 2.6em;
+    height: 2.6em;
+    border-radius: 8px;
+  }
 }

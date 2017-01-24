@@ -1,13 +1,11 @@
 & {
   justify-content: space-between;
   align-items: center;
-  background-color: rgba(white, 0.5);
   min-height: 1.9em;
 }
 
 .contentContainer {
   align-items: baseline;
-  margin-left: 0.3em;
 }
 
 .index {
@@ -16,9 +14,5 @@
 }
 
 .title {
-  margin-left: 0.5em;
-  font-size: 1.0em;
-  font-weight: 600;
-  color: $dark-grey;
   cursor:default;
 }

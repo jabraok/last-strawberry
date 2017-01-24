@@ -1,8 +1,9 @@
 & {
   margin: 0.5em;
-  min-width:: 18em;
-  background: $dark-orange;
-  color: $dark-grey;
+  min-width: 18em;
+  background: $bright-gray;
+  color: $white;
+  padding: 0.5em 1em 1em 1em;
 }
 
 header {
@@ -23,33 +24,66 @@ header {
 
 .productionInfoContainer {
   margin-top: 0.5em;
-  border-top: 1px solid black;
+  border-top: 1px solid rgba(255, 255, 255, .5);
   padding-top: 0.5em;
+  margin-left: 1em;
 }
 
 .mainContentContainer {
-  padding: 1em;
-  font-size: 1.2em;
+  font-size: 0.9em;
 }
 
-.value {
-  font-weight: bold;
+.rowItem {
+  margin-left: 1em;
+
+  .value, .copy{
+    opacity: 0.56;
+  }
+
+  &::before {
+    content: '';
+    display: inline-block;
+    width: 0.4em;
+    height: 0.4em;
+    margin-right: 1em;
+    border-radius: 7.5px;
+    background-color: $white;
+  }
 }
 
-.copy {
-  font-style: italic;
+.previousEnding {
+  &::before {
+   background-color: $atlantis;
+  }
+}
+
+.returns {
+  &::before {
+   background-color: $java;
+  }
+}
+
+.sold {
+  &::before {
+   background-color: $supernova;
+  }
+}
+
+.ending {
+  &::before {
+   background-color: $portage;
+  }
 }
 
 .noDataMessage {
-  font-size: 0.9em;
-  font-weight: bold;
+  margin-left: 1em;
 }
 
 .footer {
-  padding: 0.4em;
-  background: rgba(white, 0.2);
+  margin-left: 1em;
   align-items: flex-end;
   justify-content: space-between;
+  opacity: 0.5;
 
   .updatedAt {
     font-size: 0.8em;

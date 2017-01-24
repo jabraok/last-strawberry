@@ -2,16 +2,16 @@
   {{#ui/persistent-collapsable-container settingsKey="locationItemInfoIsClosed" title=item.name}}
     <div class="col mainContentContainer">
       {{#if hasData}}
-        <span>
+        <span class="rowItem previousEnding">
           <span class="value">{{salesData.previous_ending}}</span> <span class="copy">previous ending</span>
         </span>
-        <span>
+        <span class="rowItem returns">
           <span class="value">{{salesData.returns}}</span> <span class="copy">returned</span>
         </span>
-        <span>
+        <span class="rowItem sold">
           <span class="value">{{salesData.sold}}</span> <span class="copy">sold</span>
         </span>
-        <span>
+        <span class="rowItem ending">
           <span class="value">{{salesData.ending}}</span> <span class="copy">current ending</span>
         </span>
       {{else}}

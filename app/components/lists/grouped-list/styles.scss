@@ -1,31 +1,32 @@
 & {
   min-width: 15em;
-  padding: 0 0.5em;
-
+  padding: 0 0.5em 1em 0.5em;
   font-size: 1.1em;
+  background-color: $white;
 }
 
 .group {
   margin-bottom: 0.4em;
-  // flex: 1;
-  // border: 1px solid red;
 }
 
 .parent {
-  font-size: 1em;
+  margin-top: 0.5em;
 }
 
 .child {
-  padding-left: 1em;
-  font-size: 0.9em;
-  // min-height: 3em;
+  color: $nepal;
+  padding: 0.2em  0.2em 0.2em 1em;
+  margin-top: 0.2em;
+  font-size: 0.8em;
+  font-weight: 300;
 }
 
 a {
   cursor: pointer;
-  color: $dark-grey;
 }
 
 .highlighted {
-  background: $medium-grey;
+  background: $selago;
+  border-radius: 6px;
+  color: $curious-blue;
 }

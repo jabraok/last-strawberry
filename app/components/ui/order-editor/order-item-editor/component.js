@@ -1,41 +1,41 @@
-import Ember from 'ember';
-import computed from 'ember-computed-decorators';
+import Ember from "ember";
+import computed from "ember-computed-decorators";
 
 export default Ember.Component.extend({
-  classNames: ['section_sales-order_order-item-editor', 'row'],
-  classNameBindings:['highlighted'],
+  classNames: ["section_sales-order_order-item-editor", "row", "rowTable", "y-center", "x-space-between"],
+  classNameBindings:["highlighted"],
 
   _blur() {
-    this.set('highlighted', false);
-    this.attrs.save(this.get('model'));
+    this.set("highlighted", false);
+    this.attrs.save(this.get("model"));
   },
 
   actions: {
     onFocus() {
-      this.set('highlighted', true);
-      this.attrs.onOrderItemChange(this.get('model.item'));
+      this.set("highlighted", true);
+      this.attrs.onOrderItemChange(this.get("model.item"));
     },
 
     onBlur() {
-      if(!this.get('model.quantity')){
-        this.set('model.quantity', 0)
+      if(!this.get("model.quantity")){
+        this.set("model.quantity", 0)
       }
 
       this._blur();
     },
 
     onBlurUnitPrice() {
-      if(!this.get('model.unitPrice')){
-        this.set('model.unitPrice', 0)
+      if(!this.get("model.unitPrice")){
+        this.set("model.unitPrice", 0)
       }
 
       this._blur();
     }
   },
 
-  @computed('index')
+  @computed("index")
   formattedIndex(index) {
-    const num = S(index + 1).padLeft(2, '0').s;
+    const num = S(index + 1).s;
     return `${num}.`;
   }
 });

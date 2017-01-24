@@ -1,14 +1,9 @@
 & {
   input {
-    text-align: center;
-    background-color: $dark-orange;
-    color: $dark-grey;
     border: none;
     font-size: 1.4em;
     font-family: 'Open Sans', serif;
-    font-weight: 600;
-    text-decoration: underline;
-    padding: 0.4em;
+    padding: 0.8em 0.4em;
   }
 
   input:focus {
