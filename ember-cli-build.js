@@ -54,6 +54,7 @@ module.exports = function(defaults) {
   app.import('bower_components/ramda/dist/ramda.min.js');
   app.import('bower_components/polyline/src/polyline.js');
   app.import('bower_components/localforage/dist/localforage.min.js');
+  app.import('bower_components/jquery-mockjax/dist/jquery.mockjax.min.js');
 
   // app.import('bower_components/mlvk-google-fonts/opensans/OpenSans-Bold.ttf', {
   //   destDir: 'assets'

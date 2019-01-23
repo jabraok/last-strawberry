@@ -18,7 +18,7 @@ You will need the following things properly installed on your computer.
 
 * `git clone git@github.com:mlvk/last-strawberry.git` this repository
 * `cd last-strawberry`
-* `npm install`
+* `yarn`
 * `bower install`
 
 ## Running / Development
