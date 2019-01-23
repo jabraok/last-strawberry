@@ -5,7 +5,7 @@ import destroyApp from '../helpers/destroy-app';
 import { mockSetup, mockTeardown } from 'ember-data-factory-guy';
 import preferencesMock from '../mocks/preferences-service';
 
-const { RSVP: { Promise } } = Ember;
+const { RSVP: { resolve } } = Ember;
 
 export default function(name, options = {}) {
   module(name, {
@@ -32,9 +32,8 @@ export default function(name, options = {}) {
 
     afterEach() {
       let afterEach = options.afterEach && options.afterEach.apply(this, arguments);
-      return Promise.resolve(afterEach)
-        .then(() => destroyApp(this.application))
-        .then(() => mockTeardown());
+      return resolve(afterEach)
+        .then(() => destroyApp(this.application));
     }
   });
 }
