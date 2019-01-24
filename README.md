@@ -10,7 +10,6 @@ You will need the following things properly installed on your computer.
 
 * [Git](https://git-scm.com/)
 * [Node.js](https://nodejs.org/) (with NPM)
-* [Bower](https://bower.io/)
 * [Ember CLI](https://ember-cli.com/)
 * [PhantomJS](http://phantomjs.org/)
 * [Google Chrome](https://google.com/chrome/)
@@ -20,7 +19,6 @@ You will need the following things properly installed on your computer.
 * `git clone git@github.com:mlvk/last-strawberry.git` this repository
 * `cd last-strawberry`
 * `yarn`
-* `bower install`
 
 ## Running / Development
 
