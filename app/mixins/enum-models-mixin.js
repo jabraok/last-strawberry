@@ -1,4 +1,6 @@
 import Ember from 'ember';
+import { pluralize } from 'ember-inflector';
+
 export default Ember.Mixin.create({
   enums: Ember.computed(function() {
     return Ember.Object.create();
@@ -8,7 +10,7 @@ export default Ember.Mixin.create({
     var promises = {};
     var modelNames = this.get('enumModelNames') || [];
     modelNames.forEach(model => {
-      promises[model.pluralize()] = this.store.findAll(model);
+      promises[pluralize(model)] = this.store.findAll(model);
     });
 
     return promises;
