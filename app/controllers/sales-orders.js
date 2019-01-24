@@ -1,5 +1,5 @@
 import Ember from "ember";
-import computed from "ember-computed-decorators";
+import { computed } from '@ember-decorators/object';
 
 const { filterBy } = Ember.computed;
 const tomorrow = moment().add(1, "days").format("YYYY-MM-DD");

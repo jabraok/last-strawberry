@@ -6,7 +6,7 @@ import {
   belongsTo,
   hasMany
 } from "ember-data/relationships";
-import computed from "ember-computed-decorators";
+import { computed } from '@ember-decorators/object';
 
 const { alias } = Ember.computed;
 

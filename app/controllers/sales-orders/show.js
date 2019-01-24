@@ -1,5 +1,5 @@
 import Ember from "ember";
-import computed from "ember-computed-decorators";
+import { computed } from '@ember-decorators/object';
 
 export default Ember.Controller.extend({
   firebaseMgr: Ember.inject.service(),
@@ -62,9 +62,9 @@ export default Ember.Controller.extend({
 
     this.locationItemMetaStream
       .subscribe(
-        () => fbRef.on("value", ::this.processSnapshot, this.errorHander, this),
+        () => fbRef.on("value", this.processSnapshot.bind(this), this.errorHander, this),
         () => {},
-        () => fbRef.off("value", ::this.processSnapshot, this));
+        () => fbRef.off("value", this.processSnapshot.bind(this), this));
 
     this.locationItemMetaStream.onNext();
   },

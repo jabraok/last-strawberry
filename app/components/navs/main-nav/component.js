@@ -24,7 +24,7 @@ export default Ember.Component.extend({
   },
 
   addListener() {
-    this.get('routing.router').on('didTransition', ::this.handleDidTransition);
+    this.get('routing.router').on('didTransition', this.handleDidTransition.bind(this));
   },
 
   updateCurrentSelectedPath(route) {
