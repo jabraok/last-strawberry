@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import computed from "ember-computed-decorators";
+import { computed } from '@ember-decorators/object';
 
 const DAYS_OF_WEEK = ["m", "t", "w", "th", "f", "s", "su"];
 

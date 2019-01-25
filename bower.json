@@ -23,8 +23,5 @@
     "polyline": "0.2.0",
     "localforage": "1.4.3",
     "leaflet": "1.0.0"
-  },
-  "resolutions": {
-    "sifter": "0.4.x"
   }
 }

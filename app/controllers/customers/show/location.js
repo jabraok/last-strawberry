@@ -1,5 +1,5 @@
 import Ember from "ember";
-import computed from "ember-computed-decorators";
+import { computed } from '@ember-decorators/object';
 import AddressValidations from "last-strawberry/validators/address";
 
 export default Ember.Controller.extend({
