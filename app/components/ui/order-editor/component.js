@@ -1,6 +1,6 @@
 import Ember from "ember";
 import downloadFile from "last-strawberry/utils/download-file";
-import { computed } from '@ember-decorators/object';
+import { computed } from 'ember-decorators/object';
 import ItemValidations from "last-strawberry/validators/item";
 
 const {

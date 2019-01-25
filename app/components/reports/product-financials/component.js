@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import { computed } from '@ember-decorators/object';;
+import { computed } from 'ember-decorators/object';
 
 const CompaniesFinancials = Ember.Component.extend({
   classNames: ["row", "stretch", "card-1", "product-financials"],

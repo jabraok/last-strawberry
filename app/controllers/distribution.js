@@ -1,5 +1,5 @@
 import Ember from "ember";
-import { computed } from '@ember-decorators/object';
+import { computed } from 'ember-decorators/object';
 import downloadFile from "last-strawberry/utils/download-file";
 
 const { filterBy } = Ember.computed;

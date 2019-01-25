@@ -1,5 +1,5 @@
 import Ember from "ember";
-import { computed } from '@ember-decorators/object';
+import { computed } from 'ember-decorators/object';
 import UserValidations from "last-strawberry/validators/user";
 import Roles from "last-strawberry/constants/roles";
 

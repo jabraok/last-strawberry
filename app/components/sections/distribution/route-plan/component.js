@@ -1,5 +1,5 @@
 import Em from 'ember';
-import { computed } from '@ember-decorators/object';;
+import { computed } from 'ember-decorators/object';
 import COLOR_SCHEMES from 'last-strawberry/constants/color-schemes';
 
 export default Em.Component.extend({

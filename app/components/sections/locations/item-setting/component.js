@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import { computed } from '@ember-decorators/object';;
+import { computed } from 'ember-decorators/object';
 import { toPercentage } from 'last-strawberry/utils/math';
 const { alias } = Ember.computed;
 

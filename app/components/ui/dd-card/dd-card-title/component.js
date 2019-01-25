@@ -1,5 +1,5 @@
 import Em from "ember";
-import { computed } from '@ember-decorators/object';
+import { computed } from 'ember-decorators/object';
 
 const {
   computed: { notEmpty }

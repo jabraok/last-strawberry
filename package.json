@@ -19,7 +19,6 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "@ember-decorators/babel-transforms": "^2.0.0",
     "babel-eslint": "^8.0.0",
     "broccoli-asset-rev": "^2.4.5",
     "ember-ajax": "^3.0.0",
@@ -52,7 +51,6 @@
     "ember-composable-helpers": "1.0.0",
     "ember-data": "^2.13.0",
     "ember-data-factory-guy": "2.13.1",
-    "ember-decorators": "2.5.2",
     "ember-exam": "0.6.2",
     "ember-export-application-global": "^2.0.0",
     "ember-leaflet": "3.0.11",
@@ -79,6 +77,7 @@
     "loader.js": "^4.2.3",
     "moment": "2.11.2",
     "moment-timezone": "0.5.0",
-    "node-sass": "3.13.1"
+    "node-sass": "3.13.1",
+    "ember-decorators": "1.2.2"
   }
 }

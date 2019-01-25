@@ -5,7 +5,7 @@ import {
   belongsTo,
   hasMany
 } from "ember-data/relationships";
-import { computed } from '@ember-decorators/object';
+import { computed } from 'ember-decorators/object';
 import PublishedState from "last-strawberry/constants/route-plan-states"
 
 const {

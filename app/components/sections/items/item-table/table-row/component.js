@@ -1,7 +1,7 @@
 import Ember from "ember";
 import ItemValidators from "last-strawberry/validators/item";
 import UniqueFieldValidator from "last-strawberry/validators/unique-field-validator";
-import { computed } from '@ember-decorators/object';
+import { computed } from 'ember-decorators/object';
 
 export default Ember.Component.extend({
   session: Ember.inject.service(),

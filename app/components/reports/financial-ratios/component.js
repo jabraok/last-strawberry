@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import { computed } from '@ember-decorators/object';;
+import { computed } from 'ember-decorators/object';
 
 const FinancialRatios = Ember.Component.extend({
   classNames: ["col", "stretch"],

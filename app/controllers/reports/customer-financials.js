@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import { computed } from '@ember-decorators/object';;
+import { computed } from 'ember-decorators/object';
 
 const START_OF_THIS_MONTH = moment(1, "DD");
 const END_OF_THIS_MONTH = moment(1, "DD").endOf("month");

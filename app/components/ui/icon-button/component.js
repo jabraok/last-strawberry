@@ -1,6 +1,6 @@
 import Ember from "ember";
 import { style } from "last-strawberry/utils/styles";
-import { computed } from '@ember-decorators/object';
+import { computed } from 'ember-decorators/object';
 
 const { notEmpty } = Ember.computed;
 
