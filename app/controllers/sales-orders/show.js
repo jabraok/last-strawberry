@@ -62,9 +62,9 @@ export default Ember.Controller.extend({
 
     this.locationItemMetaStream
       .subscribe(
-        () => fbRef.on("value", ::this.processSnapshot, this.errorHander, this),
+        () => fbRef.on("value", this.processSnapshot.bind(this), this.errorHander, this),
         () => {},
-        () => fbRef.off("value", ::this.processSnapshot, this));
+        () => fbRef.off("value", this.processSnapshot.bind(this), this));
 
     this.locationItemMetaStream.onNext();
   },
