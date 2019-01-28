@@ -10,6 +10,7 @@ module.exports = {
     browser: true
   },
   rules: {
+    "no-unused-vars": ["error", { "varsIgnorePattern": "(computed|style)" }]
   },
   globals: {
       "document": true,
