@@ -1,4 +1,11 @@
-import Ember from "ember";
+import {
+  not,
+  and,
+  gt,
+  notEmpty,
+  alias,
+  equal
+} from '@ember/object/computed';
 import LocationHashable from "last-strawberry/mixins/location-hashable";
 import { computed } from 'ember-decorators/object';
 import Model from "ember-data/model";
@@ -11,15 +18,6 @@ import {
 import PublishedState from "last-strawberry/constants/published-states";
 import XeroStates from "last-strawberry/constants/xero-states";
 import SyncStates from "last-strawberry/constants/sync-states";
-
-const {
-  equal,
-  alias,
-  notEmpty,
-  gt,
-  and,
-  not
-} = Ember.computed;
 
 const SALES_ORDER = "sales-order";
 const PURCHASE_ORDER = "purchase-order";

@@ -1,7 +1,7 @@
-import Ember from 'ember';
+import Component from '@ember/component';
 import { computed } from 'ember-decorators/object';
 
-const FinancialRatios = Ember.Component.extend({
+const FinancialRatios = Component.extend({
   classNames: ["col", "stretch"],
 
   @computed("model.total_sales_revenue", "model.total_dist_revenue")

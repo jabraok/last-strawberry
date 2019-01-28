@@ -1,9 +1,8 @@
-import Ember from "ember";
+import Component from '@ember/component';
+import { filter, gt, alias } from '@ember/object/computed';
 import { computed } from 'ember-decorators/object';
 
-const { alias, gt, filter } = Ember.computed;
-
-export default Ember.Component.extend({
+export default Component.extend({
   classNames: ["card-1"],
   classNameBindings: ["isSelected:selected"],
   attributeBindings: ["data-location-hash"],

@@ -1,7 +1,10 @@
-import Ember from "ember";
+import $ from 'jquery';
+import { isEmpty } from '@ember/utils';
+import { Promise, reject } from 'rsvp';
+import EmberObject from '@ember/object';
 import config from "last-strawberry/config/environment";
 
-export default Ember.Object.extend({
+export default EmberObject.extend({
   debounce: 500,
   isValid: true,
   whitelist: [],
@@ -30,10 +33,10 @@ export default Ember.Object.extend({
       value
     }
     return Rx.Observable.defer(() => {
-      return new Ember.RSVP.Promise(res => {
+      return new Promise(res => {
         const session = this.get("session");
-        if(Ember.isEmpty(session)){
-          return Ember.RSVP.reject("Need to set session before using");
+        if(isEmpty(session)){
+          return reject("Need to set session before using");
         } else {
           session.authorize("authorizer:devise", (headerName, headerValue) => {
             const headers = {};
@@ -45,7 +48,7 @@ export default Ember.Object.extend({
               type:"POST"
             };
 
-            Ember.$
+            $
               .ajax(payload)
               .always(response => res(response.unique === "true" || response.unique === true));
           });

@@ -1,8 +1,10 @@
-import Ember from "ember";
+import { A } from '@ember/array';
+import { inject as service } from '@ember/service';
+import Controller from '@ember/controller';
 import { computed } from 'ember-decorators/object';
 
-export default Ember.Controller.extend({
-  firebaseMgr: Ember.inject.service(),
+export default Controller.extend({
+  firebaseMgr: service(),
 
   cleanup() {
     if(this.locationItemMetaStream !== undefined){
@@ -29,7 +31,7 @@ export default Ember.Controller.extend({
   },
 
   @computed("salesOrders.@each.{totalQuantity}")
-  itemTotals(orders = Ember.A()) {
+  itemTotals(orders = A()) {
     return _
       .chain(orders.toArray())
       .map(order => order.get("orderItems").toArray())

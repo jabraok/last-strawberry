@@ -1,15 +1,9 @@
-import Ember from 'ember';
+import Component from '@ember/component';
+import { sort } from '@ember/object/computed';
+import { get } from '@ember/object';
 import { computed } from 'ember-decorators/object';
 
-const {
-  get
-} = Ember;
-
-const {
-  sort
-} = Ember.computed;
-
-export default Ember.Component.extend({
+export default Component.extend({
   classNames: ['list-filterable-label-list', 'col', 'stretch'],
   sortName: ["text"],
   items: sort("model", "sortName"),

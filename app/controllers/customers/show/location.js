@@ -1,8 +1,8 @@
-import Ember from "ember";
+import Controller from '@ember/controller';
 import { computed } from 'ember-decorators/object';
 import AddressValidations from "last-strawberry/validators/address";
 
-export default Ember.Controller.extend({
+export default Controller.extend({
   AddressValidations,
 
   @computed("items.@each.{isProduct,active}", "model.itemDesires.[]", "model.itemCreditRates.[]")

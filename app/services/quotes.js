@@ -1,20 +1,15 @@
-import Ember from "ember";
+import $ from 'jquery';
+import Service from '@ember/service';
+import { alias } from '@ember/object/computed';
+import { run } from '@ember/runloop';
 import config from 'last-strawberry/config/environment';
-
-const {
-  run
-} = Ember;
-
-const {
-  alias
-} = Ember.computed;
 
 const SUBJECTS = [
   "movies",
   "famous"
 ];
 
-export default Ember.Service.extend({
+export default Service.extend({
   quote: alias("current.quote"),
   author: alias("current.author"),
 
@@ -37,7 +32,7 @@ export default Ember.Service.extend({
       headers:headers
     };
 
-    const quoteJSON = await Ember.$.ajax(payload);
+    const quoteJSON = await $.ajax(payload);
 
     run(() => this.set("current", JSON.parse(quoteJSON)));
   }

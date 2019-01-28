@@ -1,9 +1,8 @@
-import Ember from 'ember';
+import Component from '@ember/component';
+import { sort, filterBy } from '@ember/object/computed';
 import { computed } from 'ember-decorators/object';
 
-const { filterBy, sort } = Ember.computed;
-
-export default Ember.Component.extend({
+export default Component.extend({
   classNames: ['col', 'stretch'],
 
   validLineItems: filterBy('model.orderTemplateItems', 'isDeleted', false),
