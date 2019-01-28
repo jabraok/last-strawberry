@@ -1,11 +1,9 @@
 import { module } from 'qunit';
-import Ember from 'ember';
+import { resolve } from 'rsvp';
 import startApp from '../helpers/start-app';
 import destroyApp from '../helpers/destroy-app';
 import { mockSetup, mockTeardown } from 'ember-data-factory-guy';
 import preferencesMock from '../mocks/preferences-service';
-
-const { RSVP: { Promise } } = Ember;
 
 export default function(name, options = {}) {
   module(name, {
@@ -32,7 +30,7 @@ export default function(name, options = {}) {
 
     afterEach() {
       let afterEach = options.afterEach && options.afterEach.apply(this, arguments);
-      return Promise.resolve(afterEach)
+      return resolve(afterEach)
         .then(() => destroyApp(this.application))
         .then(() => mockTeardown());
     }
