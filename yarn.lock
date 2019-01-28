@@ -4770,12 +4770,12 @@ ember-tooltips@2.9.0-beta.0:
     ember-cli-sass "6.0.0"
     ember-hash-helper-polyfill "^0.1.1"
 
-ember-truth-helpers@1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/ember-truth-helpers/-/ember-truth-helpers-1.2.0.tgz#e63cffeaa8211882ae61a958816fded3790d065b"
-  integrity sha1-5jz/6qghGIKuYalYgW/e03kNBls=
+ember-truth-helpers@2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/ember-truth-helpers/-/ember-truth-helpers-2.0.0.tgz#f3e2eef667859197f1328bb4f83b0b35b661c1ac"
+  integrity sha512-B28rHIXi4nIoMOxiCLTNfz5m0b0kfpIM49Sna5/9q44drLuDInVH1H6dRBkG5ROa6zR/md36C/uMyTofjvnI5Q==
   dependencies:
-    ember-cli-babel "^5.1.5"
+    ember-cli-babel "^6.8.2"
 
 ember-truth-helpers@^1.3.0:
   version "1.3.0"
