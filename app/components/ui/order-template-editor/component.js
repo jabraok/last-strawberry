@@ -7,7 +7,6 @@ export default Component.extend({
 
   validLineItems: filterBy('model.orderTemplateItems', 'isDeleted', false),
 
-  positionSort: ['position'],
   sortedValidLineItems: sort('validLineItems', 'positionSort'),
 
   products: filterBy('items', 'isSold', true),
@@ -19,5 +18,10 @@ export default Component.extend({
       .toArray()
       .filter(day => day.get('enabled'))
       .map(day => moment(date).add(freq-1, 'w').add(day.get('day'), 'd').format('ddd MM-DD'));
+  },
+
+  init() {
+    this._super(...arguments);
+    this.positionSort = ['position'];
   }
 });

@@ -7,9 +7,11 @@ import config from "last-strawberry/config/environment";
 export default EmberObject.extend({
   debounce: 500,
   isValid: true,
-  whitelist: [],
 
   init() {
+    this._super(...arguments);
+    this.whitelist = [];
+
     this.subject = new Rx.Subject();
 
     this.subscription = this.subject

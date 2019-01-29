@@ -14,6 +14,7 @@ export default Service.extend({
   author: alias("current.author"),
 
   init(){
+    this._super(...arguments);
     this.refreshQuote();
   },
 
