@@ -12,8 +12,11 @@ export default Component.extend({
   products: filterBy('items', 'isSold', true),
   activeProducts: filterBy('products', 'active', true),
 
-  @computed('model.startDate', 'model.frequency', 'model.orderTemplateDays.@each.{enabled}')
-  sampleDates(date, freq, days) {
+  @computed('model.{startDate,frequency}', 'model.orderTemplateDays.@each.{enabled}')
+  sampleDates() {
+    let date = this.get('model.startDate');
+    let freq = this.get('model.frequency');
+    let days = this.get('model.orderTemplateDays');
     return days
       .toArray()
       .filter(day => day.get('enabled'))

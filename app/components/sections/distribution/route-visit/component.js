@@ -31,8 +31,11 @@ export default Component.extend({
     return hasMultiple ? `${companyName} - Multiple` : `${companyName} - ${locationId}`;
   },
 
-  @computed("model.address", "model.date")
-  visitWindow(address, date) {
+  @computed("model.{address,date}")
+  visitWindow() {
+    let address = this.get("model.address");
+    let date = this.get("model.date");
+
     return address.content.visitWindowForDate(date);
   },
 

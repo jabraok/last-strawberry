@@ -5,8 +5,11 @@ import AddressValidations from "last-strawberry/validators/address";
 export default Controller.extend({
   AddressValidations,
 
-  @computed("items.@each.{isProduct,active}", "model.itemDesires.[]", "model.itemCreditRates.[]")
-  itemSettings(items, itemDesires, itemCreditRates) {
+  @computed("items.@each.{isProduct,active}", "model.{itemDesires.[],itemCreditRates.[]}")
+  itemSettings() {
+    let items = this.get('items');
+    let itemDesires = this.get('model.itemDesires');
+    let itemCreditRates = this.get('model.itemCreditRates');
     return items
       .filter(i => i.get("isProduct") && i.get("active"))
       .map(item => {

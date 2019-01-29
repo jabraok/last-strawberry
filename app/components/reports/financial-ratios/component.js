@@ -4,8 +4,10 @@ import { computed } from 'ember-decorators/object';
 const FinancialRatios = Component.extend({
   classNames: ["col", "stretch"],
 
-  @computed("model.total_sales_revenue", "model.total_dist_revenue")
-  totalGrossSales(sales, dist) {
+  @computed("model.{total_sales_revenue,total_dist_revenue}")
+  totalGrossSales() {
+    let sales = this.get("model.total_sales_revenue");
+    let dist = this.get("model.total_dist_revenue");
     return Number(sales) + Number(dist);
   },
 
