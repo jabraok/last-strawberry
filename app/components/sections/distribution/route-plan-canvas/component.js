@@ -1,6 +1,7 @@
 import Component from '@ember/component';
 import { filterBy } from '@ember/object/computed';
 import TemplateValidations from "last-strawberry/validators/route-plan-blueprint";
+import $ from 'jquery';
 
 const SCROLL_SPEED = 20;
 
