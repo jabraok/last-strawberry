@@ -29,10 +29,10 @@ export default Route.extend(AuthenticatedRouteMixin, {
     return this.store.findRecord("order", params.id, { reload:true, include:ORDER_INCLUDES.join(",")});
 	},
 
-	clearPurchaseOrderController: function(){
-		const purchaseOrderController = this.controllerFor("purchase-orders");
+  deactivate() {
+    const purchaseOrderController = this.controllerFor("purchase-orders");
     purchaseOrderController.set("currentSelectedOrder", undefined);
-  }.on("deactivate"),
+  },
 
 	actions: {
 		updateShipping(value) {

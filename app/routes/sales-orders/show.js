@@ -32,10 +32,10 @@ export default Route.extend(AuthenticatedRouteMixin, {
 		// return this.store.findRecord("order", 1);
 	},
 
-	clearSalesOrderController: function(){
-		const salesOrderController = this.controllerFor("sales-orders");
+  deactivate() {
+    const salesOrderController = this.controllerFor("sales-orders");
     salesOrderController.set("currentSelectedOrder", undefined);
-  }.on("deactivate"),
+  },
 
 	actions: {
 		updateShipping(value) {
