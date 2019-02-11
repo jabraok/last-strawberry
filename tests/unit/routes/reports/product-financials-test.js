@@ -1,8 +1,7 @@
 import { moduleFor, test } from 'ember-qunit';
 
 moduleFor('route:reports/product-financials', 'Unit | Route | reports/product financials', {
-  // Specify the other units that are required for this test.
-  needs: ['service:session']
+  integration: true
 });
 
 test('it exists', function(assert) {

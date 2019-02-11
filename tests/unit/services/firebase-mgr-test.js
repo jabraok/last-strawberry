@@ -1,8 +1,7 @@
 import { moduleFor, test } from 'ember-qunit';
 
 moduleFor('service:firebase-mgr', 'Unit | Service | firebase mgr', {
-  // Specify the other units that are required for this test.
-  needs: ['service:session']
+  integration: true
 });
 
 // Replace this with your real tests.

@@ -1,11 +1,7 @@
 import { moduleForModel, test } from 'ember-qunit';
 
 moduleForModel('fulfillment', 'Unit | Model | fulfillment', {
-  // Specify the other units that are required for this test.
-  needs: [
-    'model:route-visit',
-    'model:order'
-  ]
+  integration: true
 });
 
 test('it exists', function(assert) {

@@ -1,8 +1,7 @@
 import { moduleFor, test } from 'ember-qunit';
 
 moduleFor('controller:reports/product-financials', 'Unit | Controller | reports/product financials', {
-  // Specify the other units that are required for this test.
-  // needs: ['controller:foo']
+  integration: true
 });
 
 // Replace this with your real tests.

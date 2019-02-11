@@ -1,8 +1,7 @@
 import { moduleForModel, test } from 'ember-qunit';
 
 moduleForModel('address', 'Unit | Model | address', {
-  // Specify the other units that are required for this test.
-  needs: ['model:location', 'model:visit-window', 'model:route-visit']
+  integration: true
 });
 
 test('it exists', function(assert) {

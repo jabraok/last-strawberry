@@ -1,11 +1,7 @@
 import { moduleForModel, test } from 'ember-qunit';
 
 moduleForModel('notification', 'Unit | Model | notification', {
-  // Specify the other units that are required for this test.
-  needs: [
-    "model:order",
-    "model:notification-rule"
-  ]
+  integration: true
 });
 
 test('it exists', function(assert) {

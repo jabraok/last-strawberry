@@ -1,8 +1,7 @@
 import { moduleForModel, test } from 'ember-qunit';
 
 moduleForModel('item-desire', 'Unit | Model | item desire', {
-  // Specify the other units that are required for this test.
-  needs: ['model:location', 'model:item']
+  integration: true
 });
 
 test('it exists', function(assert) {

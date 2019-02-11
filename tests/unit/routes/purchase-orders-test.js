@@ -1,8 +1,7 @@
 import { moduleFor, test } from 'ember-qunit';
 
 moduleFor('route:purchase-orders', 'Unit | Route | purchase orders', {
-  // Specify the other units that are required for this test.
-  needs: ['service:session']
+  integration: true
 });
 
 test('it exists', function(assert) {

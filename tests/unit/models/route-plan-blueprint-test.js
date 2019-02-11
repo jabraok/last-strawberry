@@ -1,10 +1,7 @@
 import { moduleForModel, test } from "ember-qunit";
 
 moduleForModel("route-plan-blueprint", "Unit | Model | route plan blueprint", {
-  needs: [
-    "model:route-plan-blueprint-slot",
-    "model:user"
-  ]
+  integration: true
 });
 
 test("it exists", function(assert) {
