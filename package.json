@@ -74,7 +74,6 @@
     "ember-welcome-page": "^3.0.0",
     "eslint-config-ember": "0.3.0",
     "eslint-plugin-ember": "^5.0.0",
-    "fs-extra": "0.30.0",
     "leaflet": "1.4.0",
     "loader.js": "^4.2.3",
     "moment": "2.24.0",
