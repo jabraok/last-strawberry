@@ -13,7 +13,6 @@
               onSelection=dateSelected}}
         </div>
       </div>
-
       <div class="frequencyContainer row">
         <div class="info">
           Repeat every
@@ -28,7 +27,6 @@
           week(s).
         </div>
       </div>
-
       <div class="dayOfWeekContainer">
         {{ui/day-of-week-selector
             class="visitDays"
@@ -37,18 +35,16 @@
       </div>
     </div>
   </div>
-
   <div class="lineItemsContainer">
     <div class="col">
       {{#each sortedValidLineItems as |lineItem index|}}
-      {{ui/order-template-editor/order-template-item-editor
+        {{ui/order-template-editor/order-template-item-editor
             model=lineItem
             save=saveModel
             delete=deleteLineItem
             index=index}}
       {{/each}}
     </div>
-
     <div class="addOrderItemContainer">
       {{#power-select
           placeholder="Add item"
@@ -56,12 +52,11 @@
           options=activeProducts
           onchange=createLineItem
           as |item|}}
-      {{item.name}}
+        {{item.name}}
       {{/power-select}}
     </div>
   </div>
 </div>
-
 <div class="bottomUIContainer">
   {{ui/icon-button
       class="delete"

@@ -13,43 +13,39 @@
     companyQuery=companyQuery
     includedItems=includedItems
     updateIncludedItems=(action "updateIncludedItems")}}
-
 {{#if isStubbing}}
-<div class="col stretch center loading">
-  <div class="row stretch center">
-    {{passive/loading-indicator}}
+  <div class="col stretch center loading">
+    <div class="row stretch center">
+      {{passive/loading-indicator}}
+    </div>
   </div>
-</div>
 {{else}}
-<div class="col stretch">
-  {{#if isOldDate}}
-  {{#ui/alert-banner type="warning"}}
-  You are working with a past date. Please manage these orders through xero
-  {{/ui/alert-banner }}
-  {{/if}}
-
-  <div class="row stretch">
-    {{outlet}}
+  <div class="col stretch">
+    {{#if isOldDate}}
+      {{#ui/alert-banner type="warning"}}
+        You are working with a past date. Please manage these orders through xero
+      {{/ui/alert-banner}}
+    {{/if}}
+    <div class="row stretch">
+      {{outlet}}
+    </div>
   </div>
-</div>
 {{/if}}
-
 {{#if showCreateSalesOrderModal}}
-{{#tether-dialog close=(action "closeCreateSalesOrder")}}
-{{ui/item-selector
+  {{#tether-dialog close=(action "closeCreateSalesOrder")}}
+    {{ui/item-selector
         title="Create new sales order"
         placeholder="Search for location"
         model=unfulfilledLocations
         close=(action "closeCreateSalesOrder")
         onSubmit=(route-action "createSalesOrder")}}
-{{/tether-dialog}}
+  {{/tether-dialog}}
 {{/if}}
-
 {{#if showDuplicateOrdersModal}}
-{{#tether-dialog close=(action "closeDuplicateOrders")}}
-{{modals/duplicate-orders
+  {{#tether-dialog close=(action "closeDuplicateOrders")}}
+    {{modals/duplicate-orders
         fromDate=deliveryDate
         close=(action "closeDuplicateOrders")
         submit=(route-action "duplicateOrders")}}
-{{/tether-dialog}}
+  {{/tether-dialog}}
 {{/if}}

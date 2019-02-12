@@ -9,7 +9,6 @@
     type="close"
     click=close}}
 </div>
-
 <div class="locationContainer">
   {{#power-select
       selected=currentItem
@@ -20,6 +19,6 @@
       searchField="label"
       onchange=(action "onItemSelected")
       as |location|}}
-  {{location.label}}
+    {{location.label}}
   {{/power-select}}
 </div>

@@ -1,7 +1,6 @@
 <div class="row header">
   Product Setting
 </div>
-
 <div class="row ">
   <div class="col-5 massDesire">
     <label>Mass desire</label>
@@ -18,9 +17,8 @@
     <button {{action "massApplyCreditRate"}}>Apply</button>
   </div>
 </div>
-
 {{#each itemSettings as |itemSetting i|}}
-{{sections/locations/item-setting
+  {{sections/locations/item-setting
       index=i
       onCreditChange=onCreditChange
       onDesireChange=onDesireChange

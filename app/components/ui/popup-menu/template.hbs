@@ -8,15 +8,14 @@
   color=colors.DARK_GREY
   backgroundColor=(if backgroundColor backgroundColor colors.BABY_BLUE)
   click=(action "toggle")}}
-
 {{#if showMenu}}
-{{#tether-dialog
+  {{#tether-dialog
       hasOverlay=false
       attachment="top left"
       targetAttachment="right left"
       target=this}}
-<div class="content" style={{menuColors}}>
-  {{yield}}
-</div>
-{{/tether-dialog}}
+    <div class="content" style={{menuColors}}>
+      {{yield}}
+    </div>
+  {{/tether-dialog}}
 {{/if}}

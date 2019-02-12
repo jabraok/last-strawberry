@@ -4,28 +4,25 @@
     onSelected=onDateSelected
     format="ddd MM-DD-YYYY"
   }}
-
   {{#ui/popup-menu}}
-  {{#if hasStubAction}}
-  {{ui/icon-button
+    {{#if hasStubAction}}
+      {{ui/icon-button
         class="stubOrders"
         flat=true
         label="Stub Orders"
         type="add"
         click=stubOrders
       }}
-  {{/if}}
-
-  {{ui/icon-button
+    {{/if}}
+    {{ui/icon-button
       class="createOrder"
       flat=true
       label="New Order"
       type="add"
       click=onRequestNewOrder
     }}
-
-  {{#if hasDuplicateAction}}
-  {{ui/icon-button
+    {{#if hasDuplicateAction}}
+      {{ui/icon-button
         class="duplicateOrders"
         flat=true
         label="Duplicate Orders"
@@ -33,11 +30,9 @@
         disabled=(not hasOrders)
         click=onRequestDuplicateOrders
       }}
-  {{/if}}
-
+    {{/if}}
   {{/ui/popup-menu}}
 </div>
-
 {{navs/orders-nav/filter-options
   includePublished=includePublished
   includeUnpublished=includeUnpublished
@@ -46,9 +41,8 @@
   selectedItems=selectedItems
   itemSelected=updateIncludedItems
 }}
-
 {{lists/grouped-list
-    childKey='location.name'
+    childKey="location.name"
     highlightedItem=currentSelectedOrder
     itemClicked=onOrderSelected
     model=groupedOrders}}

@@ -1,5 +1,5 @@
 {{#each group as | item index |}}
-{{ui/toggle-button
+  {{ui/toggle-button
     click=(action "toggle" index)
     selected=item.selected
     label=item.label}}
