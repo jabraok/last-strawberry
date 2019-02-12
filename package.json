@@ -49,7 +49,7 @@
     "ember-component-css": "0.6.7",
     "ember-composable-helpers": "2.1.0",
     "ember-data": "~2.18.0",
-    "ember-data-factory-guy": "2.13.1",
+    "ember-data-factory-guy": "3.6.3",
     "ember-decorators": "1.2.2",
     "ember-exam": "2.0.3",
     "ember-export-application-global": "^2.0.0",
