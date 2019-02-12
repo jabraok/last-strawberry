@@ -1113,11 +1113,6 @@ async-promise-queue@^1.0.3, async-promise-queue@^1.0.4:
     async "^2.4.1"
     debug "^2.6.8"
 
-async@0.2.x, async@~0.2.9:
-  version "0.2.10"
-  resolved "https://registry.yarnpkg.com/async/-/async-0.2.10.tgz#b6bbe0b0674b9d719708ca38de8c237cb526c3d1"
-  integrity sha1-trvgsGdLnXGXCMo43owjfLUmw9E=
-
 async@^1.5.2:
   version "1.5.2"
   resolved "https://registry.yarnpkg.com/async/-/async-1.5.2.tgz#ec6a61ae56480c0c3cb241c95618e20892f9672a"
@@ -1129,6 +1124,11 @@ async@^2.4.1, async@^2.5.0:
   integrity sha512-fNEiL2+AZt6AlAw/29Cr0UDe4sRAHCpEHh54WMz+Bb7QfNcFw4h3loofyJpLeQs4Yx7yuqu/2dLgM5hKOs6HlQ==
   dependencies:
     lodash "^4.17.10"
+
+async@~0.2.9:
+  version "0.2.10"
+  resolved "https://registry.yarnpkg.com/async/-/async-0.2.10.tgz#b6bbe0b0674b9d719708ca38de8c237cb526c3d1"
+  integrity sha1-trvgsGdLnXGXCMo43owjfLUmw9E=
 
 asynckit@^0.4.0:
   version "0.4.0"
@@ -1992,11 +1992,6 @@ better-assert@~1.0.0:
   resolved "https://registry.yarnpkg.com/binaryextensions/-/binaryextensions-2.1.2.tgz#c83c3d74233ba7674e4f313cb2a2b70f54e94b7c"
   integrity sha512-xVNN69YGDghOqCCtA6FI7avYrr02mTJjOgB0/f1VPD3pJC8QEvjTKWc4epDx8AqxxA75NI0QpVM2gPJXUbE4Tg==
 
-bindings@1.2.x:
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/bindings/-/bindings-1.2.1.tgz#14ad6113812d2d37d72e67b4cacb4bb726505f11"
-  integrity sha1-FK1hE4EtLTfXLme0ystLtyZQXxE=
-
 blank-object@^1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/blank-object/-/blank-object-1.0.2.tgz#f990793fbe9a8c8dd013fb3219420bec81d5f4b9"
@@ -2813,14 +2808,6 @@ capture-exit@^1.1.0, capture-exit@^1.2.0:
   integrity sha1-HF/MSJ/QqwDU8ax64QcuMXP7q28=
   dependencies:
     rsvp "^3.3.3"
-
-cardinal@0.4.x:
-  version "0.4.4"
-  resolved "https://registry.yarnpkg.com/cardinal/-/cardinal-0.4.4.tgz#ca5bb68a5b511b90fe93b9acea49bdee5c32bfe2"
-  integrity sha1-ylu2iltRG5D+k7ms6km97lwyv+I=
-  dependencies:
-    ansicolors "~0.2.1"
-    redeyed "~0.4.0"
 
 cardinal@^1.0.0:
   version "1.0.0"
@@ -3961,7 +3948,7 @@ ember-cli-moment-shim@3.7.1, ember-cli-moment-shim@^3.6.0:
     moment "^2.19.3"
     moment-timezone "^0.5.13"
 
-ember-cli-node-assets@0.2.2, ember-cli-node-assets@^0.2.2:
+ember-cli-node-assets@^0.2.2:
   version "0.2.2"
   resolved "https://registry.yarnpkg.com/ember-cli-node-assets/-/ember-cli-node-assets-0.2.2.tgz#d2d55626e7cc6619f882d7fe55751f9266022708"
   integrity sha1-0tVWJufMZhn4gtf+VXUfkmYCJwg=
@@ -4054,17 +4041,6 @@ ember-cli-sass@^7.0.0:
     broccoli-merge-trees "^1.1.0"
     broccoli-sass-source-maps "^2.1.0"
     ember-cli-version-checker "^2.1.0"
-
-ember-cli-selectize@0.6.0:
-  version "0.6.0"
-  resolved "https://registry.yarnpkg.com/ember-cli-selectize/-/ember-cli-selectize-0.6.0.tgz#d72f95aaf9a3ec4cfc0cd6518aa5f2f61d6a31e6"
-  integrity sha512-72t44C/BCt3EMjqWdabWdqv+dIZaZ3shgzEbuNBQxILOfIWeKxHbX+FaZOCNn24hpnqSzj3xwEbMLm92bQ+wqA==
-  dependencies:
-    ember-cli-babel "^6.6.0"
-    ember-cli-node-assets "0.2.2"
-    ember-getowner-polyfill "^2.2.0"
-    fastboot-transform "^0.1.3"
-    selectize miguelcobain/selectize.js#master
 
 ember-cli-shims@^1.2.0:
   version "1.2.0"
@@ -5178,11 +5154,6 @@ esprima@^4.0.0:
   resolved "https://registry.yarnpkg.com/esprima/-/esprima-4.0.1.tgz#13b04cdb3e6c5d19df91ab6987a8695619b0aa71"
   integrity sha512-eGuFFw7Upda+g4p+QHvnW0RyTX/SVeJBDM/gCtMARO0cLuT2HcEKnTPvhjV6aGeqrCB/sbNop0Kszm0jsaWU4A==
 
-esprima@~1.0.4:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/esprima/-/esprima-1.0.4.tgz#9f557e08fc3b4d26ece9dd34f8fbf476b62585ad"
-  integrity sha1-n1V+CPw7TSbs6d00+Pv0drYlha0=
-
 esprima@~3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/esprima/-/esprima-3.0.0.tgz#53cf247acda77313e551c3aa2e73342d3fb4f7d9"
@@ -6266,11 +6237,6 @@ http-signature@~1.2.0:
     assert-plus "^1.0.0"
     jsprim "^1.2.2"
     sshpk "^1.7.0"
-
-humanize@0.0.x:
-  version "0.0.9"
-  resolved "https://registry.yarnpkg.com/humanize/-/humanize-0.0.9.tgz#1994ffaecdfe9c441ed2bdac7452b7bb4c9e41a4"
-  integrity sha1-GZT/rs3+nEQe0r2sdFK3u0yeQaQ=
 
 iconv-lite@0.4.23:
   version "0.4.23"
@@ -7646,19 +7612,6 @@ micromatch@^3.0.4, micromatch@^3.1.4:
     snapdragon "^0.8.1"
     to-regex "^3.0.2"
 
-microplugin@0.0.3:
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/microplugin/-/microplugin-0.0.3.tgz#1fc2e1bb7c9e19e82bd84bba9137bbe71250d8cd"
-  integrity sha1-H8Lhu3yeGegr2Eu6kTe75xJQ2M0=
-
-microtime@2.0.x:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/microtime/-/microtime-2.0.0.tgz#13f90fd4c891a06dab0fd7494db22b0f18fe66bb"
-  integrity sha1-E/kP1MiRoG2rD9dJTbIrDxj+Zrs=
-  dependencies:
-    bindings "1.2.x"
-    nan "2.0.x"
-
 "mime-db@>= 1.36.0 < 2", mime-db@~1.37.0:
   version "1.37.0"
   resolved "https://registry.yarnpkg.com/mime-db/-/mime-db-1.37.0.tgz#0b6a0ce6fdbe9576e25f1f2d2fde8830dc0ad0d8"
@@ -7819,11 +7772,6 @@ najax@^1.0.3:
     lodash.defaultsdeep "^4.6.0"
     qs "^6.2.0"
 
-nan@2.0.x:
-  version "2.0.9"
-  resolved "https://registry.yarnpkg.com/nan/-/nan-2.0.9.tgz#d02a770f46778842cceb94e17cab31ffc7234a05"
-  integrity sha1-0Cp3D0Z3iELM65ThfKsx/8cjSgU=
-
 nan@^2.10.0, nan@^2.3.2, nan@^2.9.2:
   version "2.12.1"
   resolved "https://registry.yarnpkg.com/nan/-/nan-2.12.1.tgz#7b1aa193e9aa86057e3c7bbd0ac448e770925552"
@@ -7881,10 +7829,6 @@ no-case@^2.2.0:
   integrity sha512-rmTZ9kz+f3rCvK2TD1Ue/oZlns7OGoIWP4fc3llxxRXlOkHKoWPPWJOfFYpITabSow43QJbRIoHQXtt10VldyQ==
   dependencies:
     lower-case "^1.1.1"
-
-"node-csv@https://github.com/voodootikigod/node-csv/tarball/master":
-  version "0.5.0"
-  resolved "https://github.com/voodootikigod/node-csv/tarball/master#27915152772bc3b3275fb0b53c6bcf8dc891ebb3"
 
 node-fetch@^1.3.3:
   version "1.7.3"
@@ -8176,7 +8120,7 @@ onetime@^2.0.0:
   dependencies:
     mimic-fn "^1.0.0"
 
-optimist@0.6.x, optimist@^0.6.1:
+optimist@^0.6.1:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/optimist/-/optimist-0.6.1.tgz#da3ea74686fa21a19a111c326e90eb15a0196686"
   integrity sha1-2j6nRob6IaGaERwybpDrFaAZZoY=
@@ -8749,13 +8693,6 @@ redent@^1.0.0:
     indent-string "^2.1.0"
     strip-indent "^1.0.1"
 
-redeyed@~0.4.0:
-  version "0.4.4"
-  resolved "https://registry.yarnpkg.com/redeyed/-/redeyed-0.4.4.tgz#37e990a6f2b21b2a11c2e6a48fd4135698cba97f"
-  integrity sha1-N+mQpvKyGyoRwuakj9QTVpjLqX8=
-  dependencies:
-    esprima "~1.0.4"
-
 redeyed@~1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/redeyed/-/redeyed-1.0.1.tgz#e96c193b40c0816b00aec842698e61185e55498a"
@@ -9208,13 +9145,6 @@ scss-tokenizer@^0.2.3:
     js-base64 "^2.1.8"
     source-map "^0.4.2"
 
-selectize@miguelcobain/selectize.js#master:
-  version "0.12.1"
-  resolved "https://codeload.github.com/miguelcobain/selectize.js/tar.gz/653ea28f49c79c4f115a4ad099100f3980eb5034"
-  dependencies:
-    microplugin "0.0.3"
-    sifter "^0.4.0"
-
 "semver@2 || 3 || 4 || 5", semver@^5.1.0, semver@^5.1.1, semver@^5.3.0, semver@^5.4.1, semver@^5.5.0, semver@^5.5.1, semver@^5.6.0:
   version "5.6.0"
   resolved "https://registry.yarnpkg.com/semver/-/semver-5.6.0.tgz#7e74256fbaa49c75aa7c7a205cc22799cac80004"
@@ -9305,19 +9235,6 @@ shellwords@^0.1.1:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/shellwords/-/shellwords-0.1.1.tgz#d6b9181c1a48d397324c84871efbcfc73fc0654b"
   integrity sha512-vFwSUfQvqybiICwZY5+DAWIPLKsWO31Q91JSKl3UYv+K5c2QRPzn0qzec6QPu1Qc9eHYItiP3NdJqNVqetYAww==
-
-sifter@^0.4.0:
-  version "0.4.5"
-  resolved "https://registry.yarnpkg.com/sifter/-/sifter-0.4.5.tgz#da2af6dfab41d6fe149ab5b37eecfb0b5fd1b987"
-  integrity sha1-2ir236tB1v4UmrWzfuz7C1/RuYc=
-  dependencies:
-    async "0.2.x"
-    cardinal "0.4.x"
-    humanize "0.0.x"
-    node-csv "https://github.com/voodootikigod/node-csv/tarball/master"
-    optimist "0.6.x"
-  optionalDependencies:
-    microtime "2.0.x"
 
 signal-exit@^3.0.0, signal-exit@^3.0.2:
   version "3.0.2"
