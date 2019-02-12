@@ -10,9 +10,6 @@ module.exports = function(defaults) {
     'ember-cli-babel': {
       includePolyfill: true
     },
-    dotEnv: {
-      clientAllowedKeys: ['GOOGLE_API_KEY', 'ROUTIFIC_API_KEY']
-    },
     'ember-cli-qunit': {
       useLintTree: false
     },
