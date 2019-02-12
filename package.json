@@ -41,7 +41,7 @@
     "ember-cli-moment-shim": "3.7.1",
     "ember-cli-page-object": "1.15.1",
     "ember-cli-qunit": "^4.1.1",
-    "ember-cli-sass": "5.5.1",
+    "ember-cli-sass": "10.0.0",
     "ember-cli-shims": "^1.2.0",
     "ember-cli-sri": "^2.1.0",
     "ember-cli-sticky": "0.6.4",
@@ -78,7 +78,6 @@
     "leaflet": "1.4.0",
     "loader.js": "^4.2.3",
     "moment": "2.24.0",
-    "moment-timezone": "0.5.23",
-    "node-sass": "3.13.1"
+    "moment-timezone": "0.5.23"
   }
 }
