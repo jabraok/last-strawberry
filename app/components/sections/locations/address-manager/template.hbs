@@ -12,7 +12,7 @@
 
   <div class="errorMessageContainer">
     {{#each changeset.errors as |error|}}
-      <div class="row">{{error.key}}:{{error.validation}}</div>
+    <div class="row">{{error.key}}:{{error.validation}}</div>
     {{/each}}
   </div>
 
@@ -22,14 +22,14 @@
       lng=lng
       zoom=zoom as |layers|}}
 
-    {{layers.tile url="http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}@2x.png"}}
-      {{#if changeset.isValid}}
-        {{#layers.marker lat=changeset.lat lng=changeset.lng}}
-          <strong>{{changeset.street}}</strong>
-          <br>
-          <span>{{changeset.city}}, {{changeset.state}} {{changeset.zip}}</span>
-        {{/layers.marker}}
-      {{/if}}
+  {{layers.tile url="http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}@2x.png"}}
+  {{#if changeset.isValid}}
+  {{#layers.marker lat=changeset.lat lng=changeset.lng}}
+  <strong>{{changeset.street}}</strong>
+  <br>
+  <span>{{changeset.city}}, {{changeset.state}} {{changeset.zip}}</span>
+  {{/layers.marker}}
+  {{/if}}
   {{/leaflet-map}}
 
   {{#power-select
@@ -40,6 +40,6 @@
       searchEnabled=true
       onchange=switchAddress
       as |address|}}
-    {{address.full}}
+  {{address.full}}
   {{/power-select}}
 </div>

@@ -4,11 +4,11 @@
       onChange=(action "filterItems")}}
 </div>
 {{#layouts/scroll-container}}
-  <div class="col">
-    {{#each filteredItems as |item|}}
-      <div class="listRow" {{action itemClicked item.id}}>
-        <span class="name" >{{item.text}}</span>
-      </div>
-    {{/each}}
+<div class="col">
+  {{#each filteredItems as |item|}}
+  <div class="listRow" {{action itemClicked item.id}}>
+    <span class="name">{{item.text}}</span>
   </div>
+  {{/each}}
+</div>
 {{/layouts/scroll-container}}

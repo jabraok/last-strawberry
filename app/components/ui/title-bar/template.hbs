@@ -1,16 +1,16 @@
 <span class="row contentContainer">
   {{#if hasIndex}}
-    <span class="index">
-      {{indexFormatted}}.
-    </span>
+  <span class="index">
+    {{indexFormatted}}.
+  </span>
   {{/if}}
   <span class="title">
     {{title}}
   </span>
 </span>
 {{#if hasAction}}
-  {{ui/icon-button
-    class='action'
+{{ui/icon-button
+    class="action"
     flat=true
     padding=0.5
     color=colors.DARK_GREY

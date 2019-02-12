@@ -33,8 +33,8 @@
       action=(action "navigateToRoute" "distribution")}}
 
     {{#ui/popup-menu label="Settings" icon='arrow_drop_down'}}
-      {{#each settingMenuItems as |item|}}
-        {{ui/icon-button
+    {{#each settingMenuItems as |item|}}
+    {{ui/icon-button
           class=(camelize item.route)
           iconName="check"
           flat=true
@@ -43,20 +43,20 @@
           padding=1.2
           iconName=item.icon
           action=(action navigateToRoute item.route)}}
-      {{/each}}
+    {{/each}}
     {{/ui/popup-menu}}
   </div>
 </div>
 
 <div class="row">
   {{#if authenticated}}
-    <span class="row baseline">
-      <span class="name">{{name}}</span>
-      <a href="#" {{action logout}}>
-        <span class="label">Logout</span>
-      </a>
-    </span>
+  <span class="row baseline">
+    <span class="name">{{name}}</span>
+    <a href="#" {{action logout}}>
+      <span class="label">Logout</span>
+    </a>
+  </span>
   {{else}}
-    <a href="#" {{action login}}>Login</a>
+  <a href="#" {{action login}}>Login</a>
   {{/if}}
 </div>

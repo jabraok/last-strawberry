@@ -20,7 +20,7 @@
         </div>
         <div class="row">
           {{one-way-input model.frequency
-              class='quantity'
+              class="quantity"
               onblur=(action saveModel model)
               update=(action (mut model.frequency))}}
         </div>
@@ -41,7 +41,7 @@
   <div class="lineItemsContainer">
     <div class="col">
       {{#each sortedValidLineItems as |lineItem index|}}
-        {{ui/order-template-editor/order-template-item-editor
+      {{ui/order-template-editor/order-template-item-editor
             model=lineItem
             save=saveModel
             delete=deleteLineItem
@@ -56,7 +56,7 @@
           options=activeProducts
           onchange=createLineItem
           as |item|}}
-            {{item.name}}
+      {{item.name}}
       {{/power-select}}
     </div>
   </div>

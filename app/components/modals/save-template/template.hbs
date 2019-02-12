@@ -5,16 +5,10 @@
     submitLabel="Create"
     isValid=isValid
     submit=(action "submitForm")}}
-    <input
-      type="text"
-      name="name"
-      class="name"
-      placeholder="Template name"
-      value="{{changeset.name}}"
-      oninput={{action "nameChanged"}}
-      onchange={{action "nameChanged"}}>
+<input type="text" name="name" class="name" placeholder="Template name" value="{{changeset.name}}"
+  oninput={{action "nameChanged"}} onchange={{action "nameChanged"}}>
 
-    {{#power-select
+{{#power-select
         selected=changeset.user
         options=drivers
         renderInPlace=true
@@ -22,16 +16,16 @@
         searchEnabled=false
         onchange=(action "setSelectedDriver")
         as |user|}}
-      {{user.name}}
-    {{/power-select}}
+{{user.name}}
+{{/power-select}}
 
-    <div class="errorMessageContainer">
-      {{#each changeset.errors as |error|}}
-        <div class="row">{{error.key}}:{{error.validation}}</div>
-      {{/each}}
+<div class="errorMessageContainer">
+  {{#each changeset.errors as |error|}}
+  <div class="row">{{error.key}}:{{error.validation}}</div>
+  {{/each}}
 
-      {{#if (not nameValidator.isValid)}}
-        <div class="row">Another template is using that name</div>
-      {{/if}}
-    </div>
+  {{#if (not nameValidator.isValid)}}
+  <div class="row">Another template is using that name</div>
+  {{/if}}
+</div>
 {{/modals/base-modal}}

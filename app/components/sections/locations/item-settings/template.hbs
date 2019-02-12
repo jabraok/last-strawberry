@@ -6,21 +6,21 @@
   <div class="col-5 massDesire">
     <label>Mass desire</label>
     {{ui/toggle-button
-        class='desiredToggle'
+        class="desiredToggle"
         selected=massDesire
-        click=(action 'massApplyDesire')
-        label=(if massDesire 'Y' 'N')}}
+        click=(action "massApplyDesire")
+        label=(if massDesire "Y" "N")}}
   </div>
   <div class="massCreditRate">
     {{one-way-input massCreditRate
       update=(action (mut massCreditRate))
       placeholder="Credit %"}}
-    <button {{action 'massApplyCreditRate'}}>Apply</button>
+    <button {{action "massApplyCreditRate"}}>Apply</button>
   </div>
 </div>
 
 {{#each itemSettings as |itemSetting i|}}
-  {{sections/locations/item-setting
+{{sections/locations/item-setting
       index=i
       onCreditChange=onCreditChange
       onDesireChange=onDesireChange
