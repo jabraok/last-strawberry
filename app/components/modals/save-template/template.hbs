@@ -5,7 +5,7 @@
     submitLabel="Create"
     isValid=isValid
     submit=(action "submitForm")}}
-  <input type="text" name="name" class="name" placeholder="Template name" value="{{changeset.name}}"
+  <input type="text" name="name" class="name" placeholder="Template name" value={{changeset.name}}
     oninput={{action "nameChanged"}} onchange={{action "nameChanged"}}>
   {{#power-select
         selected=changeset.user

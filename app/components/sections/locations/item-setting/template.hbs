@@ -2,7 +2,7 @@
   {{indexFormatted}}. {{model.item.name}}
 </span>
 <div class="row formFields">
-  <input type="text" name="creditRate" class="creditRate" value="{{percentage creditRate}}"
+  <input type="text" name="creditRate" class="creditRate" value={{percentage creditRate}}
     onblur={{action "creditRateChanged"}} placeholder="Credit %">
   {{ui/toggle-button
       class="desiredToggle"

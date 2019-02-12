@@ -1,8 +1,10 @@
 {{#if model.hasXeroId}}
   <div class="row baseline syncedMessage">
     <span class="syncedTitle">This order has been synced to Xero: </span>
-    <a href={{concat "https://go.xero.com/AccountsReceivable/View.aspx?InvoiceID=" model.xeroId}} target="_blank">View
-      in xero</a>
+    <a href={{concat "https://go.xero.com/AccountsReceivable/View.aspx?InvoiceID=" model.xeroId}} target="_blank"
+      rel="noopener">
+      View in xero
+    </a>
   </div>
 {{/if}}
 <div class="contentContainer">
@@ -116,7 +118,7 @@
   {{#ui/persistent-collapsable-container
       settingsKey="orderNotes"
       title="Notes (Visible to customer)"}}
-    <textarea name="comment" class="comment" value="{{model.comment}}" oninput={{action "propChanged" "comment"}}
+    <textarea name="comment" class="comment" value={{model.comment}} oninput={{action "propChanged" "comment"}}
       onchange={{action "propChanged" "comment"}} onblur={{action saveOrder}}>
     </textarea>
   {{/ui/persistent-collapsable-container}}

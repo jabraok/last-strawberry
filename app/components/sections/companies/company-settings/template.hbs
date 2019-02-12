@@ -1,14 +1,14 @@
 <div class="col">
   {{#with (changeset model validators) as |changeset|}}
-    <input type="text" name="name" class="name" placeholder="name" value="{{changeset.name}}"
+    <input type="text" name="name" class="name" placeholder="name" value={{changeset.name}}
       oninput={{action "fieldChanged" changeset "name"}} onchange={{action "fieldChanged" changeset "name"}}
       onblur={{action "save" changeset}}>
     <div class="row">
       <input type="text" name="locationCodePrefix" class="locationCodePrefix" placeholder="Prefix"
-        value="{{changeset.locationCodePrefix}}" oninput={{action "codeChanged" changeset}} maxlength="4"
+        value={{changeset.locationCodePrefix}} oninput={{action "codeChanged" changeset}} maxlength="4"
         onblur={{action "save" changeset}}>
       {{#unless isVendor}}
-        <input type="text" name="terms" class="terms" placeholder="terms" value="{{changeset.terms}}"
+        <input type="text" name="terms" class="terms" placeholder="terms" value={{changeset.terms}}
           oninput={{action "fieldChanged" changeset "terms"}} onchange={{action "fieldChanged" changeset "terms"}}
           onblur={{action "save" changeset}}>
       {{/unless}}

@@ -4,18 +4,18 @@
   </span>
 </header>
 <div class="body">
-  <input type="text" name="name" class="name" placeholder="Item name" value="{{changeset.name}}"
+  <input type="text" name="name" class="name" placeholder="Item name" value={{changeset.name}}
     oninput={{action "fieldChanged" "name"}} onchange={{action "fieldChanged" "name"}}>
   <div class="row spaceBetween">
-    <input type="text" name="code" class="code" placeholder="Item code" value="{{changeset.code}}"
+    <input type="text" name="code" class="code" placeholder="Item code" value={{changeset.code}}
       oninput={{action "codeChanged"}} onchange={{action "codeChanged"}}>
-    <input type="text" name="unit" class="unit" placeholder="Unit i.e. lb" value="{{changeset.unitOfMeasure}}"
+    <input type="text" name="unit" class="unit" placeholder="Unit i.e. lb" value={{changeset.unitOfMeasure}}
       oninput={{action "fieldChanged" "unitOfMeasure"}} onchange={{action "fieldChanged" "unitOfMeasure"}}>
-    <input type="text" name="price" class="price" placeholder="Price" value="{{changeset.defaultPrice}}"
+    <input type="text" name="price" class="price" placeholder="Price" value={{changeset.defaultPrice}}
       oninput={{action "fieldChanged" "defaultPrice"}} onchange={{action "fieldChanged" "defaultPrice"}}>
   </div>
   <input type="text" name="description" class="description" placeholder="Item description"
-    value="{{changeset.description}}" oninput={{action "fieldChanged" "description"}}
+    value={{changeset.description}} oninput={{action "fieldChanged" "description"}}
     onchange={{action "fieldChanged" "description"}}>
 </div>
 <div class="errorMessageContainer">
