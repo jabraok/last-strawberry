@@ -32,6 +32,8 @@ export default Component.extend({
     this.mouseUpsSub = this.mouseUps
       .filter(({target}) => target !== this.$(".trigger")[0])
       .filter(() => this.get('showMenu'))
+      // @FIXME: All the events of sub menu items will be canceled if it is not showed
+      .delay(100)
       .subscribe(() => this.set('showMenu', false));
   },
 
