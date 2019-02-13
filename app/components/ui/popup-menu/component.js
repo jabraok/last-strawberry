@@ -1,13 +1,14 @@
 import Component from '@ember/component';
 import colors from 'last-strawberry/constants/colors';
 import { computed } from '@ember/object';
+import { buildStyles } from "last-strawberry/utils/styles";
 
 export default Component.extend({
   classNames: ['row'],
 
   menuColors: computed('backgroundColor', function() {
     const colorScheme = this.get('backgroundColor') || {backgroundColor: colors.SKY_BLUE};
-    return `background-color: ${colorScheme.backgroundColor}`;
+    return buildStyles({'background-color': colorScheme.backgroundColor});
   }),
 
   init() {
