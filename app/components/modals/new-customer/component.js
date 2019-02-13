@@ -7,12 +7,15 @@ export default Component.extend({
   session:     service(),
 
   @computed("session")
-  codeValidator(session) {
+  codeValidator() {
+    const session = this.get("session");
     return UniqueFieldValidator.create({type:"company", key:"location_code_prefix", session});
   },
 
   @computed("codeValidator.isValid", "changeset.isValid")
-  isValid(validCode, validChangeset) {
+  isValid() {
+    const validCode = this.get("codeValidator.isValid");
+    const validChangeset = this.get("changeset.isValid");
     return validCode && validChangeset;
   },
 

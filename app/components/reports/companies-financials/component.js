@@ -5,7 +5,8 @@ const CompaniesFinancials = Component.extend({
   classNames: ["row", "stretch", "card-1", "companies-financials"],
 
   @computed("model")
-  totalVisits(rawData) {
+  totalVisits() {
+    const rawData = this.get("model");
     return _
       .flattenDeep(rawData
         .map(c => c.raw_data
@@ -14,7 +15,8 @@ const CompaniesFinancials = Component.extend({
   },
 
   @computed("model")
-  totalSales(rawData) {
+  totalSales() {
+    const rawData = this.get("model");
     return rawData
       .reduce((acc, cur) => {
         return acc + Number(cur.total_sales_revenue);
@@ -22,7 +24,8 @@ const CompaniesFinancials = Component.extend({
   },
 
   @computed("model")
-  totalDist(rawData) {
+  totalDist() {
+    const rawData = this.get("model");
     return rawData
       .reduce((acc, cur) => {
         return acc + Number(cur.total_dist_revenue);
@@ -30,7 +33,8 @@ const CompaniesFinancials = Component.extend({
   },
 
   @computed("model")
-  totalSpoilage(rawData) {
+  totalSpoilage() {
+    const rawData = this.get("model");
     return rawData
       .reduce((acc, cur) => {
         return acc + Number(cur.total_spoilage);
@@ -38,12 +42,18 @@ const CompaniesFinancials = Component.extend({
   },
 
   @computed("totalSales", "totalDist", "totalSpoilage", "totalVisits")
-  aveSalePerVisit(totalSales, totalDist, totalSpoilage, totalVisits) {
+  aveSalePerVisit() {
+    const totalSales = this.get("totalSales");
+    const totalDist = this.get("totalDist");
+    const totalSpoilage = this.get("totalSpoilage");
+    const totalVisits = this.get("totalVisits");
     return ((totalSales + totalDist) - totalSpoilage) / totalVisits;
   },
 
   @computed("totalSales", "totalSpoilage")
-  spoilageSalesRatio(totalSales, totalSpoilage) {
+  spoilageSalesRatio() {
+    const totalSales = this.get("totalSales");
+    const totalSpoilage = this.get("totalSpoilage");
     return totalSpoilage / totalSales;
   }
 });

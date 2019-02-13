@@ -11,14 +11,18 @@ export default Controller.extend({
   date:           moment().add(1, "days").format("YYYY-MM-DD"),
 
   @computed("routePlans.@each.{date,isDeleted}", "date")
-  activeRoutePlans(routePlans, date) {
+  activeRoutePlans() {
+    const routePlans = this.get("routePlans");
+    const date = this.get("date");
     return routePlans
       .filter(rp => rp.get("date") === date)
       .filter(rp => !rp.get("isDeleted"));
   },
 
   @computed("routeVisits.@each.{date}", "date")
-  activeRouteVisits(routeVisits, date) {
+  activeRouteVisits() {
+    const routeVisits = this.get("routeVisits");
+    const date = this.get("date");
     return routeVisits
       .filter(rv => rv.get("date") === date)
       .filter(rv => rv.get("isValid"))

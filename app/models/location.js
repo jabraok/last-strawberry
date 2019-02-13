@@ -33,7 +33,10 @@ export default Model.extend(LocationHashable, {
   isVendor:             alias("company.isVendor"),
 
   @computed("name", "id", "company.name")
-  label(name, id, companyName) {
+  label() {
+    const name = this.get("name");
+    const id = this.get("id");
+    const companyName = this.get("company.name");
     return `${companyName} - ${name} - ${id}`
   }
 });

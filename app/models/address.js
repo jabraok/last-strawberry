@@ -17,7 +17,11 @@ export default Model.extend(LocationHashable, {
   routeVisits:  hasMany("route-visit"),
 
   @computed("street", "city", "state", "zip")
-  full(street, city, state, zip) {
+  full() {
+    const street = this.get("street");
+    const city = this.get("city");
+    const state = this.get("state");
+    const zip = this.get("zip");
     let full = street? `${street}`: "";
     full = city? `${full}, ${city}`: full;
     full = state? `${full}, ${state}`: full;

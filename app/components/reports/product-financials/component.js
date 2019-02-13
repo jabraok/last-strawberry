@@ -5,7 +5,8 @@ const CompaniesFinancials = Component.extend({
   classNames: ["row", "stretch", "card-1", "product-financials"],
 
   @computed("model.@each.{total_sales}")
-  totalSales(model) {
+  totalSales() {
+    const model = this.get("model");
     return model
       .reduce((acc, cur) => {
         return acc + Number(cur.total_sales);
@@ -13,7 +14,8 @@ const CompaniesFinancials = Component.extend({
   },
 
   @computed("model.@each.{total_spoilage}")
-  totalSpoilage(model) {
+  totalSpoilage() {
+    const model = this.get("model");
     return model
       .reduce((acc, cur) => {
         return acc + Number(cur.total_spoilage);

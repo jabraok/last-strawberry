@@ -13,7 +13,9 @@ export default Controller.extend({
   includedItems: "",
 
   @computed("orders.@each.{deliveryDate,isPurchaseOrder}", "deliveryDate")
-  filteredOrders(orders, deliveryDate) {
+  filteredOrders() {
+    const orders = this.get("orders");
+    const deliveryDate = this.get("deliveryDate");
     return orders.filter(order => {
       const matchesDate = order.get("deliveryDate") === deliveryDate;
       return matchesDate && order.get("isPurchaseOrder");
@@ -21,12 +23,15 @@ export default Controller.extend({
   },
 
   @computed("deliveryDate")
-  isOldDate(deliveryDate) {
+  isOldDate() {
+    const deliveryDate = this.get("deliveryDate");
     return moment(deliveryDate).isBefore(tomorrow);
   },
 
   @computed("locations.@each.{active,isVendor}", "filteredOrders.[]")
-  unfulfilledLocations(locations, purchaseOrders) {
+  unfulfilledLocations() {
+    const locations = this.get("locations");
+    const purchaseOrders = this.get("filteredOrders");
     const fulfilledLocations = purchaseOrders.map(o => o.get("location").content);
     const allLocations = locations
       .filter(l => l.get("active") && l.get("isVendor"))
@@ -36,7 +41,8 @@ export default Controller.extend({
   },
 
   @computed("items.@each.{isPurchased,active}")
-  allItems(items) {
+  allItems() {
+    const items = this.get("items");
     return items
             .filter(item => item.get("isPurchased") && item.get("active"))
             .sortBy("name");

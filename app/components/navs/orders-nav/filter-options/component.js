@@ -5,7 +5,8 @@ export default Component.extend({
   isHidden:true,
 
   @computed("isHidden")
-  title(isHidden) {
+  title() {
+    const isHidden = this.get("isHidden");
     return isHidden? "Show Filter Options": "Hide Filter Options";
   }
 });

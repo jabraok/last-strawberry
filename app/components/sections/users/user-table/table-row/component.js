@@ -11,7 +11,8 @@ export default Component.extend({
   classNames: "row",
 
   @computed("session")
-  emailValidator(session) {
+  emailValidator() {
+    const session = this.get("session");
     return UniqueFieldValidator.create({type:"user", key:"email", session});
   },
 

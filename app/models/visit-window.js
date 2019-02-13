@@ -24,12 +24,14 @@ export default Model.extend(LocationHashable, {
   lng: 							alias('location.address.lng'),
 
 	@computed("min")
-  minFormatted(val) {
+  minFormatted() {
+    const val = this.get("min");
 		return toTime(val);
   },
 
 	@computed("max")
-  maxFormatted(val) {
+  maxFormatted() {
+    const val = this.get("max");
 		return toTime(val);
   },
 

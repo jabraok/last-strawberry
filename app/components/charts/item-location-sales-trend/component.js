@@ -29,7 +29,8 @@ export default Component.extend({
   },
 
   @computed("debouncedData.@each.{previous_ending,ending,returns,sold,starting,ts}")
-  chartData(salesData = []){
+  chartData(){
+    const salesData = this.get("debouncedData") || [];
     return {
       labels: salesData.map(sd => moment.unix(sd.ts).format("MM-DD")),
       datasets: [

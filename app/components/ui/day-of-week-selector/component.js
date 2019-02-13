@@ -7,7 +7,8 @@ export default Component.extend({
   classNames: ['ui_day-of-week-selector', 'row'],
 
   @computed('model.@each.{enabled}')
-  collection(model = []) {
+  collection() {
+    const model = this.get("model") || [];
     return DAYS_OF_WEEK.map((item, i) => {
       const match = model.find(record => record.get('day') === i);
 

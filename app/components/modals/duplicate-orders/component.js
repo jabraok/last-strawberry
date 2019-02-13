@@ -3,7 +3,9 @@ import { computed } from 'ember-decorators/object';
 
 export default Component.extend({
   @computed("fromDate", "toDate")
-  isValid(fromDate, toDate) {
+  isValid() {
+    const fromDate = this.get("fromDate");
+    const toDate = this.get("toDate");
     return fromDate !== toDate && toDate !== undefined;
   },
 

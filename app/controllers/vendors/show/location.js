@@ -6,7 +6,8 @@ export default Controller.extend({
   AddressValidations,
 
   @computed("model.company.activeLocations.@each.{locationHash}")
-  addresses(locations) {
+  addresses() {
+    const locations = this.get("model.company.activeLocations");
     return locations.map(location => location.get("address"));
   }
 });

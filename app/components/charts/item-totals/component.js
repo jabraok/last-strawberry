@@ -6,7 +6,8 @@ export default Component.extend({
   classNames: ["col", "card-1"],
 
   @computed("orders.@each.{totalQuantity}")
-  itemTotals(orders = A()) {
+  itemTotals() {
+    const orders = this.get("orders") || A();
     return _
       .chain(orders.toArray())
       .map(order => order.get("orderItems").toArray())
@@ -23,7 +24,8 @@ export default Component.extend({
   },
 
   @computed("orders.@each.{totalQuantity}")
-  totalUnits(orders = A()) {
+  totalUnits() {
+    const orders = this.get("orders") || A();
     return orders.reduce((acc, cur) => acc + cur.get("totalQuantity"), 0);
   }
 });

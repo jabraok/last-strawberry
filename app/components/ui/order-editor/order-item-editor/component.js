@@ -34,7 +34,8 @@ export default Component.extend({
   },
 
   @computed('index')
-  formattedIndex(index) {
+  formattedIndex() {
+    const index = this.get("index");
     const num = S(index + 1).padLeft(2, '0').s;
     return `${num}.`;
   }

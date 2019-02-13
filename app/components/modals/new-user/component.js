@@ -7,12 +7,15 @@ export default Component.extend({
   session:     service(),
 
   @computed("emailValidator.isValid", "changeset.isValid")
-  isValid(validEmail, validChangeset) {
+  isValid() {
+    const validEmail = this.get("emailValidator.isValid");
+    const validChangeset = this.get("changeset.isValid");
     return validEmail && validChangeset;
   },
 
   @computed("session")
-  emailValidator(session) {
+  emailValidator() {
+    const session = this.get("session");
     return UniqueFieldValidator.create({type:"user", key:"email", session});
   },
 

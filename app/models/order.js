@@ -61,22 +61,27 @@ export default Model.extend(LocationHashable, {
   isValid:                      and("hasQuantity", "notVoided", "notDeleted"),
 
   @computed("orderItems.@each.{hasDirtyAttributes}", "hasDirtyAttributes")
-  notifiable(orderItems) {
+  notifiable() {
+    const orderItems = this.get("orderItems");
     return !orderItems.any(oi => oi.get("hasDirtyAttributes")) && !this.get('hasDirtyAttributes');
   },
 
   @computed("orderItems.@each.{quantity}")
-  empty(orderItems) {
+  empty() {
+    const orderItems = this.get("orderItems");
     return orderItems.every(oi => oi.get("empty"));
   },
 
   @computed("orderItems.@each.{quantity}")
-  totalQuantity(orderItems) {
+  totalQuantity() {
+    const orderItems = this.get("orderItems");
     return orderItems.reduce((acc, cur) => acc + Number(cur.get("quantity")), 0);
   },
 
   @computed("orderItems.@each.{quantity,unitPrice}", "shipping")
-  totalPrice(orderItems, shipping) {
+  totalPrice() {
+    const orderItems = this.get("orderItems");
+    const shipping = this.get("shipping");
     const orderItemsTotal = orderItems.reduce((acc, cur) => acc + Number(cur.get("quantity") * cur.get("unitPrice")), 0);
     return orderItemsTotal + shipping;
   }

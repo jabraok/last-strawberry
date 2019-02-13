@@ -3,12 +3,14 @@ import { computed } from 'ember-decorators/object';
 
 export default Component.extend({
   @computed("model.itemPrices.@each.{isPending}")
-  openItemPrices(itemPrices = []) {
+  openItemPrices() {
+    const itemPrices = this.get("model.itemPrices") || [];
     return itemPrices.filter(ip => ip.get("isPending"));
   },
 
   @computed("model.itemPrices.@each.{isActive}")
-  fulfilledItemPrices(itemPrices = []) {
+  fulfilledItemPrices() {
+    const itemPrices = this.get("model.itemPrices") || [];
     return itemPrices.filter(ip => ip.get("isActive"));
   },
 

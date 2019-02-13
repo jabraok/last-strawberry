@@ -9,12 +9,15 @@ export default Component.extend({
   classNames: ["col"],
 
   @computed("codeValidator.isValid", "changeset.isValid")
-  isValid(validCode, validChangeset) {
+  isValid() {
+    const validCode = this.get("codeValidator.isValid");
+    const validChangeset = this.get("changeset.isValid");
     return validCode && validChangeset;
   },
 
   @computed("session")
-  codeValidator(session) {
+  codeValidator() {
+    const session = this.get("session");
     return UniqueFieldValidator.create({type:"item", key:"code", session});
   },
 

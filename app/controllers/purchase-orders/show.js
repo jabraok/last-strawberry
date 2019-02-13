@@ -8,8 +8,9 @@ export default Controller.extend({
   company: alias("model.location.company"),
 
   @computed("items.@each.{active}", "company.id")
-  filteredItems(items, companyId) {
-
+  filteredItems() {
+    const items = this.get("items");
+    const companyId = this.get("company.id");
     return items
       .filter(item => {
         const isTheSameCompany = item.get("company.id") === companyId;
@@ -20,7 +21,9 @@ export default Controller.extend({
   },
 
   @computed("item.name", "model.location.id")
-  dataPath(name, id) {
+  dataPath() {
+    const name = this.get("item.name");
+    const id = this.get("model.location.id");
     if(name) {
       return `locations/${id}/${name}`;
     } else {

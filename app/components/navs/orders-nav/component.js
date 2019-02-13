@@ -11,7 +11,8 @@ export default Component.extend({
   hasOrders: notEmpty("filterOrders"),
 
   @computed("includedItems")
-  selectedItems(includedItems) {
+  selectedItems() {
+    const includedItems = this.get("includedItems");
     const selected = [];
 
     const itemIdArr = includedItems.split(",");
@@ -26,7 +27,12 @@ export default Component.extend({
   },
 
   @computed("orders.@each.{isDeleted,orderItems,xeroFinancialRecordState,publishedState}", "includeUnpublished", "includePublished", "companyQuery", "selectedItems")
-  filterOrders(orders, includeUnpublished, includePublished, query, selectedItems) {
+  filterOrders() {
+    const orders = this.get("orders");
+    const includeUnpublished = this.get("includeUnpublished");
+    const includePublished = this.get("includePublished");
+    const query = this.get("companyQuery");
+    const selectedItems = this.get("selectedItems");
      return orders
        .filter(order => {
 
@@ -45,7 +51,8 @@ export default Component.extend({
    },
 
   @computed("filterOrders")
-  groupedOrders(orders) {
+  groupedOrders() {
+    const orders = this.get("filterOrders");
     return _
       .chain(orders)
       .sortBy(order => order.get("location.company.name"))

@@ -8,7 +8,8 @@ export default Component.extend({
   classNameBindings: ['model.itemDesire.enabled:enabled:disabled'],
 
   @computed('index')
-  indexFormatted(index){
+  indexFormatted(){
+    const index = this.get("index");
     return index + 1;
   },
 

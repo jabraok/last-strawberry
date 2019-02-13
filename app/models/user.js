@@ -21,7 +21,9 @@ export default Model.extend({
   isDriver: equal("role", Roles.DRIVER),
 
   @computed("firstName", "lastName")
-  name(first, last) {
+  name() {
+    const first = this.get("firstName");
+    const last = this.get("lastName");
     return `${first} ${last}`
   }
 });

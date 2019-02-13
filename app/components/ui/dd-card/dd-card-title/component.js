@@ -8,7 +8,8 @@ export default Component.extend({
   hasAction: notEmpty("action"),
 
   @computed("index")
-  indexFormatted(index) {
+  indexFormatted() {
+    const index = this.get("index");
     return S(index + 1).padLeft(2, "0").s;
   }
 });

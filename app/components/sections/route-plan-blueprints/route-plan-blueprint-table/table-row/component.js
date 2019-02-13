@@ -9,7 +9,8 @@ export default Component.extend({
   classNames: ["tableRow", "row"],
 
   @computed("session")
-  nameValidator(session) {
+  nameValidator() {
+    const session = this.get("session");
     return UniqueFieldValidator.create({type:"routePlanBlueprint", key:"name", session});
   },
 
@@ -20,7 +21,8 @@ export default Component.extend({
   },
 
   @computed("users.@each.{name}")
-  drivers(users) {
+  drivers() {
+    const users = this.get("users");
     const drivers = users.map(u => {
       return {name: u.get("name"), id: u.get("id")};
     });

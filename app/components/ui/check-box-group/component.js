@@ -4,7 +4,9 @@ import { computed } from 'ember-decorators/object';
 export default Component.extend({
   classNames:['row'],
   @computed('selectedIndexes', 'labels')
-  group(selectedIndexes = [], labels = []) {
+  group() {
+    const selectedIndexes = this.get("selectedIndexes") || [];
+    const labels = this.get("labels") || [];
     return labels.map((label, index) => {
       return {label, index, selected: selectedIndexes.contains(index)};
     });

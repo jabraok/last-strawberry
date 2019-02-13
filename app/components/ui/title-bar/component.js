@@ -8,7 +8,8 @@ export default Component.extend({
   hasIndex: notEmpty('index'),
 
   @computed('index')
-  indexFormatted(index) {
+  indexFormatted() {
+    const index = this.get("index");
     return S(index + 1).padLeft(2, '0').s;
   }
 });

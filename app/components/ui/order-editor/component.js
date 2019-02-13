@@ -18,12 +18,14 @@ export default Component.extend({
   validators: ItemValidations,
 
   @computed("itemSearchString")
-  noMatchesMessage(str = "") {
+  noMatchesMessage() {
+    const str = this.get("itemSearchString") || "";
     return this.get("isPurchaseOrder")? `Create new item: ${str}`: `Item not found: ${str}`;
   },
 
   @computed("model.orderItems.@each.{isDeleted}")
-  validOrderItems(orderItems) {
+  validOrderItems() {
+    const orderItems = this.get("model.orderItems");
     return orderItems
       .filter(o => !o.get("isDeleted"))
       .sortBy("item.position");

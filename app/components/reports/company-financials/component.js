@@ -5,13 +5,15 @@ import { computed } from 'ember-decorators/object';
 const CompanyFinancials = Component.extend({
   classNames: ["company-financials"],
   @computed('model.raw_data.@each.{total_sales_revenue}')
-  filteredLocationsFinancials(data) {
+  filteredLocationsFinancials() {
+    const data = this.get("model.raw_data");
     return data
       .filter(l => Number(l.total_sales_revenue) > 0);
   },
 
   @computed('filteredLocationsFinancials.@each.{total_sales_revenue}')
-  sortedFilteredLocationsFinancials(data) {
+  sortedFilteredLocationsFinancials() {
+    const data = this.get("filteredLocationsFinancials");
     return data
       .sort((a, b) => Number(b.total_sales_revenue) - Number(a.total_sales_revenue));
   },

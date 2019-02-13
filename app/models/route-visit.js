@@ -33,7 +33,9 @@ export default Model.extend(LocationHashable, {
   isOpen:           or('noRoutePlan', 'routePlan.isDeleted'),
 
   @computed('id', 'position')
-  key(id, position) {
+  key() {
+    const id = this.get("id");
+    const position = this.get("position");
     return `${id}${position}`;
   }
 });

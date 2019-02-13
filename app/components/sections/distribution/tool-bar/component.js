@@ -7,7 +7,8 @@ export default Component.extend({
   currentSelectedRoutePlanTemplate: undefined,
 
   @computed("routePlans.@each.{isValid}")
-  allPlansValid(routePlans = []){
+  allPlansValid(){
+    const routePlans = this.get("routePlans") || [];
     return routePlans.every(rp => rp.get("isValid"));
   },
 

@@ -16,7 +16,9 @@ export default Component.extend({
   validators: UserValidations,
 
   @computed("users.@each.{name,email}", "filterTerm")
-  filteredUsers(users, query){
+  filteredUsers(){
+    const users = this.get("users");
+    const query = this.get("filterTerm");
     return users
       .filter(user => {
         const reg = new RegExp(query, "i");

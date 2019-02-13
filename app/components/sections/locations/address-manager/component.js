@@ -12,12 +12,14 @@ export default Component.extend({
   },
 
   @computed('changeset.lat')
-  lat(val) {
+  lat() {
+    const val = this.get("changeset.lat");
     return val || 33.89891688437142
   },
 
   @computed('changeset.lng')
-  lng(val) {
+  lng() {
+    const val = this.get("changeset.lng");
     return val || -117.90527343750001
   },
 

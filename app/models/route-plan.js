@@ -16,12 +16,14 @@ export default Model.extend({
   routeVisits:        hasMany("route-visit"),
 
   @computed("routeVisits.@each.{position}")
-  sortedRouteVisits(routeVisits) {
+  sortedRouteVisits() {
+    const routeVisits = this.get("routeVisits");
     return routeVisits.sortBy("position");
   },
 
   @computed("routeVisits.@each.{position,isValid,routePlanId}")
-  sortedActiveRouteVisits(routeVisits) {
+  sortedActiveRouteVisits() {
+    const routeVisits = this.get("routeVisits");
     return routeVisits
       .filter(rv => rv.get("routePlanId") === this.get("id"))
       .sortBy("position")
@@ -29,7 +31,8 @@ export default Model.extend({
   },
 
   @computed("date")
-  formattedDate(date) {
+  formattedDate() {
+    const date = this.get("date");
     return moment(date, "YYYY-MM-DD").format("dddd, MMM Do - YYYY");
   },
 

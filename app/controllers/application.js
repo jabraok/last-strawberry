@@ -6,7 +6,9 @@ export default Controller.extend({
   session: service(),
 
   @computed('session.data.authenticated.{first_name,last_name}')
-  userName(first = "", last = "") {
+  userName() {
+    const first = this.get("session.data.authenticated.first_name") || "";
+    const last = this.get("session.data.authenticated.last_name") || "";
     return `${S(first).capitalize().s} ${S(last).left(1).capitalize().s}.`;
   },
 

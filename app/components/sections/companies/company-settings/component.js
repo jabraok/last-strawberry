@@ -12,7 +12,8 @@ export default Component.extend({
   validators: CompanyValidations,
 
   @computed("session")
-  codeValidator(session) {
+  codeValidator() {
+    const session = this.get("session");
     return UniqueFieldValidator.create({type:"company", key:"location_code_prefix", session});
   },
 

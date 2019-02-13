@@ -10,7 +10,8 @@ export default Component.extend({
   hasLastUpdated: notEmpty("salesData.ts"),
 
   @computed("salesData.ts")
-  lastUpdated(timestamp) {
+  lastUpdated() {
+    const timestamp = this.get("salesData.ts");
     return moment.unix(timestamp);
   }
 });

@@ -9,7 +9,8 @@ export default Controller.extend({
   endDate: END_OF_THIS_MONTH.format("YYYY-MM-DD"),
 
   @computed("model.report_data.@each.{total_sales}")
-  sortedProductFinancials(data) {
+  sortedProductFinancials() {
+    const data = this.get("model.report_data");
     return data
       .sort((a, b) => Number(b.total_sales) - Number(a.total_sales));
   }

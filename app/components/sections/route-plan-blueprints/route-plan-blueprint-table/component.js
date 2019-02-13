@@ -10,7 +10,9 @@ export default Component.extend({
   validators: TemplateValidations,
 
   @computed("routePlanBlueprints.@each.{name}", "filterTerm")
-  filteredItems(routePlanBlueprints, query){
+  filteredItems(){
+    const routePlanBlueprints = this.get("routePlanBlueprints");
+    const query = this.get("filterTerm");
     return routePlanBlueprints
       .filter(rpb => {
         const reg = new RegExp(query, "i");

@@ -24,14 +24,16 @@ export default Controller.extend({
   },
 
   @computed("items.@each.{isSold,active}")
-  filteredItems(items) {
+  filteredItems() {
+    const items = this.get("items");
     return items
       .filter(item => item.get("isSold") && item.get("active"))
       .sortBy("name");
   },
 
   @computed("salesOrders.@each.{totalQuantity}")
-  itemTotals(orders = A()) {
+  itemTotals() {
+    const orders = this.get("salesOrders") || A();
     return _
       .chain(orders.toArray())
       .map(order => order.get("orderItems").toArray())
@@ -47,7 +49,8 @@ export default Controller.extend({
   },
 
   @computed("rawSalesData.@each.{ts}")
-  salesData(dataPoints = []) {
+  salesData() {
+    const dataPoints = this.get("rawSalesData") || [];
     return dataPoints.sortBy("ts");
   },
 

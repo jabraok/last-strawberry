@@ -20,14 +20,19 @@ export default Component.extend({
   }),
 
   @computed("selectedRouteVisit.id", "model.id")
-  isSelected(a, b) {
+  isSelected() {
+    const a = this.get("selectedRouteVisit.id");
+    const b = this.get("model.id");
     return a === b;
   },
 
   validVisitWindow: alias("validVisitWindows.firstObject"),
 
   @computed("company.name", "locations.firstObject.id", "addressHasMultipleLocations")
-  title(companyName, locationId, hasMultiple) {
+  title() {
+    const companyName = this.get("company.name");
+    const locationId = this.get("locations.firstObject.id");
+    const hasMultiple = this.get("addressHasMultipleLocations");
     return hasMultiple ? `${companyName} - Multiple` : `${companyName} - ${locationId}`;
   },
 
@@ -40,7 +45,9 @@ export default Component.extend({
   },
 
   @computed("model.fulfillments.[]", "company")
-  infoIcons(fulfillments, company) {
+  infoIcons() {
+    const fulfillments = this.get("model.fulfillments");
+    const company = this.get("company");
     const icons = [];
 
     const hasMultipleFulfillments = fulfillments.get("length") > 1;

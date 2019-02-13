@@ -7,7 +7,9 @@ export default Component.extend({
   companyQuery: '',
 
   @computed("locations", "companyQuery")
-  groupedLocations(locations, companyQuery) {
+  groupedLocations() {
+    const locations = this.get("locations");
+    const companyQuery = this.get("companyQuery");
     const reg = new RegExp(companyQuery, "i");
 
     return  _

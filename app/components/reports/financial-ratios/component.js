@@ -6,35 +6,44 @@ const FinancialRatios = Component.extend({
 
   @computed("model.{total_sales_revenue,total_dist_revenue}")
   totalGrossSales() {
-    let sales = this.get("model.total_sales_revenue");
-    let dist = this.get("model.total_dist_revenue");
+    const sales = this.get("model.total_sales_revenue");
+    const dist = this.get("model.total_dist_revenue");
     return Number(sales) + Number(dist);
   },
 
   @computed("totalGrossSales", "model.total_spoilage")
-  totalNetSales(sales, spoilage) {
+  totalNetSales() {
+    const sales = this.get("totalGrossSales");
+    const spoilage = this.get("model.total_spoilage");
     return sales - Number(spoilage);
   },
 
   @computed("totalGrossSales", "model.total_spoilage")
-  grossMargin(totalGrossSales, spoilage) {
+  grossMargin() {
+    const totalGrossSales = this.get("totalGrossSales");
+    const spoilage = this.get("model.total_spoilage");
     return (1 - Number(spoilage) / totalGrossSales);
   },
 
   @computed("model.raw_data.[]")
-  totalVisits(rawData) {
+  totalVisits() {
+    const rawData = this.get("model.raw_data");
     return _
       .flattenDeep(rawData.map(l => l.raw_data))
       .length;
   },
 
   @computed("totalSales", "totalGrossSales")
-  percOfTotalSales(total, local) {
+  percOfTotalSales() {
+    const total = this.get("totalSales");
+    const local = this.get("totalGrossSales");
     return local/total;
   },
 
   @computed("totalNetSales", "totalVisits")
-  aveCostPerVisit(totalNetSales, totalVisits) {
+  aveCostPerVisit() {
+    const totalNetSales = this.get("totalNetSales");
+    const totalVisits = this.get("totalVisits");
     return totalNetSales/totalVisits;
   }
 });

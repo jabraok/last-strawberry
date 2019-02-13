@@ -13,12 +13,16 @@ export default Component.extend({
   shouldEnableTooltip: notEmpty("toolTipMessage"),
 
   @computed("selected")
-  isSelected(val) {
+  isSelected() {
+    const val = this.get("selected");
     return (val === "true" || val === true);
   },
 
   @computed("isSelected", "selectedTooltipMessage", "unSelectedTooltipMessage")
-  toolTipMessage(isSelected, selectedTooltipMessage, unSelectedTooltipMessage) {
+  toolTipMessage() {
+    const isSelected = this.get("isSelected");
+    const selectedTooltipMessage = this.get("selectedTooltipMessage");
+    const unSelectedTooltipMessage = this.get("unSelectedTooltipMessage");
     if(isSelected && isPresent(selectedTooltipMessage)) {
       return selectedTooltipMessage;
     }

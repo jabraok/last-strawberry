@@ -8,7 +8,10 @@ export default Component.extend({
   filterTerm: "",
 
   @computed("items.@each.{active,name,code,position}", "filterTerm", "showInactive")
-  filteredItems(items, query, showInactive){
+  filteredItems(){
+    const items = this.get("items");
+    const query = this.get("filterTerm");
+    const showInactive = this.get("showInactive");
     return items
       .sortBy("position")
       .filter(item => item.get("active") || showInactive)

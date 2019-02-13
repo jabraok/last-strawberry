@@ -8,7 +8,9 @@ export default Component.extend({
   items: sort("model", "sortName"),
 
   @computed("items.@each.{text}", "query")
-  filteredItems(items, query) {
+  filteredItems() {
+    const items = this.get("items");
+    const query = this.get("query");
     return items
       .filter(item => {
 

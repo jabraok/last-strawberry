@@ -7,9 +7,9 @@ export default Controller.extend({
 
   @computed("items.@each.{isProduct,active}", "model.{itemDesires.[],itemCreditRates.[]}")
   itemSettings() {
-    let items = this.get('items');
-    let itemDesires = this.get('model.itemDesires');
-    let itemCreditRates = this.get('model.itemCreditRates');
+    const items = this.get('items');
+    const itemDesires = this.get('model.itemDesires');
+    const itemCreditRates = this.get('model.itemCreditRates');
     return items
       .filter(i => i.get("isProduct") && i.get("active"))
       .map(item => {
@@ -25,7 +25,8 @@ export default Controller.extend({
   },
 
   @computed("model.company.activeLocations.@each.{locationHash}")
-  addresses(locations) {
+  addresses() {
+    const locations = this.get("model.company.activeLocations");
     return locations.map(location => location.get("address"));
   }
 });

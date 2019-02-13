@@ -12,7 +12,8 @@ export default Component.extend({
   validators: LocationValidations,
 
   @computed("session")
-  codeValidator(session) {
+  codeValidator() {
+    const session = this.get("session");
     return UniqueFieldValidator.create({type:"location", key:"code", session});
   },
 

@@ -34,12 +34,17 @@ export default Component.extend({
   },
 
   @computed("type", "loading")
-  iconName(type, loading) {
+  iconName() {
+    const type = this.get("type");
+    const loading = this.get("loading");
     return loading ? "loop" : type;
   },
 
   @computed("loading", "hasError", "label")
-  fmtLabel(loading, hasError, label) {
+  fmtLabel() {
+    const loading = this.get("loading");
+    const hasError = this.get("hasError");
+    const label = this.get("label");
     if(loading) {
       return this.get("loadingMessage") || "Loading...";
     } else if(hasError) {

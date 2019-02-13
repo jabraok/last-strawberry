@@ -7,12 +7,15 @@ export default Component.extend({
   session:     service(),
 
   @computed("nameValidator.isValid", "changeset.isValid")
-  isValid(validName, validChangeset) {
+  isValid() {
+    const validName = this.get("nameValidator.isValid");
+    const validChangeset = this.get("changeset.isValid");
     return validName && validChangeset;
   },
 
   @computed("session")
-  nameValidator(session) {
+  nameValidator() {
+    const session = this.get("session");
     return UniqueFieldValidator.create({type:"routePlanBlueprint", key:"name", session});
   },
 
@@ -27,8 +30,8 @@ export default Component.extend({
   },
 
   @computed("users.[]")
-  drivers(users) {
-
+  drivers() {
+    const users = this.get("users");
     const drivers = users.map(u => {
       return {name: u.get("name"), id: u.get("id")};
     });

@@ -7,12 +7,14 @@ export default Component.extend({
   classNameBindings: ['indexStyle'],
 
   @computed('model.id')
-  saveRoutePlanBlueprintDomId(id) {
+  saveRoutePlanBlueprintDomId() {
+    const id = this.get("model.id");
     return `saveRoutePlanBlueprint-${id}`
   },
 
   @computed("index")
-  colorScheme(index = 0) {
+  colorScheme() {
+    const index = this.get("index") || 0;
     return COLOR_SCHEMES[index];
   },
 

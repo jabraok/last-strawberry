@@ -10,12 +10,16 @@ export default Model.extend({
   priceTier:  belongsTo("price-tier"),
 
   @computed("isNew", "item.active")
-  isPending(isNew, isItemActive) {
+  isPending() {
+    const isNew = this.get("isNew");
+    const isItemActive = this.get("item.active");
     return isNew && isItemActive;
   },
 
   @computed("isNew", "item.active")
-  isActive(isNew, isItemActive) {
+  isActive() {
+    const isNew = this.get("isNew");
+    const isItemActive = this.get("item.active");
     return !isNew && isItemActive;
   }
 });
