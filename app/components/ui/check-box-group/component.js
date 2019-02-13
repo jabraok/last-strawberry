@@ -8,7 +8,7 @@ export default Component.extend({
     const selectedIndexes = this.get("selectedIndexes") || [];
     const labels = this.get("labels") || [];
     return labels.map((label, index) => {
-      return {label, index, selected: selectedIndexes.contains(index)};
+      return {label, index, selected: selectedIndexes.includes(index)};
     });
   }),
 
