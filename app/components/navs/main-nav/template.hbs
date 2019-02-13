@@ -36,7 +36,7 @@
           label=item.label
           size=1.4
           padding=1.2
-          iconName=item.icon
+          iconName= (if item.icon item.icon "check")
           action=(action navigateToRoute item.route)}}
       {{/each}}
     {{/ui/popup-menu}}
