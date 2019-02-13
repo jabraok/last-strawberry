@@ -1,5 +1,5 @@
 import Controller from '@ember/controller';
-import { computed } from 'ember-decorators/object';
+import { computed } from '@ember/object';
 
 const tomorrow = moment().add(1, "days").format("YYYY-MM-DD");
 
@@ -12,24 +12,21 @@ export default Controller.extend({
   companyQuery: "",
   includedItems: "",
 
-  @computed("orders.@each.{deliveryDate,isPurchaseOrder}", "deliveryDate")
-  filteredOrders() {
+  filteredOrders: computed("orders.@each.{deliveryDate,isPurchaseOrder}", "deliveryDate", function() {
     const orders = this.get("orders");
     const deliveryDate = this.get("deliveryDate");
     return orders.filter(order => {
       const matchesDate = order.get("deliveryDate") === deliveryDate;
       return matchesDate && order.get("isPurchaseOrder");
     });
-  },
+  }),
 
-  @computed("deliveryDate")
-  isOldDate() {
+  isOldDate: computed("deliveryDate", function() {
     const deliveryDate = this.get("deliveryDate");
     return moment(deliveryDate).isBefore(tomorrow);
-  },
+  }),
 
-  @computed("locations.@each.{active,isVendor}", "filteredOrders.[]")
-  unfulfilledLocations() {
+  unfulfilledLocations: computed("locations.@each.{active,isVendor}", "filteredOrders.[]", function() {
     const locations = this.get("locations");
     const purchaseOrders = this.get("filteredOrders");
     const fulfilledLocations = purchaseOrders.map(o => o.get("location").content);
@@ -38,15 +35,14 @@ export default Controller.extend({
       .toArray();
 
     return _.difference(allLocations, fulfilledLocations);
-  },
+  }),
 
-  @computed("items.@each.{isPurchased,active}")
-  allItems() {
+  allItems: computed("items.@each.{isPurchased,active}", function() {
     const items = this.get("items");
     return items
             .filter(item => item.get("isPurchased") && item.get("active"))
             .sortBy("name");
-  },
+  }),
 
   actions: {
     onRequestNewOrder() {

@@ -1,23 +1,21 @@
 import { inject as service } from '@ember/service';
 import Component from '@ember/component';
-import { computed } from 'ember-decorators/object';
+import { computed } from '@ember/object';
 import UniqueFieldValidator from "last-strawberry/validators/unique-field-validator";
 
 export default Component.extend({
   session:     service(),
 
-  @computed("nameValidator.isValid", "changeset.isValid")
-  isValid() {
+  isValid: computed("nameValidator.isValid", "changeset.isValid", function() {
     const validName = this.get("nameValidator.isValid");
     const validChangeset = this.get("changeset.isValid");
     return validName && validChangeset;
-  },
+  }),
 
-  @computed("session")
-  nameValidator() {
+  nameValidator: computed("session", function() {
     const session = this.get("session");
     return UniqueFieldValidator.create({type:"routePlanBlueprint", key:"name", session});
-  },
+  }),
 
   didInsertElement() {
     this._super(...arguments);
@@ -29,8 +27,7 @@ export default Component.extend({
     this.get("nameValidator").destroy();
   },
 
-  @computed("users.[]")
-  drivers() {
+  drivers: computed("users.[]", function() {
     const users = this.get("users");
     const drivers = users.map(u => {
       return {name: u.get("name"), id: u.get("id")};
@@ -39,7 +36,7 @@ export default Component.extend({
     // Add blank row
     drivers.unshiftObject({name: "Unselect driver"});
     return drivers;
-  },
+  }),
 
   actions: {
     setSelectedDriver(driver){

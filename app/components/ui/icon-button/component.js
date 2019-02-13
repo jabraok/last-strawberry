@@ -2,7 +2,7 @@ import { resolve } from 'rsvp';
 import Component from '@ember/component';
 import { notEmpty } from '@ember/object/computed';
 import { style } from "last-strawberry/utils/styles";
-import { computed } from 'ember-decorators/object';
+import { computed } from '@ember/object';
 
 export default Component.extend({
   classNames: ["row", "ui_icon-button", "btn"],
@@ -33,15 +33,13 @@ export default Component.extend({
     this.clearTween();
   },
 
-  @computed("type", "loading")
-  iconName() {
+  iconName: computed("type", "loading", function() {
     const type = this.get("type");
     const loading = this.get("loading");
     return loading ? "loop" : type;
-  },
+  }),
 
-  @computed("loading", "hasError", "label")
-  fmtLabel() {
+  fmtLabel: computed("loading", "hasError", "label", function() {
     const loading = this.get("loading");
     const hasError = this.get("hasError");
     const label = this.get("label");
@@ -52,7 +50,7 @@ export default Component.extend({
     } else {
       return label;
     }
-  },
+  }),
 
   @style("size", "padding", "color", "backgroundColor", "borderRadius")
   componentStyles(

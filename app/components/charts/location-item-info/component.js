@@ -1,6 +1,6 @@
 import Component from '@ember/component';
 import { notEmpty } from '@ember/object/computed';
-import { computed } from 'ember-decorators/object';
+import { computed } from '@ember/object';
 
 export default Component.extend({
   classNames: ["col", "spaceBetween", "card-1"],
@@ -9,9 +9,8 @@ export default Component.extend({
   hasItem:        notEmpty("item"),
   hasLastUpdated: notEmpty("salesData.ts"),
 
-  @computed("salesData.ts")
-  lastUpdated() {
+  lastUpdated: computed("salesData.ts", function() {
     const timestamp = this.get("salesData.ts");
     return moment.unix(timestamp);
-  }
+  })
 });

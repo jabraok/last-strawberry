@@ -1,13 +1,12 @@
 import Component from '@ember/component';
-import { computed } from 'ember-decorators/object';
+import { computed } from '@ember/object';
 
 export default Component.extend({
   classNames: ['row', 'stretch'],
 
   companyQuery: '',
 
-  @computed("locations", "companyQuery")
-  groupedLocations() {
+  groupedLocations: computed("locations", "companyQuery", function() {
     const locations = this.get("locations");
     const companyQuery = this.get("companyQuery");
     const reg = new RegExp(companyQuery, "i");
@@ -18,5 +17,5 @@ export default Component.extend({
       .sortBy(location => location.get("company.name"))
       .groupBy(location => location.get("company.name"))
       .value();
-  }
+  })
 });

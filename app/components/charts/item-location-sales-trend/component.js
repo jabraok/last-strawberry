@@ -1,7 +1,7 @@
 import Component from '@ember/component';
 import { run } from '@ember/runloop';
 import { notEmpty, and } from '@ember/object/computed';
-import { computed } from 'ember-decorators/object';
+import { computed } from '@ember/object';
 
 export default Component.extend({
   classNames: ["col", "card-1"],
@@ -28,8 +28,7 @@ export default Component.extend({
     this.salesDataStreamSubscription.dispose();
   },
 
-  @computed("debouncedData.@each.{previous_ending,ending,returns,sold,starting,ts}")
-  chartData(){
+  chartData: computed("debouncedData.@each.{previous_ending,ending,returns,sold,starting,ts}", function (){
     const salesData = this.get("debouncedData") || [];
     return {
       labels: salesData.map(sd => moment.unix(sd.ts).format("MM-DD")),
@@ -66,5 +65,5 @@ export default Component.extend({
         }
       ]
     }
-  }
+  })
 });

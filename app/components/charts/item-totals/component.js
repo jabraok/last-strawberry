@@ -1,12 +1,12 @@
 import { A } from '@ember/array';
 import Component from '@ember/component';
-import { computed } from 'ember-decorators/object';
+import { computed } from '@ember/object';
 
 export default Component.extend({
   classNames: ["col", "card-1"],
 
-  @computed("orders.@each.{totalQuantity}")
-  itemTotals() {
+
+  itemTotals: computed("orders.@each.{totalQuantity}", function(){
     const orders = this.get("orders") || A();
     return _
       .chain(orders.toArray())
@@ -21,11 +21,10 @@ export default Component.extend({
       .filter(row => row.quantity > 0)
       .sortBy(["position"])
       .value();
-  },
+  }),
 
-  @computed("orders.@each.{totalQuantity}")
-  totalUnits() {
+  totalUnits: computed("orders.@each.{totalQuantity}", function() {
     const orders = this.get("orders") || A();
     return orders.reduce((acc, cur) => acc + cur.get("totalQuantity"), 0);
-  }
+  })
 });

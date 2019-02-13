@@ -1,16 +1,16 @@
 import Component from '@ember/component';
-import { computed } from 'ember-decorators/object';
+import { computed } from '@ember/object';
 
 export default Component.extend({
   classNames:['row'],
-  @computed('selectedIndexes', 'labels')
-  group() {
+
+  group: computed('selectedIndexes', 'labels', function() {
     const selectedIndexes = this.get("selectedIndexes") || [];
     const labels = this.get("labels") || [];
     return labels.map((label, index) => {
       return {label, index, selected: selectedIndexes.contains(index)};
     });
-  },
+  }),
 
   actions: {
     toggle(indexToToggle) {

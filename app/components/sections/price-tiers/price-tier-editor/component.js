@@ -1,18 +1,16 @@
 import Component from '@ember/component';
-import { computed } from 'ember-decorators/object';
+import { computed } from '@ember/object';
 
 export default Component.extend({
-  @computed("model.itemPrices.@each.{isPending}")
-  openItemPrices() {
+  openItemPrices: computed("model.itemPrices.@each.{isPending}", function() {
     const itemPrices = this.get("model.itemPrices") || [];
     return itemPrices.filter(ip => ip.get("isPending"));
-  },
+  }),
 
-  @computed("model.itemPrices.@each.{isActive}")
-  fulfilledItemPrices() {
+  fulfilledItemPrices: computed("model.itemPrices.@each.{isActive}", function() {
     const itemPrices = this.get("model.itemPrices") || [];
     return itemPrices.filter(ip => ip.get("isActive"));
-  },
+  }),
 
   actions: {
     onRequestDestroyPriceTier() {

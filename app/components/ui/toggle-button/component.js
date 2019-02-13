@@ -1,7 +1,7 @@
 import Component from '@ember/component';
 import { isPresent } from '@ember/utils';
 import { notEmpty } from '@ember/object/computed';
-import { computed } from 'ember-decorators/object';
+import { computed } from '@ember/object';
 
 export default Component.extend({
   classNames: ['row', 'center'],
@@ -12,14 +12,12 @@ export default Component.extend({
 
   shouldEnableTooltip: notEmpty("toolTipMessage"),
 
-  @computed("selected")
-  isSelected() {
+  isSelected: computed("selected", function() {
     const val = this.get("selected");
     return (val === "true" || val === true);
-  },
+  }),
 
-  @computed("isSelected", "selectedTooltipMessage", "unSelectedTooltipMessage")
-  toolTipMessage() {
+  toolTipMessage: computed("isSelected", "selectedTooltipMessage", "unSelectedTooltipMessage", function() {
     const isSelected = this.get("isSelected");
     const selectedTooltipMessage = this.get("selectedTooltipMessage");
     const unSelectedTooltipMessage = this.get("unSelectedTooltipMessage");
@@ -32,5 +30,5 @@ export default Component.extend({
     }
 
     return undefined;
-  }
+  })
 });

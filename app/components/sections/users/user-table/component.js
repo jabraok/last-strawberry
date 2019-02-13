@@ -1,6 +1,6 @@
 import { inject as service } from '@ember/service';
 import Component from '@ember/component';
-import { computed } from 'ember-decorators/object';
+import { computed } from '@ember/object';
 import UserValidations from "last-strawberry/validators/user";
 import Roles from "last-strawberry/constants/roles";
 
@@ -15,8 +15,7 @@ export default Component.extend({
 
   validators: UserValidations,
 
-  @computed("users.@each.{name,email}", "filterTerm")
-  filteredUsers(){
+  filteredUsers: computed("users.@each.{name,email}", "filterTerm", function(){
     const users = this.get("users");
     const query = this.get("filterTerm");
     return users
@@ -24,7 +23,7 @@ export default Component.extend({
         const reg = new RegExp(query, "i");
         return reg.test(user.get("name")) || reg.test(user.get("email"));
       });
-  },
+  }),
 
   actions: {
     onRequestNewUser() {
