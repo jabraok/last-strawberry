@@ -1,6 +1,8 @@
 'use strict';
 
 const EmberApp = require('ember-cli/lib/broccoli/ember-app');
+const Funnel = require('broccoli-funnel');
+const MergeTrees = require('broccoli-merge-trees');
 
 module.exports = function(defaults) {
   let app = new EmberApp(defaults, {
@@ -83,5 +85,9 @@ module.exports = function(defaults) {
   //   app.import('bower_components/fetch-mock/src/server.js');
   // }
 
-  return app.toTree();
+  const netlifyTree = new Funnel('netlify', {
+    files: ['_redirects', '_headers']
+  });
+
+  return MergeTrees([app.toTree(), netlifyTree]);
 };
