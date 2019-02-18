@@ -20,19 +20,5 @@ export default Route.extend({
     return this.store.findRecord("location", params.location_id, {
       include:MODEL_INCLUDES.join(",")
     });
-  },
-
-	actions: {
-		async createOrderTemplate() {
-			const location = this.modelFor("standing-orders.location");
-			const orderTemplate = this.store.createRecord('order-template', {location, startDate:moment().toDate()});
-			await orderTemplate.save();
-
-			this.transitionTo('standing-orders.location.order-template', orderTemplate.get('id'));
-		},
-
-		selectOrderTemplate(id) {
-			this.transitionTo('standing-orders.location.order-template', id);
-		}
-	}
+  }
 });

@@ -3,12 +3,12 @@
     {{sections/companies/company-settings
         model=model
         priceTiers=priceTiers
-        updatePriceTier=(route-action "updatePriceTier")
-        save=(route-action "saveCompany")}}
+        updatePriceTier=(action "updatePriceTier")
+        save=(action "saveCompany")}}
     {{sections/companies/location-manager
         locations=model.activeLocations
-        showLocation=(route-action "showLocation")
-        createNewLocation=(route-action "createNewLocation")}}
+        showLocation=(action "showLocation")
+        createNewLocation=(action "createNewLocation")}}
     <div class="col settingMenu">
       {{#ui/popup-menu icon="menu"}}
         {{ui/icon-button
@@ -19,7 +19,7 @@
             color=white
             flat=true
             backgroundColor=colors.SKY_BLUE
-            action=(route-action "archiveCompany" model)}}
+            action=(action "archiveCompany" model)}}
       {{/ui/popup-menu}}
     </div>
   </div>

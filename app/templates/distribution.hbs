@@ -4,27 +4,25 @@
       canCreateRoutePlans=true
       routePlans=activeRoutePlans
       routePlanBlueprints=routePlanBlueprints
-      createRoutePlan=(route-action "createRoutePlan")
+      createRoutePlan=(action "createRoutePlan")
       onDateSelected=(action "onDateSelected")
       printFulfillmentDocuments=(action "printFulfillmentDocuments")
       generateRoutePlanCSV=(action "generateRoutePlanCSV")
-      applyTemplate=(route-action "applyTemplate")}}
-
+      applyTemplate=(action "applyTemplate")}}
   {{sections/distribution/route-plan-canvas
       date=date
       routePlans=activeRoutePlans
       routeVisits=activeRouteVisits
       selectedRouteVisit=selectedRouteVisit
-      saveRoutePlanBlueprint=(route-action "saveRoutePlanBlueprint")
-      destroyRoutePlan=(route-action "destroyRoutePlan")
-      onRouteVisitUpdate=(route-action "onRouteVisitUpdate")
-      removeRouteVisit=(route-action "removeRouteVisit")
-      updateRoutePlan=(route-action "updateRoutePlan")
+      saveRoutePlanBlueprint=(action "saveRoutePlanBlueprint")
+      destroyRoutePlan=(action "destroyRoutePlan")
+      onRouteVisitUpdate=(action "onRouteVisitUpdate")
+      removeRouteVisit=(action "removeRouteVisit")
+      updateRoutePlan=(action "updateRoutePlan")
       selectRouteVisit=(action "selectRouteVisit")
       deSelectRouteVisit=(action "deSelectRouteVisit")
       users=drivers}}
 </div>
-
 {{sections/distribution/visit-map
     openRouteVisits=openRouteVisits
     routePlans=activeRoutePlans

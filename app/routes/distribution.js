@@ -1,11 +1,10 @@
-import $ from 'jquery';
-import { isEmpty, isPresent } from '@ember/utils';
 import { all } from 'rsvp';
-import { inject as service } from '@ember/service';
 import Route from '@ember/routing/route';
-import { run } from '@ember/runloop';
 import AuthenticatedRouteMixin from "ember-simple-auth/mixins/authenticated-route-mixin";
-import { timeToMinutes } from "last-strawberry/utils/time";
+import { inject as service } from '@ember/service';
+import { run } from '@ember/runloop';
+import { isEmpty, isPresent } from '@ember/utils';
+import $ from 'jquery';
 import { decodePolyline } from "last-strawberry/utils/maps";
 
 const ROUTE_VISIT_INCLUDES = [
@@ -38,7 +37,6 @@ const ROUTE_PLAN_INCLUDES = [
 ];
 
 export default Route.extend(AuthenticatedRouteMixin, {
-  requestGenerator: service(),
   session: service(),
 
   queryParams: {
@@ -74,22 +72,6 @@ export default Route.extend(AuthenticatedRouteMixin, {
     return {};
   },
 
-  async optimizeRoutePlan(routePlan){
-    const url = `routing/optimize_route/${routePlan.get("id")}`;
-    const { solution: { driver }} = await this.get("requestGenerator").getRequest(url);
-    const routeVisits = await routePlan.get("routeVisits");
-
-    routeVisits.forEach(rv => {
-      const match = driver.find(d => String(d.location_id) === String(rv.get("id")));
-      if(match !== undefined){
-        rv.set("arriveAt", timeToMinutes(match.arrival_time));
-        rv.set("departAt", timeToMinutes(match.finish_time));
-
-        rv.save();
-      }
-    });
-  },
-
   async setPolyline(routePlan){
     if(isEmpty(routePlan.get("routeVisits"))) {
       run(() => routePlan.set("polyline", ""));
@@ -112,79 +94,4 @@ export default Route.extend(AuthenticatedRouteMixin, {
       }
     }
   },
-
-  actions: {
-    async saveRoutePlanBlueprint(changeset) {
-      const routePlanBlueprint = await this.store
-        .createRecord("route-plan-blueprint", {name: changeset.get("name"), user: changeset.get("user")})
-        .save();
-
-      const routePlan = changeset.get("routePlan");
-      const routeVisits = await routePlan.get("sortedRouteVisits");
-
-      routeVisits.forEach((rv, i) => {
-        const address = rv.get("address");
-        this.store
-          .createRecord("route-plan-blueprint-slot", {routePlanBlueprint, position:i, address})
-          .save();
-      });
-    },
-
-    destroyRoutePlan(routePlan) {
-      routePlan.destroyRecord();
-    },
-
-    async onRouteVisitUpdate(ot) {
-      const { routeVisit, fromRoutePlan, toRoutePlan, position } = ot;
-
-      routeVisit.setProperties({routePlan: toRoutePlan, position});
-      await routeVisit.save();
-
-      if(isPresent(fromRoutePlan)) {
-        this.setPolyline(fromRoutePlan);
-      }
-
-      if(isPresent(toRoutePlan)) {
-        this.setPolyline(toRoutePlan);
-      }
-    },
-
-    removeRouteVisit(routeVisit, routePlanPromise) {
-      routeVisit.set("routePlan", undefined);
-      routeVisit.save();
-
-      run(() => routePlanPromise.then(rp => this.setPolyline(rp)));
-    },
-
-    async applyTemplate(routePlanBlueprint) {
-      const routePlan = await this.store
-        .createRecord("route-plan", {date:this.controller.get("date"), user: routePlanBlueprint.get("user")})
-        .save();
-
-      const orphanedRouteVisits = this.store.peekAll("route-visit")
-        .filter(rv => rv.get("isOpen"));
-
-      routePlanBlueprint.get("routePlanBlueprintSlots")
-        .forEach(slot => {
-          const match = orphanedRouteVisits.find(rv => rv.get("address.id") === slot.get("address.id"));
-          if(match) {
-            match.setProperties({position:10+slot.get("position"), routePlan});
-            match.save();
-          }
-        });
-
-      this.setPolyline(routePlan);
-    },
-
-    updateRoutePlan(routePlan, key, val) {
-      routePlan.set(key, val);
-      routePlan.save();
-    },
-
-    createRoutePlan() {
-      this.store
-        .createRecord("route-plan", {date:this.controller.get("date")})
-        .save();
-    }
-  }
 });

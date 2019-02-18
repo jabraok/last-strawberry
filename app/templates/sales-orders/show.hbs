@@ -1,18 +1,17 @@
 {{ui/order-editor
     model=model
     items=filteredItems
-    updateShipping=(route-action "updateShipping")
-    saveOrder=(route-action "saveOrder")
-    createOrderItem=(route-action "createOrderItem")
-    updateOrderItem=(route-action "updateOrderItem")
-    saveOrderItem=(route-action "saveOrderItem")
-    deleteOrderItem=(route-action "deleteOrderItem")
+    updateShipping=(action "updateShipping")
+    saveOrder=(action "saveOrder")
+    createOrderItem=(action "createOrderItem")
+    updateOrderItem=(action "updateOrderItem")
+    saveOrderItem=(action "saveOrderItem")
+    deleteOrderItem=(action "deleteOrderItem")
     onOrderItemChange=(action "onOrderItemChange")
-    emailOrder=(route-action "emailOrder" model)
-    deleteOrder=(route-action "deleteOrder" model)
-    toggleOrderState=(route-action "toggleOrderState" model)
-    updateDeliveryDate=(route-action "updateDeliveryDate" model)}}
-
+    emailOrder=(action "emailOrder" model)
+    deleteOrder=(action "deleteOrder" model)
+    toggleOrderState=(action "toggleOrderState" model)
+    updateDeliveryDate=(action "updateDeliveryDate" model)}}
 {{#sticky-container}}
   <div class="row top wrap">
     {{charts/location-item-info
@@ -21,16 +20,13 @@
         itemTotals=itemTotals
         salesData=salesData.lastObject
         isLoading=loadingFbData}}
-
     {{sections/locations/location-note
         locationNote=model.location.note
-        save=(route-action "saveLocationNote" model.location)}}
-
+        save=(action "saveLocationNote" model.location)}}
     {{charts/item-location-sales-trend
         item=item
         salesData=salesData
         isLoading=loadingFbData}}
-
     {{charts/item-totals
         orders=salesOrders}}
   </div>

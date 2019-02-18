@@ -18,5 +18,12 @@ export default Controller.extend({
     const data = this.get("filteredCompaniesFinancials");
     return data
       .sort((a, b) => Number(b.total_sales_revenue) - Number(a.total_sales_revenue));
-  })
+  }),
+
+  actions: {
+    onDatesConfirmed(startDate, endDate) {
+      this.set("startDate", startDate);
+      this.set("endDate", endDate);
+    }
+  }
 });

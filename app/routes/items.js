@@ -17,16 +17,5 @@ export default Route.extend(AuthenticatedRouteMixin, {
 							"filter[tag]": ItemTypes.INGREDIENT,
 							include:MODEL_INCLUDES.join(",")
 						});
-	},
-
-  actions: {
-		saveItem(changeset) {
-      changeset.save();
-    },
-
-    archiveItem(item) {
-      item.set("active", false);
-      item.save();
-    }
-  }
+	}
 });

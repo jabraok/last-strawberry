@@ -1,7 +1,5 @@
 import { all } from 'rsvp';
-import { inject as service } from '@ember/service';
 import Route from '@ember/routing/route';
-import { run } from '@ember/runloop';
 import AuthenticatedRouteMixin from "ember-simple-auth/mixins/authenticated-route-mixin";
 
 const COMPANY_INCLUDES = [
@@ -19,8 +17,6 @@ const ORDER_INCLUDES = [
 ];
 
 export default Route.extend(AuthenticatedRouteMixin, {
-  session: service(),
-
   queryParams: {
     deliveryDate: {
       refreshModel: true
@@ -60,36 +56,5 @@ export default Route.extend(AuthenticatedRouteMixin, {
         include:ORDER_INCLUDES.join(",")
       })
     ]);
-	},
-
-  showOrder(order) {
-    this.transitionTo("purchase-orders.show", order.get("id"));
-  },
-
-  actions: {
-    onOrderSelected(order) {
-      this.showOrder(order);
-    },
-
-    async createOrder(location) {
-      const that = this;
-      return run(async function() {
-        const deliveryDate = that.paramsFor("purchase-orders").deliveryDate;
-        const order = await that.store
-          .createRecord("order", {location, deliveryDate, orderType:"purchase-order"})
-          .save();
-
-        await that.showOrder(order);
-      });
-    },
-
-    onDateSelected(date) {
-      const deliveryDate = this.paramsFor("purchase-orders").deliveryDate;
-
-      if(deliveryDate !== moment(date).format("YYYY-MM-DD")) {
-        this.controllerFor("purchase-orders").set("deliveryDate", moment(date).format("YYYY-MM-DD"));
-        this.transitionTo("purchase-orders");
-      }
-    }
-  }
+	}
 });

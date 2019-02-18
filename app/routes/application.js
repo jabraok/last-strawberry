@@ -9,11 +9,5 @@ export default Route.extend(ApplicationRouteMixin, {
 
   routeIfAlreadyAuthenticated: computed(function() {
     return 'sales-orders';
-  }),
-
-  actions: {
-    navigateToRoute(route) {
-      this.transitionTo(route);
-    }
-  }
+  })
 });

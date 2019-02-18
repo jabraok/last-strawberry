@@ -2,10 +2,9 @@
   {{sections/companies/customer-list
     customers=customers
     priceTiers=priceTiers
-    showCustomer=(route-action "showCustomer")
-    createNewCustomer=(route-action "createNewCustomer")
+    showCustomer=(action "showCustomer")
+    createNewCustomer=(action "createNewCustomer")
   }}
-
   <div class="col-5">
     {{outlet}}
   </div>

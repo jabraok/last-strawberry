@@ -20,11 +20,5 @@ export default Route.extend({
 			this.store.query("company", { "filter[active_state]":activeState.ACTIVE, "filter[is_customer]":true, include:MODEL_INCLUDES.join(",")}),
 			this.store.query("item", {"filter[is_sold]":true})
 		]);
-  },
-
-	actions: {
-		locationSelected(id) {
-			this.transitionTo('standing-orders.location', id);
-		}
-	}
+  }
 });

@@ -1,5 +1,6 @@
 import Controller from '@ember/controller';
 import { computed } from '@ember/object';
+import { run } from '@ember/runloop';
 
 const tomorrow = moment().add(1, "days").format("YYYY-MM-DD");
 
@@ -44,6 +45,10 @@ export default Controller.extend({
             .sortBy("name");
   }),
 
+  showOrder(order) {
+    this.transitionToRoute("purchase-orders.show", order.get("id"));
+  },
+
   actions: {
     onRequestNewOrder() {
       this.set("showCreateOrderModal", true);
@@ -56,6 +61,31 @@ export default Controller.extend({
     updateIncludedItems(items) {
       const selected = items.map((item) => item.id).join(",");
       this.set("includedItems", selected);
+    },
+
+    onOrderSelected(order) {
+      this.showOrder(order);
+    },
+
+    async createOrder(location) {
+      const that = this;
+      return run(async function() {
+        const deliveryDate = that.get('deliveryDate');
+        const order = await that.store
+          .createRecord("order", {location, deliveryDate, orderType:"purchase-order"})
+          .save();
+
+        await that.showOrder(order);
+      });
+    },
+
+    onDateSelected(date) {
+      const deliveryDate = this.get('deliveryDate');
+
+      if(deliveryDate !== moment(date).format("YYYY-MM-DD")) {
+        this.set("deliveryDate", moment(date).format("YYYY-MM-DD"));
+        this.transitionToRoute("purchase-orders");
+      }
     }
   }
 });

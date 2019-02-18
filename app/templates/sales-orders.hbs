@@ -1,11 +1,11 @@
 {{navs/orders-nav
     currentSelectedOrder=currentSelectedOrder
     deliveryDate=deliveryDate
-    onDateSelected=(route-action "onDateSelected")
-    stubOrders=(route-action "stubOrders")
+    onDateSelected=(action "onDateSelected")
+    stubOrders=(action "stubOrders")
     onRequestDuplicateOrders=(action "onRequestDuplicateOrders")
     onRequestNewOrder=(action "onRequestNewOrder")
-    onOrderSelected=(route-action "onOrderSelected")
+    onOrderSelected=(action "onOrderSelected")
     includeUnpublished=includeUnpublished
     includePublished=includePublished
     orders=filteredSalesOrders
@@ -38,7 +38,7 @@
         placeholder="Search for location"
         model=unfulfilledLocations
         close=(action "closeCreateSalesOrder")
-        onSubmit=(route-action "createSalesOrder")}}
+        onSubmit=(action "createSalesOrder")}}
   {{/tether-dialog}}
 {{/if}}
 {{#if showDuplicateOrdersModal}}
@@ -46,6 +46,6 @@
     {{modals/duplicate-orders
         fromDate=deliveryDate
         close=(action "closeDuplicateOrders")
-        submit=(route-action "duplicateOrders")}}
+        submit=(action "duplicateOrders")}}
   {{/tether-dialog}}
 {{/if}}

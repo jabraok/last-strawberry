@@ -7,36 +7,32 @@
       flat=true
       backgroundColor=colors.DARK_GREY
       padding=0.5
-      click=(route-action "archiveLocation" model)
+      click=(action "archiveLocation" model)
   }}
 </div>
-
 <div class="row stretch">
   {{sections/locations/notification-rules
       model=model
-      createNotification=(route-action "createNotification" model)
-      saveNotification=(route-action "saveNotification")
-      deleteNotification=(route-action "deleteNotification")}}
+      createNotification=(action "createNotification" model)
+      saveNotification=(action "saveNotification")
+      deleteNotification=(action "deleteNotification")}}
 </div>
-
 <div class="stretch section">
   {{sections/locations/location-settings
       model=model
       isVendor=true
-      save=(route-action "saveLocation")}}
-
+      save=(action "saveLocation")}}
   {{sections/locations/address-manager
       changeset=(changeset model.address.content AddressValidations)
       addresses=addresses
-      switchAddress=(route-action "switchAddress" model)
-      saveAddress=(route-action "saveAddress" model)}}
-
+      switchAddress=(action "switchAddress" model)
+      saveAddress=(action "saveAddress" model)}}
   {{sections/locations/schedule-manager
       model=model
-      onVisitDayChange=(route-action "onVisitDayChange")
-      onVisitWindowChange=(route-action "onVisitWindowChange")
-      onVisitWindowDayChange=(route-action "onVisitWindowDayChange")
-      createVisitWindow=(route-action "createVisitWindow")
-      deleteVisitWindow=(route-action "deleteVisitWindow")
+      onVisitDayChange=(action "onVisitDayChange")
+      onVisitWindowChange=(action "onVisitWindowChange")
+      onVisitWindowDayChange=(action "onVisitWindowDayChange")
+      createVisitWindow=(action "createVisitWindow")
+      deleteVisitWindow=(action "deleteVisitWindow")
   }}
 </div>

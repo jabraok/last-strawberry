@@ -1,9 +1,9 @@
 {{navs/orders-nav
     currentSelectedOrder=currentSelectedOrder
     deliveryDate=deliveryDate
-    onDateSelected=(route-action "onDateSelected")
+    onDateSelected=(action "onDateSelected")
     onRequestNewOrder=(action "onRequestNewOrder")
-    onOrderSelected=(route-action "onOrderSelected")
+    onOrderSelected=(action "onOrderSelected")
     includeUnpublished=includeUnpublished
     includePublished=includePublished
     orders=filteredOrders
@@ -29,6 +29,6 @@
         placeholder="Search for location"
         model=unfulfilledLocations
         close=(action "closeCreateOrder")
-        onSubmit=(route-action "createOrder")}}
+        onSubmit=(action "createOrder")}}
   {{/tether-dialog}}
 {{/if}}

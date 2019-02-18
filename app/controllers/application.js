@@ -18,6 +18,10 @@ export default Controller.extend({
 
     login() {
       this.transitionToRoute('login');
+    },
+
+    navigateToRoute(route) {
+      this.transitionToRoute(route);
     }
   }
 });

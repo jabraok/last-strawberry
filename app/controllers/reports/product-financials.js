@@ -12,5 +12,11 @@ export default Controller.extend({
     const data = this.get("model.report_data");
     return data
       .sort((a, b) => Number(b.total_sales) - Number(a.total_sales));
-  })
+  }),
+  actions: {
+    onDatesConfirmed(startDate, endDate) {
+      this.set("startDate", startDate);
+      this.set("endDate", endDate);
+    }
+  }
 });

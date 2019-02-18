@@ -1,19 +1,16 @@
 <div class="row stretch">
-
   <div class="col">
     {{lists/filterable-label-list
         model=vendors
-        itemClicked=(route-action "showVendor")}}
-
+        itemClicked=(action "showVendor")}}
     <div class="row">
       {{ui/input-action-bar
         class="create-new-vendor"
         type="add"
         placeholder="Create new vendor..."
-        submit=(route-action "createNewVendor")}}
+        submit=(action "createNewVendor")}}
     </div>
   </div>
-
   <div class="col-5">
     {{outlet}}
   </div>

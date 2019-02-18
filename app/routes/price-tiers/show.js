@@ -1,7 +1,6 @@
 import { all } from 'rsvp';
 import Route from '@ember/routing/route';
 import AuthenticatedRouteMixin from "ember-simple-auth/mixins/authenticated-route-mixin";
-import { updateModelField, saveModelIfDirty } from "last-strawberry/actions/model-actions";
 import { PRODUCT } from "last-strawberry/constants/item-types";
 
 const MODEL_INCLUDES = [
@@ -37,22 +36,5 @@ export default Route.extend(AuthenticatedRouteMixin, {
     .then(() => {
       return this.store.findRecord("price-tier", params.id, { reload: true, include:MODEL_INCLUDES.join(",") });
     });
-  },
-
-  actions: {
-    updateModelField,
-    saveModelIfDirty,
-
-    destroyPriceTier(model, switchingPriceTier) {
-      model.destroyRecord();
-
-      model.get("companies")
-        .forEach(company => {
-          company.set("priceTier", switchingPriceTier);
-          company.save();
-        });
-
-      this.transitionTo("price-tiers");
-    }
   }
 });

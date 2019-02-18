@@ -4,17 +4,15 @@
       logout=(action "logout")
       login=(action "login")
       name=userName
-      navigateToRoute=(route-action "navigateToRoute")
+      navigateToRoute=(action "navigateToRoute")
       authenticated=session.isAuthenticated}}
     {{navs/nav-bar}}
   </div>
-
   <div class="row stretch outerContainer">
     <div class="row stretch appContainer">
       {{outlet}}
     </div>
   </div>
-
   <div class="col">
     {{navs/main-footer}}
   </div>

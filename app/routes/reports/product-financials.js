@@ -36,12 +36,5 @@ export default Route.extend({
           .then(data => res(data));
       });
     });
-  },
-
-  actions: {
-    onDatesConfirmed(startDate, endDate) {
-      this.controllerFor("reports.product-financials").set("startDate", startDate);
-      this.controllerFor("reports.product-financials").set("endDate", endDate);
-    }
   }
 });

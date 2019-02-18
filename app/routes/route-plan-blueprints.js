@@ -15,19 +15,5 @@ export default Route.extend(AuthenticatedRouteMixin, {
 			this.store.findAll("user"),
       this.store.findAll("route-plan-blueprint")
 		]);
-	},
-
-  actions: {
-		saveRoutePlanBlueprint(id, name, driver) {
-			const routePlanBlueprint = this.store.peekRecord("route-plan-blueprint", id);
-			routePlanBlueprint.set("name", name);
-			routePlanBlueprint.set("user", driver);
-
-			routePlanBlueprint.save();
-		},
-
-		deleteRoutePlanBlueprint(routePlanBlueprint) {
-			routePlanBlueprint.destroyRecord();
-		}
-  }
+	}
 });

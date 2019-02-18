@@ -16,25 +16,5 @@ export default Route.extend(AuthenticatedRouteMixin, {
       this.store.findAll("price-tier"),
       this.store.query("company", {"filter[active_state]":activeState.ACTIVE})
     ]);
-	},
-
-  actions: {
-    showCustomer(id) {
-      this.transitionTo("customers.show", id);
-    },
-
-    async createNewCustomer(changeset) {
-      const insertedData = {
-        name: changeset.get("name"),
-        locationCodePrefix: changeset.get("locationCodePrefix"),
-        terms: changeset.get("terms"),
-        priceTier: changeset.get("priceTier")
-      };
-
-      const company = this.store.createRecord("company", insertedData);
-      await company.save();
-
-      this.transitionTo("customers.show", company);
-    }
-  }
+	}
 });

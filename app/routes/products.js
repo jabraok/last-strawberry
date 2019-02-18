@@ -16,21 +16,5 @@ export default Route.extend(AuthenticatedRouteMixin, {
               "filter[tag]": ItemTypes.PRODUCT,
               include:MODEL_INCLUDES.join(",")
             });
-	},
-
-  actions: {
-    saveItem(changeset) {
-      changeset.save();
-    },
-
-    archiveItem(item) {
-      item.set("active", false);
-      item.save();
-    },
-
-		createNewProduct(name) {
-      const item = this.store.createRecord('item', {name, tag:ItemTypes.PRODUCT, isSold:true, isPurchased:false});
-			item.save();
-    }
-  }
+	}
 });

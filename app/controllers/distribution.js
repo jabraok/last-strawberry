@@ -3,8 +3,13 @@ import Controller from '@ember/controller';
 import { filterBy } from '@ember/object/computed';
 import { computed } from '@ember/object';
 import downloadFile from "last-strawberry/utils/download-file";
+import { run } from '@ember/runloop';
+import { isEmpty, isPresent } from '@ember/utils';
+import $ from 'jquery';
+import { decodePolyline } from "last-strawberry/utils/maps";
 
 export default Controller.extend({
+  session: service(),
   pdfGenerator:   service(),
 
   queryParams:    ["date"],
@@ -29,6 +34,29 @@ export default Controller.extend({
   openRouteVisits: filterBy("activeRouteVisits", "isOpen", true),
 
   drivers: filterBy("users", "isDriver", true),
+
+  async setPolyline(routePlan){
+    if(isEmpty(routePlan.get("routeVisits"))) {
+      run(() => routePlan.set("polyline", ""));
+    } else {
+      const hq = "-118.317191,34.1693137";
+      const routeVisits = await routePlan.get("routeVisits");
+      const coordinates = routeVisits
+        .map(rv => [rv.get("lng"), rv.get("lat")])
+        .map(coords => coords.join(","));
+      const query = R.flatten([hq, coordinates, hq]).join(";");
+
+      const apiToken = this.get("session.data.authenticated.mapbox_api_token");
+      const url = `https://api.mapbox.com/directions/v5/mapbox/driving/${query}?geometries=polyline&access_token=${apiToken}`;
+      const result = await $.ajax({ url, type:"GET" });
+
+      if(isPresent(result.routes)){
+        run(() => routePlan.set("polyline", decodePolyline(result.routes[0].geometry)));
+      } else {
+        run(() => routePlan.set("polyline", ""));
+      }
+    }
+  },
 
   actions: {
     async printFulfillmentDocuments() {
@@ -87,6 +115,79 @@ export default Controller.extend({
 
     deSelectRouteVisit() {
       this.set("selectedRouteVisit", undefined);
+    },
+
+    async saveRoutePlanBlueprint(changeset) {
+      const routePlanBlueprint = await this.store
+        .createRecord("route-plan-blueprint", {name: changeset.get("name"), user: changeset.get("user")})
+        .save();
+
+      const routePlan = changeset.get("routePlan");
+      const routeVisits = await routePlan.get("sortedRouteVisits");
+
+      routeVisits.forEach((rv, i) => {
+        const address = rv.get("address");
+        this.store
+          .createRecord("route-plan-blueprint-slot", {routePlanBlueprint, position:i, address})
+          .save();
+      });
+    },
+
+    destroyRoutePlan(routePlan) {
+      routePlan.destroyRecord();
+    },
+
+    async onRouteVisitUpdate(ot) {
+      const { routeVisit, fromRoutePlan, toRoutePlan, position } = ot;
+
+      routeVisit.setProperties({routePlan: toRoutePlan, position});
+      await routeVisit.save();
+
+      if(isPresent(fromRoutePlan)) {
+        this.setPolyline(fromRoutePlan);
+      }
+
+      if(isPresent(toRoutePlan)) {
+        this.setPolyline(toRoutePlan);
+      }
+    },
+
+    removeRouteVisit(routeVisit, routePlanPromise) {
+      routeVisit.set("routePlan", undefined);
+      routeVisit.save();
+
+      run(() => routePlanPromise.then(rp => this.setPolyline(rp)));
+    },
+
+    async applyTemplate(routePlanBlueprint) {
+      const routePlan = await this.store
+        .createRecord("route-plan", {date: this.get("date"), user: routePlanBlueprint.get("user")})
+        .save();
+
+      const orphanedRouteVisits = this.store.peekAll("route-visit")
+        .filter(rv => rv.get("isOpen"));
+
+      routePlanBlueprint.get("routePlanBlueprintSlots")
+        .forEach(slot => {
+          const match = orphanedRouteVisits.find(rv => rv.get("address.id") === slot.get("address.id"));
+          if(match) {
+            match.setProperties({position:10+slot.get("position"), routePlan});
+            match.save();
+          }
+        });
+
+      this.setPolyline(routePlan);
+    },
+
+    updateRoutePlan(routePlan, key, val) {
+      routePlan.set(key, val);
+      routePlan.save();
+    },
+
+    createRoutePlan() {
+      this.store
+        .createRecord("route-plan", {date:this.get("date")})
+        .save();
     }
   }
 });
