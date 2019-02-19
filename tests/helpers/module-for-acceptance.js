@@ -1,6 +1,6 @@
 import { module } from 'qunit';
 import startApp from '../helpers/start-app';
-import { mockSetup, mockTeardown, getPretender } from 'ember-data-factory-guy';
+import { getPretender } from 'ember-data-factory-guy';
 import destroyApp from '../helpers/destroy-app';
 import preferencesMock from '../mocks/preferences-service';
 import { resolve } from 'rsvp';
@@ -21,8 +21,6 @@ export default function(name, options = {}) {
       });
       getPretender().get('https://api.mapbox.com/*', () => [200, {}, ""]);
 
-      mockSetup();
-
       if (options.beforeEach) {
         return options.beforeEach.apply(this, arguments);
       }
@@ -30,8 +28,7 @@ export default function(name, options = {}) {
     afterEach() {
       let afterEach = options.afterEach && options.afterEach.apply(this, arguments);
       return resolve(afterEach)
-        .then(() => destroyApp(this.application))
-        .then(() => mockTeardown());
+        .then(() => destroyApp(this.application));
     }
   });
 }

@@ -10,8 +10,7 @@ import TileLayerComponent from 'ember-leaflet/components/tile-layer';
 import {
   make,
   makeList,
-  manualSetup,
-  mockSetup
+  manualSetup
 } from 'ember-data-factory-guy';
 import decorateComponentClass from 'last-strawberry/tests/helpers/decorate-component-class';
 import { create } from 'ember-cli-page-object';
@@ -22,8 +21,6 @@ moduleForComponent('sections/locations/address-manager', 'Integration | Componen
   integration: true,
 
   beforeEach() {
-    mockSetup({logLevel: 1, responseTime: 1000, mockjaxLogLevel: 4});
-
     decorateComponentClass();
     this.page = create({context: this});
     manualSetup(this.container);
