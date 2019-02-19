@@ -32,20 +32,20 @@
   </div>
 {{/if}}
 {{#if showCreateSalesOrderModal}}
-  {{#tether-dialog close=(action "closeCreateSalesOrder")}}
+  {{#modal-dialog onClose=(action "closeCreateSalesOrder")}}
     {{ui/item-selector
         title="Create new sales order"
         placeholder="Search for location"
         model=unfulfilledLocations
         close=(action "closeCreateSalesOrder")
         onSubmit=(action "createSalesOrder")}}
-  {{/tether-dialog}}
+  {{/modal-dialog}}
 {{/if}}
 {{#if showDuplicateOrdersModal}}
-  {{#tether-dialog close=(action "closeDuplicateOrders")}}
+  {{#modal-dialog onClose=(action "closeDuplicateOrders")}}
     {{modals/duplicate-orders
         fromDate=deliveryDate
         close=(action "closeDuplicateOrders")
         submit=(action "duplicateOrders")}}
-  {{/tether-dialog}}
+  {{/modal-dialog}}
 {{/if}}

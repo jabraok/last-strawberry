@@ -4,7 +4,6 @@
         update=(action updateModelField model "name")
         onblur=(action saveModelIfDirty model)}}
   </div>
-
   <span>New items</span>
   <div class="openItemPricesContainer">
     {{#each openItemPrices as |ip|}}
@@ -15,8 +14,6 @@
           saveModelIfDirty=saveModelIfDirty}}
     {{/each}}
   </div>
-
-
   <span>Fulfilled Items</span>
   <div class="fulfilledItemPricesContainer">
     {{#each fulfilledItemPrices as |ip|}}
@@ -27,19 +24,17 @@
           saveModelIfDirty=saveModelIfDirty}}
     {{/each}}
   </div>
-
   <div class="row">
     <button class="buttonDelete" {{action "onRequestDestroyPriceTier"}}>Delete</button>
   </div>
 </div>
-
 {{#if showDestroyPriceTierModal}}
-  {{#tether-dialog close=(action "closeDestroyPriceTier")}}
+  {{#modal-dialog onClose=(action "closeDestroyPriceTier")}}
     {{modals/destroy-price-tier
       model=model
       priceTiers=priceTiers
       close=(action "closeDestroyPriceTier")
       submit=(action "destroyPriceTier")
     }}
-  {{/tether-dialog}}
+  {{/modal-dialog}}
 {{/if}}

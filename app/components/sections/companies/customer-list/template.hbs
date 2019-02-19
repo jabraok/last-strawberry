@@ -2,7 +2,6 @@
     model=customers
     itemClicked=showCustomer
 }}
-
 {{ui/icon-button
   label="New Customer"
   class="newCustomer"
@@ -13,14 +12,13 @@
   padding=1
   action=(action "onRequestNewCustomer")
 }}
-
 {{#if showNewCustomerModal}}
-  {{#tether-dialog close=(action "closeNewCustomer")}}
+  {{#modal-dialog onClose=(action "closeNewCustomer")}}
     {{modals/new-customer
       priceTiers=priceTiers
       changeset=(changeset stashedNewCustomerData validators)
       close=(action "closeNewCustomer")
       submit=(action "createNewCustomer")
     }}
-  {{/tether-dialog}}
+  {{/modal-dialog}}
 {{/if}}

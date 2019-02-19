@@ -4,7 +4,6 @@
       selectedRouteVisit=selectedRouteVisit
       selectRouteVisit=selectRouteVisit
       registerDropContainer=(action "registerDropContainer")}}
-
   {{#each routePlans as |routePlan index|}}
     {{sections/distribution/route-plan
         index=index
@@ -20,13 +19,12 @@
         selectRouteVisit=selectRouteVisit}}
   {{/each}}
 </div>
-
 {{#if showSaveRoutePlanBlueprintModal}}
-  {{#tether-dialog}}
+  {{#modal-dialog}}
     {{modals/save-template
         users=users
         changeset=(changeset stashedSaveAsTemplateData validators)
         cancel=(action "cancelSaveRoutePlanBlueprint")
         submit=(action "submitTemplateName")}}
-  {{/tether-dialog}}
+  {{/modal-dialog}}
 {{/if}}

@@ -6,7 +6,6 @@
       update=(action (mut filterTerm))
     }}
   </div>
-
   <div class="col">
     {{ui/icon-button
       type="add"
@@ -19,9 +18,7 @@
     }}
   </div>
 </div>
-
 {{sections/users/user-table/table-header}}
-
 {{#each filteredUsers as |user index|}}
   {{sections/users/user-table/table-row
       changeset=(changeset user validators)
@@ -32,14 +29,13 @@
       saveUser=saveUser
       deleteUser=(action deleteUser user)}}
 {{/each}}
-
 {{#if showNewUserModal}}
-  {{#tether-dialog close=(action "closeNewUser")}}
+  {{#modal-dialog onClose=(action "closeNewUser")}}
     {{modals/new-user
       roles=roles
       changeset=(changeset stashedNewUserData validators)
       close=(action "closeNewUser")
       submit=(action "createNewUser")
     }}
-  {{/tether-dialog}}
+  {{/modal-dialog}}
 {{/if}}

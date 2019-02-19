@@ -9,13 +9,13 @@
   backgroundColor=(if backgroundColor backgroundColor colors.BABY_BLUE)
   click=(action "toggle")}}
 {{#if showMenu}}
-  {{#tether-dialog
+  {{#modal-dialog
       hasOverlay=false
       attachment="top left"
       targetAttachment="right left"
-      target=this}}
+      tetherTarget=this}}
     <div class="content" style={{menuColors}}>
       {{yield}}
     </div>
-  {{/tether-dialog}}
+  {{/modal-dialog}}
 {{/if}}

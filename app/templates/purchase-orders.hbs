@@ -23,12 +23,12 @@
   </div>
 </div>
 {{#if showCreateOrderModal}}
-  {{#tether-dialog}}
+  {{#modal-dialog}}
     {{ui/item-selector
         title="Create new purchase order"
         placeholder="Search for location"
         model=unfulfilledLocations
         close=(action "closeCreateOrder")
         onSubmit=(action "createOrder")}}
-  {{/tether-dialog}}
+  {{/modal-dialog}}
 {{/if}}
