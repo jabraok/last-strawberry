@@ -6,12 +6,13 @@ import {
   manualSetup
 } from "ember-data-factory-guy";
 import { notificationsPO as page } from "last-strawberry/tests/pages/sales-orders-show";
+import { create } from 'ember-cli-page-object';
 
 moduleForComponent("ui/order-editor/notifications", "Integration | Component | ui/order editor/notifications", {
   integration: true,
 
   beforeEach: function () {
-    page.setContext(this);
+    this.page = create({context: this});
     manualSetup(this.container);
   },
 
@@ -25,7 +26,7 @@ test("it shows notification list when present", function(assert) {
 
   this.set("notifications", notifications);
 
-  page.render(hbs`{{ui/order-editor/notifications
+  this.render(hbs`{{ui/order-editor/notifications
                     notifications=notifications}}`);
 
   assert.equal(page.notifications().count, 3);
@@ -36,7 +37,7 @@ test("it shows id and notificationState and renderer", function(assert) {
 
   this.set("notifications", [notification]);
 
-  page.render(hbs`{{ui/order-editor/notifications
+  this.render(hbs`{{ui/order-editor/notifications
                     notifications=notifications}}`);
 
   const firstRow = page.notifications(0);

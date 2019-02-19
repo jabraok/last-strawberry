@@ -14,6 +14,7 @@ import {
   mockSetup
 } from 'ember-data-factory-guy';
 import decorateComponentClass from 'last-strawberry/tests/helpers/decorate-component-class';
+import { create } from 'ember-cli-page-object';
 
 L.Icon.Default.imagePath = 'some-path';
 
@@ -24,7 +25,7 @@ moduleForComponent('sections/locations/address-manager', 'Integration | Componen
     mockSetup({logLevel: 1, responseTime: 1000, mockjaxLogLevel: 4});
 
     decorateComponentClass();
-    page.setContext(this);
+    this.page = create({context: this});
     manualSetup(this.container);
 
     this.register('component:tile-layer', TileLayerComponent.extend({
@@ -49,7 +50,7 @@ test('it shows an address when present', function(assert) {
   this.set('saveAddress', () => {});
   this.set('switchAddress', () => {});
 
-  page.render(hbs`{{sections/locations/address-manager
+  this.render(hbs`{{sections/locations/address-manager
     saveAddresss=saveAddresss
     switchAddress=switchAddress
     addresses=addresses

@@ -6,12 +6,13 @@ import {
 } from "ember-data-factory-guy";
 import Changeset from "ember-changeset";
 import { notificationPO as page } from "last-strawberry/tests/pages/customers-show-location";
+import { create } from 'ember-cli-page-object';
 
 moduleForComponent("sections/locations/notification-rule", "Integration | Component | sections/locations/notification rule", {
   integration: true,
 
   beforeEach: function () {
-    page.setContext(this);
+    this.page = create({context: this});
     manualSetup(this.container);
   },
 
@@ -27,7 +28,7 @@ test("it shows notification information when present", function(assert) {
   this.set("changeset", changeset);
   this.set("handler", () => {});
 
-  page.render(hbs`{{sections/locations/notification-rule
+  this.render(hbs`{{sections/locations/notification-rule
                     changeset=changeset
                     isCustomer=true
                     saveNotification=handler
@@ -40,9 +41,7 @@ test("it shows notification information when present", function(assert) {
   assert.equal(page.isWantsCreditChecked, changeset.get("wantsCredit"), "wantsCredit");
 });
 
-test("it triggers saveNotification when focus out of firstName textbox", function(assert) {
-  assert.expect(2);
-
+test("it triggers saveNotification when focus out of firstName textbox", async function(assert) {
   const notification = make("notification-rule");
   const changeset = new Changeset(notification);
 
@@ -52,16 +51,16 @@ test("it triggers saveNotification when focus out of firstName textbox", functio
     assert.ok(true);
   });
 
-  const instance = page.render(hbs`{{sections/locations/notification-rule
+  await this.render(hbs`{{sections/locations/notification-rule
                     changeset=changeset
                     saveNotification=saveNotification
                     deleteNotification=handler}}`);
-  instance
+  page
     .fillFirstName("first name")
     .blurFirstName();
 });
 
-test("it triggers deleteNotification when click on delete button", function(assert) {
+test("it triggers deleteNotification when click on delete button", async function(assert) {
   assert.expect(1);
 
   const notification = make("notification-rule");
@@ -73,9 +72,9 @@ test("it triggers deleteNotification when click on delete button", function(asse
     assert.ok(true);
   });
 
-  const instance = page.render(hbs`{{sections/locations/notification-rule
+  await this.render(hbs`{{sections/locations/notification-rule
                     changeset=changeset
                     saveNotification=handler
                     deleteNotification=deleteNotification}}`);
-  instance.delete();
+  page.delete();
 });

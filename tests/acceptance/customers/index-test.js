@@ -1,5 +1,4 @@
 import page from "last-strawberry/tests/pages/customers";
-// import companyShowPO from "last-strawberry/tests/pages/customers-show";
 
 import { test } from "qunit";
 import moduleForAcceptance from "last-strawberry/tests/helpers/module-for-acceptance";
@@ -8,7 +7,6 @@ import { authenticateSession } from "last-strawberry/tests/helpers/ember-simple-
 import {
   make,
   makeList,
-  // mockCreate,
   mockFindAll
 } from "ember-data-factory-guy";
 

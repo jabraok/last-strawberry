@@ -6,12 +6,13 @@ import {
   manualSetup
 } from "ember-data-factory-guy";
 import { notificationListPO as page } from "last-strawberry/tests/pages/customers-show-location";
+import { create } from 'ember-cli-page-object';
 
 moduleForComponent("sections/locations/notification-rules", "Integration | Component | sections/locations/notification rules", {
   integration: true,
 
   beforeEach: function () {
-    page.setContext(this);
+    this.page = create({context: this});
     manualSetup(this.container);
   },
 
@@ -27,7 +28,7 @@ test("it shows notification list when present", function(assert) {
   this.set("model", location);
   this.set("handler", () => {});
 
-  page.render(hbs`{{sections/locations/notification-rules
+  this.render(hbs`{{sections/locations/notification-rules
           model=model
           createNotification=handler
           saveNotification=handler
@@ -36,7 +37,7 @@ test("it shows notification list when present", function(assert) {
   assert.equal(page.notifications().count, 3);
 });
 
-test("it triggers createNotification when click on add rule button", function(assert) {
+test("it triggers createNotification when click on add rule button", async function(assert) {
   assert.expect(1);
 
   let location = make("location");
@@ -47,11 +48,11 @@ test("it triggers createNotification when click on add rule button", function(as
     assert.ok(true);
   });
 
-  const instance = page.render(hbs`{{sections/locations/notification-rules
-          model=model
-          createNotification=createNotification
-          saveNotification=handler
-          deleteNotification=handler}}`);
+  await this.render(hbs`{{sections/locations/notification-rules
+  model=model
+  createNotification=createNotification
+  saveNotification=handler
+  deleteNotification=handler}}`);
 
-  instance.addNotification();
+  page.addNotification();
 });
