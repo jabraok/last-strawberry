@@ -1,13 +1,12 @@
-import PO from '../page-object';
-
-const {
+import {
   clickable,
   fillable,
   text,
-  visitable
-} = PO;
+  visitable,
+  create
+} from "ember-cli-page-object";
 
-export default PO.create({
+export default create({
   visit: visitable('/login'),
   username: fillable('.username'),
   password: fillable('.password'),
