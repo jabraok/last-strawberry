@@ -3969,10 +3969,10 @@ ember-cookies@^0.3.0:
     ember-cli-babel "^6.8.2"
     ember-getowner-polyfill "^1.1.0 || ^2.0.0"
 
-ember-data-factory-guy@3.6.3:
-  version "3.6.3"
-  resolved "https://registry.yarnpkg.com/ember-data-factory-guy/-/ember-data-factory-guy-3.6.3.tgz#6328223146b7bf4368328799bbd2c2ee232f96aa"
-  integrity sha512-F3Goz90mWFMbp5LbA2h4ivBWRJpH7/DTSsbASvRapF62Wph22lm+h7GP0NpQXUdJF8V9eFROMri5LeeSQBBHSA==
+ember-data-factory-guy@3.6.4:
+  version "3.6.4"
+  resolved "https://registry.yarnpkg.com/ember-data-factory-guy/-/ember-data-factory-guy-3.6.4.tgz#45419d5428cb5ba1422ded46c9be4a6a3dfe4656"
+  integrity sha512-XDzoHW/CSGHmqfGch+quZODg51NzzgB4G8g9559oSUHHwVdZnOgh6alXbl2H/UZ34FHTmBI9qybNtdKDTXjaCA==
   dependencies:
     broccoli-funnel "^2.0.1"
     broccoli-merge-trees "^3.0.1"
@@ -4414,10 +4414,10 @@ ember-text-measurer@^0.5.0:
   dependencies:
     ember-cli-babel "^7.1.0"
 
-ember-tooltips@3.1.1:
-  version "3.1.1"
-  resolved "https://registry.yarnpkg.com/ember-tooltips/-/ember-tooltips-3.1.1.tgz#ce0b94c092b119feae668358f0aa416eab56f608"
-  integrity sha512-CYVE/d8xJmSuc/DcOcfblKgOmJ2ejFVbX11UpUR4Pk6iV6GKblntjlvP81bpqy89tED4VIP+I3oCLmHKec17Gw==
+ember-tooltips@3.1.2:
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/ember-tooltips/-/ember-tooltips-3.1.2.tgz#4b745ec592ea22c96dfa93309d3b6af08664564d"
+  integrity sha512-J2xJJU1P7x+Ms5dXiQvsvQGV0h3McISThgPtFsKejTK/v3veNoqHCiy4PgxeHdCOKIdL8NTYE1m78w2AYU6gVA==
   dependencies:
     broccoli-funnel "^2.0.1"
     broccoli-merge-trees "^2.0.0"
