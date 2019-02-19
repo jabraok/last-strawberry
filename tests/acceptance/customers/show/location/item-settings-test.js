@@ -41,7 +41,7 @@ moduleForAcceptance("Acceptance | customers/show/location/item-settings", {
 test("renders default item desires when no item desires are present", async function(assert) {
   await page.visit({company_id:company.get("id"), location_id:location.get("id")});
 
-  assert.equal(itemSettingsPO.itemSettings().count, items.length, "Did not render the correct number of itemSettings");
+  assert.equal(itemSettingsPO.itemSettings.length, items.length, "Did not render the correct number of itemSettings");
 });
 
 test("adds enabled class to enabled items", async function(assert) {
@@ -51,7 +51,7 @@ test("adds enabled class to enabled items", async function(assert) {
 
   await page.visit({company_id:company.get("id"), location_id:location.get("id")});
 
-  itemDesires.forEach((itemDesire, i) => assert.equal(itemDesire.get("enabled"), itemSettingsPO.itemSettings(i).itemDesire.enabled));
+  itemDesires.forEach((itemDesire, i) => assert.equal(itemDesire.get("enabled"), itemSettingsPO.itemSettings.objectAt(i).itemDesire.enabled));
 });
 
 test("does not add enabled class to disabled items", async function(assert) {
@@ -61,7 +61,7 @@ test("does not add enabled class to disabled items", async function(assert) {
 
   await page.visit({company_id:company.get("id"), location_id:location.get("id")});
 
-  itemDesires.forEach((itemDesire, i) => assert.equal(itemDesire.get("enabled"), itemSettingsPO.itemSettings(i).itemDesire.enabled));
+  itemDesires.forEach((itemDesire, i) => assert.equal(itemDesire.get("enabled"), itemSettingsPO.itemSettings.objectAt(i).itemDesire.enabled));
 });
 
 test("item desires toggle on click", async function(assert) {
@@ -70,8 +70,8 @@ test("item desires toggle on click", async function(assert) {
   await page.visit({company_id:company.get("id"), location_id:location.get("id")});
 
   mockUpdate(itemDesires[0]);
-  await itemSettingsPO.itemSettings(0).itemDesire.toggle();
+  await itemSettingsPO.itemSettings.objectAt(0).itemDesire.toggle();
 
-  assert.equal(false, itemSettingsPO.itemSettings(0).itemDesire.enabled, "Didn't toggle after item click");
-  assert.equal(true, itemSettingsPO.itemSettings(1).itemDesire.enabled, "Changed even though wasn't clicked");
+  assert.equal(false, itemSettingsPO.itemSettings.objectAt(0).itemDesire.enabled, "Didn't toggle after item click");
+  assert.equal(true, itemSettingsPO.itemSettings.objectAt(1).itemDesire.enabled, "Changed even though wasn't clicked");
 });

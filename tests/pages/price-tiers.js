@@ -11,13 +11,9 @@ const index = create({
 
   visit: visitable('/price-tiers'),
 
-  priceTiers: collection({
+  priceTiers: collection('.listRow', {
     scope: '.debug_lists_filterable-label-list',
-    itemScope: '.listRow',
-
-    item: {
-      label: text('.name')
-    }
+    label: text('.name')
   }),
 
   fillNewPriceTierInput: fillable('.debug_ui_input-action-bar input'),
@@ -29,36 +25,23 @@ const show = create({
   visit: visitable('/price-tiers/:id'),
   name: value('.priceTierName input'),
 
-  openPriceRows: collection({
-    itemScope: '.openItemPricesContainer .debug_ui_price-row',
-
-    item: {
-      itemName: text('.name'),
-      price: text('.price')
-    }
+  openPriceRows: collection('.openItemPricesContainer .debug_ui_price-row', {
+    itemName: text('.name'),
+    price: text('.price')
   }),
 
-  fulfilledPriceRows: collection({
-    itemScope: '.fulfilledItemPricesContainer .debug_ui_price-row',
-
-    item: {
-      itemName: text('.name'),
-      price: text('.price')
-    }
+  fulfilledPriceRows: collection('.fulfilledItemPricesContainer .debug_ui_price-row', {
+    itemName: text('.name'),
+    price: text('.price')
   }),
 
-  priceRows: collection({
-    itemScope: '.debug_ui_price-row',
-
-    item: {
-      itemName: text('.name'),
-      price: text('.price')
-    }
+  priceRows: collection('.debug_ui_price-row', {
+    itemName: text('.name'),
+    price: text('.price')
   }),
 
-  companyRows: collection({
+  companyRows: collection('.companyRow', {
     scope: '.debug_modals_base-modal',
-    itemScope: '.companyRow',
     resetScope: true
   }),
 

@@ -9,12 +9,8 @@ import {
 export default create({
   visit: visitable('/customers'),
 
-  companies: collection({
-    itemScope: '.list-filterable-label-list .name',
-
-    item: {
-      label: text('.name')
-    }
+  companies: collection('.list-filterable-label-list .name', {
+    label: text('.name')
   }),
 
   clickAddButton: clickable('.newCustomer'),

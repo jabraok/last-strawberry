@@ -10,30 +10,18 @@ import {
 const page = create({
   visit: visitable("/sales-orders"),
 
-  orders: collection({
-    itemScope: ".debug_navs_orders-nav .child",
-
-    item: {
-      label: text(".label")
-    }
+  orders: collection(".debug_navs_orders-nav .child", {
+    label: text(".label")
   }),
 
-  companies: collection({
-    itemScope: ".debug_navs_orders-nav .parent",
-
-    item: {
-      label: text(".label")
-    }
+  companies: collection(".debug_navs_orders-nav .parent", {
+    label: text(".label")
   }),
 
   openQuickMenu: clickable(".debug_navs_orders-nav .debug_ui_popup-menu .trigger"),
 
   stubOrders: clickable(".stubOrders"),
   createOrder: clickable(".createOrder"),
-
-  // createOrder(){
-  //   $(".createOrder").click();
-  // },
 
   selectLocation(location) {
     return selectChoose(".locationContainer", location.get("label"));

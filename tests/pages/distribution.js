@@ -15,26 +15,15 @@ export default create({
       $(".delete").click();
   },
 
-  openRouteVisits: collection({
-    itemScope: ".debug_sections_distribution_open-route-visits .debug_sections_distribution_route-visit",
-
-    item: {
-      title: text(".debug_passive_title-bar .span")
-    }
+  openRouteVisits: collection(".debug_sections_distribution_open-route-visits .debug_sections_distribution_route-visit", {
+    title: text(".debug_passive_title-bar .span")
   }),
 
-  routePlans: collection({
-    itemScope: ".debug_sections_distribution_route-plan",
-
-    item: {
-      routeVisits: collection({
-        itemScope: ".debug_sections_distribution_route-visit",
-        item: {
-          title: text(".title"),
-          delete: clickable(".action")
-        }
-      }),
-      openSettingMenu: clickable(".settingMenu .trigger")
-    }
+  routePlans: collection(".debug_sections_distribution_route-plan", {
+    routeVisits: collection( ".debug_sections_distribution_route-visit", {
+      title: text(".title"),
+      delete: clickable(".action")
+    }),
+    openSettingMenu: clickable(".settingMenu .trigger")
   })
 });

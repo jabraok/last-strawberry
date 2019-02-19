@@ -28,14 +28,14 @@ moduleForAcceptance("Acceptance | vendors", {
 test("renders list of vendors", async function(assert) {
   await indexPage.visit();
 
-  assert.equal(indexPage.vendors().count, vendors.length, "Wrong num vendors rendered");
+  assert.equal(indexPage.vendors.length, vendors.length, "Wrong num vendors rendered");
 });
 
 
 test("can create new vendors", async function(assert) {
   await indexPage.visit();
 
-  assert.equal(indexPage.vendors().count, vendors.length, "Wrong number of vendors rendered");
+  assert.equal(indexPage.vendors.length, vendors.length, "Wrong number of vendors rendered");
 
   const name = "Nature Well";
 
@@ -45,6 +45,6 @@ test("can create new vendors", async function(assert) {
     .fillNewVendor(name)
     .createNewVendor();
 
-  assert.equal(indexPage.vendors().count, vendors.length + 1, "Wrong number of vendors rendered");
+  assert.equal(indexPage.vendors.length, vendors.length + 1, "Wrong number of vendors rendered");
   assert.equal(showPage.name, name, "New vendor name did not match");
 });

@@ -13,12 +13,8 @@ const index = create({
   fillNewVendor: fillable(".create-new-vendor.ui_input-action-bar input"),
   createNewVendor: clickable(".create-new-vendor.ui_input-action-bar .btn"),
 
-  vendors: collection({
-    itemScope: ".list-filterable-label-list .name",
-
-    item: {
-      label: text(".name")
-    }
+  vendors: collection(".list-filterable-label-list .name", {
+    label: text(".name")
   })
 });
 

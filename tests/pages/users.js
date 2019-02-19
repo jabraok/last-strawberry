@@ -10,18 +10,14 @@ import {
 export default create({
   visit: visitable("/users"),
 
-  users: collection({
-    itemScope: ".debug_sections_users_user-table_table-row",
-
-    item: {
-      firstName: value(".firstNameContainer input"),
-      lastName: value(".lastNameContainer input"),
-      email: value(".emailContainer input"),
-      password: value(".passwordContainer input"),
-      role: text(".roleContainer .ember-power-select-selected-item"),
-      phone: value(".phoneContainer input"),
-      delete: clickable(".delete")
-    }
+  users: collection(".debug_sections_users_user-table_table-row", {
+    firstName: value(".firstNameContainer input"),
+    lastName: value(".lastNameContainer input"),
+    email: value(".emailContainer input"),
+    password: value(".passwordContainer input"),
+    role: text(".roleContainer .ember-power-select-selected-item"),
+    phone: value(".phoneContainer input"),
+    delete: clickable(".delete")
   }),
 
   fillFilterInput: fillable(".filterTermInput")

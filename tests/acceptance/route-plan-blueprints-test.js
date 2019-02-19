@@ -24,7 +24,7 @@ test("displays route plan blueprints when present", async function(assert) {
 
   await page.visit();
 
-  assert.equal(page.routePlanBlueprints().count, routePlanBlueprints.length);
+  assert.equal(page.routePlanBlueprints.length, routePlanBlueprints.length);
 });
 
 test("displays route plan blueprint information when present", async function(assert) {
@@ -33,7 +33,7 @@ test("displays route plan blueprint information when present", async function(as
 
   await page.visit();
 
-  const firstDisplayRow = page.routePlanBlueprints(0);
+  const firstDisplayRow = page.routePlanBlueprints.objectAt(0);
   const firstRow = routePlanBlueprints.get(0);
 
   assert.equal(firstDisplayRow.name, firstRow.get("name"));
@@ -51,7 +51,7 @@ test("filters route plan blueprints", async function(assert) {
     .visit()
     .fillFilterInput("aa");
 
-  assert.equal(page.routePlanBlueprints().count, 2);
+  assert.equal(page.routePlanBlueprints.length, 2);
 });
 
 test("deletes route plan blueprints", async function(assert) {
@@ -63,8 +63,8 @@ test("deletes route plan blueprints", async function(assert) {
   await page.visit();
 
   await page
-    .routePlanBlueprints(0)
+    .routePlanBlueprints.objectAt(0)
     .delete();
 
-  assert.equal(page.routePlanBlueprints().count, routePlanBlueprints.length - 1);
+  assert.equal(page.routePlanBlueprints.length, routePlanBlueprints.length - 1);
 });

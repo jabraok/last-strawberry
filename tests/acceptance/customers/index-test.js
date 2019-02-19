@@ -29,7 +29,7 @@ moduleForAcceptance("Acceptance | customers", {
 test("renders list of companies", async function(assert) {
   await page.visit();
 
-  assert.equal(page.companies().count, this.companies.length, "Wrong num companies rendered");
+  assert.equal(page.companies.length, this.companies.length, "Wrong num companies rendered");
 });
 
 
@@ -50,7 +50,7 @@ test("can create new companies", async function(assert) {
   // @TODO: need wait for the unique validator finished
   // await page.submitAddCustomer();
   //
-  // assert.equal(page.companies().count, this.companies.length + 1, "Wrong number of companies rendered");
+  // assert.equal(page.companies.length, this.companies.length + 1, "Wrong number of companies rendered");
   // assert.equal(companyShowPO.name, customer.get("name"), "New company name didn't match");
 
   assert.ok(true);

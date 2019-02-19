@@ -12,22 +12,16 @@ const page = create({
 });
 
 const visitSchedulePO = create({
-  visitWindows: collection({
-    itemScope: ".debug_sections_locations_visit-window"
-  }),
+  visitWindows: collection(".debug_sections_locations_visit-window"),
 
   createNewVisitWindow: clickable(".createVisitWindow"),
   deleteVisitWindow: clickable(".deleteVisitWindow")
 });
 
 const visitDaysPO = create({
-  dayOptions: collection({
-    itemScope: ".debug_sections_locations_visit-schedule .debug_ui_label-checkbox",
-
-    item: {
-      label: text(".label"),
-      enabled: hasClass("selected")
-    }
+  dayOptions: collection(".debug_sections_locations_visit-schedule .debug_ui_label-checkbox", {
+    label: text(".label"),
+    enabled: hasClass("selected")
   })
 });
 

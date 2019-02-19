@@ -16,44 +16,33 @@ const page = create({
 });
 
 const itemSettingsPO = create({
-  itemSettings: collection({
-    itemScope: ".debug_sections_locations_item-setting",
+  itemSettings: collection(".debug_sections_locations_item-setting", {
+    label: text(".productName"),
 
-    item: {
-      label: text(".productName"),
+    itemDesire: {
+      scope: ".debug_ui_toggle-button",
+      enabled: hasClass("selected"),
+      toggle: clickable()
+    },
 
-      itemDesire: {
-        scope: ".debug_ui_toggle-button",
-        enabled: hasClass("selected"),
-        toggle: clickable()
-      },
-
-      itemCreditRate: {
-        scope: ".debug_ui_toggle-button",
-        enabled: hasClass("selected")
-      }
-
+    itemCreditRate: {
+      scope: ".debug_ui_toggle-button",
+      enabled: hasClass("selected")
     }
   })
 });
 
 const visitSchedulePO = create({
-  visitWindows: collection({
-    itemScope: ".debug_sections_locations_visit-window"
-  }),
+  visitWindows: collection(".debug_sections_locations_visit-window"),
 
   createNewVisitWindow: clickable(".createVisitWindow"),
   deleteVisitWindow: clickable(".deleteVisitWindow")
 });
 
 const visitDaysPO = create({
-  dayOptions: collection({
-    itemScope: ".debug_sections_locations_visit-schedule .debug_ui_label-checkbox",
-
-    item: {
-      label: text(".label"),
-      enabled: hasClass("selected")
-    }
+  dayOptions: collection(".debug_sections_locations_visit-schedule .debug_ui_label-checkbox", {
+    label: text(".label"),
+    enabled: hasClass("selected")
   })
 });
 
@@ -85,9 +74,7 @@ const notificationPO = create({
 const notificationListPO = create({
   addNotification: clickable(".createNotification"),
 
-  notifications: collection({
-    itemScope: ".notificationRow"
-  })
+  notifications: collection(".notificationRow")
 });
 
 export {

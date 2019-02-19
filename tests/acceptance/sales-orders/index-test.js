@@ -48,7 +48,7 @@ test("should display correct number of sales orders", async function(assert) {
 
   await page.visit();
 
-  assert.equal(page.orders().count, 5, "Wrong number of orders rendered");
+  assert.equal(page.orders.length, 5, "Wrong number of orders rendered");
 });
 
 test("should show sales order when location is clicked", async function(assert) {
@@ -59,7 +59,7 @@ test("should show sales order when location is clicked", async function(assert) 
 
   await page
     .visit()
-    .orders(0)
+    .orders.objectAt(0)
     .click();
 
   assert.equal(currentURL(), `/sales-orders/${salesOrder.get("id")}`, "URL does not match expected");
@@ -90,12 +90,12 @@ test("show be able to create a new sales order from the quick menu", async funct
     await page.visit();
     await page.openQuickMenu();
 
-    assert.equal(0, page.orders().count, "Wrong number of orders rendered");
+    assert.equal(0, page.orders.length, "Wrong number of orders rendered");
 
     await page.createOrder();
     await page.selectLocation(location);
 
-    assert.equal(1, page.orders().count, "Wrong number of orders rendered");
+    assert.equal(1, page.orders.length, "Wrong number of orders rendered");
 
     assert.equal(orderNumber, showPage.orderNumber, "Wrong orderNumber rendered");
   });
@@ -121,7 +121,7 @@ test("shows filterd items only after filtered items", async function(assert) {
    .toggleFilterOptions()
    .selectFilterItem(firstItem);
 
-  assert.equal(page.orders().count, 1, "Number of orders do not match expected");
+  assert.equal(page.orders.length, 1, "Number of orders do not match expected");
 });
 
 test("shows filterd items base on query string includedItems", async function(assert) {
@@ -142,7 +142,7 @@ test("shows filterd items base on query string includedItems", async function(as
   await page
    .visit({includedItems: firstItem.get("id")});
 
-  assert.equal(page.orders().count, 1, "Number of orders do not match expected");
+  assert.equal(page.orders.length, 1, "Number of orders do not match expected");
 });
 
 test("should not display unpublished orders after uncheck Draft checkbox", async function(assert) {
@@ -156,7 +156,7 @@ test("should not display unpublished orders after uncheck Draft checkbox", async
     .toggleFilterOptions()
     .toggleIncludeDraft();
 
-  assert.equal(page.orders().count, publishedOrders.length, "Wrong number of orders filtered");
+  assert.equal(page.orders.length, publishedOrders.length, "Wrong number of orders filtered");
 });
 
 test("should not display unpublished orders if query string value is includeUnpublished=false", async function(assert) {
@@ -168,7 +168,7 @@ test("should not display unpublished orders if query string value is includeUnpu
   await page
     .visit({includeUnpublished:false});
 
-  assert.equal(page.orders().count, publishedOrders.length, "Wrong number of orders filtered");
+  assert.equal(page.orders.length, publishedOrders.length, "Wrong number of orders filtered");
 });
 
 test("should not display published orders after uncheck Approved checkbox", async function(assert) {
@@ -182,7 +182,7 @@ test("should not display published orders after uncheck Approved checkbox", asyn
     .toggleFilterOptions()
     .toggleIncludePublished();
 
-  assert.equal(page.orders().count, unpublishedOrders.length, "Wrong number of orders filtered");
+  assert.equal(page.orders.length, unpublishedOrders.length, "Wrong number of orders filtered");
 });
 
 test("should not display published orders if query string value is includePublished=false", async function(assert) {
@@ -194,5 +194,5 @@ test("should not display published orders if query string value is includePublis
   await page
     .visit({includePublished:false});
 
-  assert.equal(page.orders().count, unpublishedOrders.length, "Wrong number of orders filtered");
+  assert.equal(page.orders.length, unpublishedOrders.length, "Wrong number of orders filtered");
 });

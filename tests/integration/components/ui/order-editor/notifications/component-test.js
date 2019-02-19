@@ -29,7 +29,7 @@ test("it shows notification list when present", function(assert) {
   this.render(hbs`{{ui/order-editor/notifications
                     notifications=notifications}}`);
 
-  assert.equal(page.notifications().count, 3);
+  assert.equal(page.notifications.length, 3);
 });
 
 test("it shows id and notificationState and renderer", function(assert) {
@@ -40,7 +40,7 @@ test("it shows id and notificationState and renderer", function(assert) {
   this.render(hbs`{{ui/order-editor/notifications
                     notifications=notifications}}`);
 
-  const firstRow = page.notifications(0);
+  const firstRow = page.notifications.objectAt(0);
 
   assert.equal(firstRow.id, notification.get("id"));
   assert.equal(firstRow.notificationState, notification.get("notificationState"));

@@ -22,7 +22,7 @@ test("displays users when present", async function(assert) {
 
   await page.visit();
 
-  assert.equal(page.users().count, 3);
+  assert.equal(page.users.length, 3);
 });
 
 test("displays user information when present", async function(assert) {
@@ -31,7 +31,7 @@ test("displays user information when present", async function(assert) {
 
   await page.visit();
 
-  const firstDisplayUser = page.users(0);
+  const firstDisplayUser = page.users.objectAt(0);
   const firstUser = users.get(0);
 
   assert.equal(firstDisplayUser.firstName, firstUser.get("firstName"));
@@ -53,7 +53,7 @@ test("filters users", async function(assert) {
     .visit()
     .fillFilterInput("aa");
 
-  assert.equal(page.users().count, 2);
+  assert.equal(page.users.length, 2);
 });
 
 test("deletes users", async function(assert) {
@@ -65,8 +65,8 @@ test("deletes users", async function(assert) {
   await page.visit();
 
   await page
-    .users(0)
+    .users.objectAt(0)
     .delete();
 
-  assert.equal(page.users().count, users.length - 1);
+  assert.equal(page.users.length, users.length - 1);
 });

@@ -41,7 +41,7 @@ test("Only shows rows for products", async function(assert) {
 
   await page.visit({ id: 1 });
 
-  assert.equal(page.priceRows().count, products.length);
+  assert.equal(page.priceRows.length, products.length);
 });
 
 test("Shows a price row for all products", async function(assert) {
@@ -59,7 +59,7 @@ test("Shows a price row for all products", async function(assert) {
 
   await page.visit({ id: 1 });
 
-  assert.equal(page.priceRows().count, items.length);
+  assert.equal(page.priceRows.length, items.length);
 });
 
 test("Shows item prices for items that are not in the price tier yet", async function(assert) {
@@ -78,8 +78,8 @@ test("Shows item prices for items that are not in the price tier yet", async fun
 
   await page.visit({ id: 1 });
 
-  assert.equal(page.openPriceRows().count, openItems.length);
-  assert.equal(page.fulfilledPriceRows().count, fulfilledItems.length);
+  assert.equal(page.openPriceRows.length, openItems.length);
+  assert.equal(page.fulfilledPriceRows.length, fulfilledItems.length);
 });
 
 test("Shows company list when deleting a price tier which has many companies", async function(assert) {
@@ -98,7 +98,7 @@ test("Shows company list when deleting a price tier which has many companies", a
     .visit({ id: 1 })
     .clickDeleteButton();
 
-  assert.equal(page.companyRows().count, companies.length);
+  assert.equal(page.companyRows.length, companies.length);
 });
 
 test("Does not show company list when deleting a price tier which has not company", async function(assert) {
@@ -115,7 +115,7 @@ test("Does not show company list when deleting a price tier which has not compan
     .visit({ id: 1 })
     .clickDeleteButton();
 
-  assert.equal(page.companyRows().count, 0);
+  assert.equal(page.companyRows.length, 0);
 });
 
 test("Remaps price tier when deleting a price tier which has many companies", async function(assert) {

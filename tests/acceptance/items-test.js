@@ -20,7 +20,7 @@ test("does not show non ingredients items", async function(assert) {
 
   await page.visit();
 
-  assert.equal(page.items().count, 0);
+  assert.equal(page.items.length, 0);
 });
 
 test("only shows items of tag ingredient", async function(assert) {
@@ -29,5 +29,5 @@ test("only shows items of tag ingredient", async function(assert) {
 
   await page.visit();
 
-  assert.equal(page.items().count, 10);
+  assert.equal(page.items.length, 10);
 });

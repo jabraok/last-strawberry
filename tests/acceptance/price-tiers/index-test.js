@@ -30,7 +30,7 @@ test("shows list of price tiers", async function(assert) {
 
   await page.visit();
 
-  assert.equal(page.priceTiers().count, 10);
+  assert.equal(page.priceTiers.length, 10);
 });
 
 test("selecting an item navigates to the price-tier show route for that item", async function(assert) {
@@ -40,10 +40,8 @@ test("selecting an item navigates to the price-tier show route for that item", a
   mockFindAll("price-tier").returns({models: [priceTier]})
   mockFindRecord("price-tier").returns({model:priceTier});
 
-  await page
-    .visit()
-    .priceTiers(0)
-    .click();
+  await page.visit();
+  await page.priceTiers.objectAt(0).click();
 
   assert.equal(currentURL(), "/price-tiers/1");
 });
@@ -59,5 +57,5 @@ test("can create new price tiers", async function(assert) {
     .fillNewPriceTierInput("New Price Tier")
     .submitNewPriceTier();
 
-  assert.equal(page.priceTiers().count, 1);
+  assert.equal(page.priceTiers.length, 1);
 });

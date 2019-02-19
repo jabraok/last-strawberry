@@ -10,14 +10,10 @@ import {
 const defaultPage = create({
   visit: visitable("/products"),
 
-  products: collection({
-    itemScope: ".debug_sections_items_item-table_table-row",
-
-    item: {
-      label: text(".name"),
-      click: clickable(),
-      archiveItem: clickable(".archiveItemButton")
-    }
+  products: collection(".debug_sections_items_item-table_table-row", {
+    label: text(".name"),
+    click: clickable(),
+    archiveItem: clickable(".archiveItemButton")
   }),
 
   fillFilterInput: fillable(".filterTermInput"),

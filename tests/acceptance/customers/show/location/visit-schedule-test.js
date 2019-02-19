@@ -41,7 +41,7 @@ async function visitWithDefaults() {
 test("renders visit days and default visit windows no data passed in", async function(assert) {
   await visitWithDefaults();
 
-  assert.equal(7, visitDaysPO.dayOptions().count, "Did not render the correct number of items");
+  assert.equal(7, visitDaysPO.dayOptions.length, "Did not render the correct number of items");
 });
 
 test("adds enabled class to enabled items", async function(assert) {
@@ -49,24 +49,24 @@ test("adds enabled class to enabled items", async function(assert) {
 
   await visitWithDefaults();
 
-  visitDays.forEach((visitDay, i) => assert.equal(visitDay.get("enabled"), visitDaysPO.dayOptions(i).enabled));
+  visitDays.forEach((visitDay, i) => assert.equal(visitDay.get("enabled"), visitDaysPO.dayOptions.objectAt(i).enabled));
 });
 
 test("clicking add visit window creates a new visit window", async function(assert) {
   await visitWithDefaults();
 
-  assert.equal(visitSchedulePO.visitWindows().count, 0);
+  assert.equal(visitSchedulePO.visitWindows.length, 0);
 
   await visitSchedulePO.createNewVisitWindow();
 
-  assert.equal(visitSchedulePO.visitWindows().count, 1);
+  assert.equal(visitSchedulePO.visitWindows.length, 1);
 });
 
 test("clicking delete button to delete a visit window", async function(assert) {
   await visitWithDefaults();
   await visitSchedulePO.createNewVisitWindow();
-  assert.equal(visitSchedulePO.visitWindows().count, 1, "Does not show new visit windows");
+  assert.equal(visitSchedulePO.visitWindows.length, 1, "Does not show new visit windows");
 
   await visitSchedulePO.deleteVisitWindow();
-  assert.equal(visitSchedulePO.visitWindows().count, 0, "Number of visit windows does not match expected");
+  assert.equal(visitSchedulePO.visitWindows.length, 0, "Number of visit windows does not match expected");
 });

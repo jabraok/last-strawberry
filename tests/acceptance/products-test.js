@@ -35,7 +35,7 @@ test("does not show non product items", async function(assert) {
 
   await defaultPage.visit();
 
-  assert.equal(defaultPage.products().count, 0);
+  assert.equal(defaultPage.products.length, 0);
 });
 
 test("only shows items of tag product", async function(assert) {
@@ -44,7 +44,7 @@ test("only shows items of tag product", async function(assert) {
 
   await defaultPage.visit();
 
-  assert.equal(defaultPage.products().count, 10);
+  assert.equal(defaultPage.products.length, 10);
 });
 
 test("filters products", async function(assert) {
@@ -58,7 +58,7 @@ test("filters products", async function(assert) {
     .visit()
     .fillFilterInput("aa");
 
-  assert.equal(defaultPage.products().count, 2);
+  assert.equal(defaultPage.products.length, 2);
 });
 
 // TODO: this test failed
@@ -73,7 +73,7 @@ test("filters products", async function(assert) {
 //     .fillAddNewProduct("New Product")
 //     .submitNewProduct();
 //
-//   assert.equal(defaultPage.products().count, 3);
+//   assert.equal(defaultPage.products.length, 3);
 // });
 
 test("archive products", async function(assert) {
@@ -84,9 +84,8 @@ test("archive products", async function(assert) {
 
   await defaultPage.visit();
 
-  await defaultPage
-    .products(0)
-    .archiveItem();
+  let pageProducts = await defaultPage.products;
+  await pageProducts.objectAt(0).archiveItem();
 
-  assert.equal(defaultPage.products().count, products.length - 1);
+  assert.equal(defaultPage.products.length, products.length - 1);
 });

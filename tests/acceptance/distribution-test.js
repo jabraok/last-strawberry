@@ -45,7 +45,7 @@ test("valid orphaned route-visits show up", async function(assert) {
 
   await page.visit();
 
-  assert.equal(page.openRouteVisits().count, 2);
+  assert.equal(page.openRouteVisits.length, 2);
 });
 
 test("can create new route plans", async function(assert) {
@@ -57,7 +57,7 @@ test("can create new route plans", async function(assert) {
     .visit()
     .createRoutePlan();
 
-  assert.equal(page.routePlans().count, 1);
+  assert.equal(page.routePlans.length, 1);
 });
 
 test("can delete route plans", async function(assert) {
@@ -68,17 +68,17 @@ test("can delete route plans", async function(assert) {
   mockQuery("route-visit");
 
   await page.visit();
-  assert.equal(page.routePlans().count, routePlans.length);
+  assert.equal(page.routePlans.length, routePlans.length);
 
   mockDelete(routePlans.get("firstObject"));
 
   await page
-    .routePlans(0)
+    .routePlans.objectAt(0)
     .openSettingMenu();
 
   await page.deleteRoutePlan();
 
-  assert.equal(page.routePlans().count, (routePlans.length - 1));
+  assert.equal(page.routePlans.length, (routePlans.length - 1));
 });
 
 test("can delete individual route visit", async function(assert) {
@@ -88,13 +88,13 @@ test("can delete individual route visit", async function(assert) {
   mockQuery("route-visit").returns({json:routeVisits});
 
   await page.visit();
-  assert.equal(page.routePlans(0).routeVisits().count, 1);
+  assert.equal(page.routePlans.objectAt(0).routeVisits.length, 1);
 
   mockUpdate("route-visit", 1);
 
-  await page.routePlans(0).routeVisits(0).delete();
+  await page.routePlans.objectAt(0).routeVisits.objectAt(0).delete();
 
-  assert.equal(page.routePlans(0).routeVisits().count, 0);
+  assert.equal(page.routePlans.objectAt(0).routeVisits.length, 0);
 });
 
 test("deleting handled route-visit moves it to open route-visit area", async function(assert) {
@@ -106,9 +106,9 @@ test("deleting handled route-visit moves it to open route-visit area", async fun
 
   await page.visit();
 
-  assert.equal(page.openRouteVisits().count, 0);
+  assert.equal(page.openRouteVisits.length, 0);
 
-  await page.routePlans(0).routeVisits(0).delete();
+  await page.routePlans.objectAt(0).routeVisits.objectAt(0).delete();
 
-  assert.equal(page.openRouteVisits().count, 1);
+  assert.equal(page.openRouteVisits.length, 1);
 });

@@ -80,12 +80,12 @@ test("can add order item manually", async function(assert) {
 
   await page.visit({id:order.get("id")});
 
-  assert.equal(orderEditorPO.salesOrderItems().count, 0);
+  assert.equal(orderEditorPO.salesOrderItems.length, 0);
 
   await orderEditorPO.addProduct(items[0]);
 
-  assert.equal(orderEditorPO.salesOrderItems().count, 1);
-  assert.equal(orderEditorPO.salesOrderItems(0).name, items[0].get("name"));
+  assert.equal(orderEditorPO.salesOrderItems.length, 1);
+  assert.equal(orderEditorPO.salesOrderItems.objectAt(0).name, items[0].get("name"));
 });
 
 test("adding an item manually still uses price-tier price", async function(assert) {
@@ -110,7 +110,7 @@ test("adding an item manually still uses price-tier price", async function(asser
 
   await orderEditorPO.addProduct(item);
 
-  assert.equal(orderEditorPO.salesOrderItems(0).total, "$2.50");
+  assert.equal(orderEditorPO.salesOrderItems.objectAt(0).total, "$2.50");
 });
 
 test("can update delivery date", async function(assert) {
@@ -124,13 +124,13 @@ test("can update delivery date", async function(assert) {
 
   await page.visit({id:order.get("id")});
 
-  assert.equal(orderPO.orders().count, 1, "show the selected order on the list");
+  assert.equal(orderPO.orders.length, 1, "show the selected order on the list");
 
   // Update delivery date
   const newDate = moment("2016-03-01");
   await orderEditorPO.changeDeliveryDate(newDate.toDate());
 
-  assert.equal(orderPO.orders().count, 0, "hide the selected order on the list");
+  assert.equal(orderPO.orders.length, 0, "hide the selected order on the list");
 
   assert.equal(orderEditorPO.deliveryDate, newDate.format("ddd MM-DD-YYYY"), "sales order delivery date did not show as expected");
 });

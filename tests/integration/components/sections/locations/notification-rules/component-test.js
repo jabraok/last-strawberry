@@ -34,7 +34,7 @@ test("it shows notification list when present", function(assert) {
           saveNotification=handler
           deleteNotification=handler}}`);
 
-  assert.equal(page.notifications().count, 3);
+  assert.equal(page.notifications.length, 3);
 });
 
 test("it triggers createNotification when click on add rule button", async function(assert) {
