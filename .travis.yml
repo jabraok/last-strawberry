@@ -32,5 +32,5 @@ deploy:
       all_branches: true
       condition: -n $TRAVIS_TAG
   - provider: script
-    script: npm install -g netlify-cli typescript && npm run build && netlify deploy -s $NETLIFY_STATING_ITE_ID --prod --dir=dist
+    script: npm install -g netlify-cli typescript && npm run build && netlify deploy -s $NETLIFY_STAGING_SITE_ID --prod --dir=dist
     on: master
