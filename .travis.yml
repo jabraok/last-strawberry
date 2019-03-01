@@ -25,7 +25,12 @@ script:
   - npm run lint:js
   - npm test
 
-after_success:
-  if [ "${TRAVIS_PULL_REQUEST}" == "false" ] && [ -n "${TRAVIS_TAG}" ]; then
-    npm install -g netlify-cli typescript && npm run build && netlify deploy --prod --dir=dist;
-  fi
+deploy:
+  - provider: script
+    script: npm install -g netlify-cli typescript && npm run build && netlify deploy --prod --dir=dist
+    on:
+      all_branches: true
+      condition: -n $TRAVIS_TAG
+  - provider: script
+    script: npm install -g netlify-cli typescript && npm run build && netlify deploy -s $NETLIFY_STATING_ITE_ID --prod --dir=dist
+    on: master
